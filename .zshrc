@@ -25,6 +25,7 @@ alias ta="tmux a -t"
 alias taa="tmux a" 
 alias tn="tmux new -s" 
 alias tls="tmux ls" 
+alias reload="source ~/.zshrc" 
 autoload -U compinit
 export PATH=$PATH:$HOME/.cargo/bin
 
