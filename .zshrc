@@ -2,10 +2,23 @@ export ZSH="$HOME/.oh-my-zsh"
 
 
 ZSH_THEME="candy"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# zplug の設定
+export ZPLUG_HOME="$HOME/.zplug"
+source $ZPLUG_HOME/init.zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+if ! zplug check --verbose; then
+    printf "Install zplug plugins...\n"
+    zplug install
+fi
+zplug load --verbose
+
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 alias tmuxconf="vim ~/.tmux.conf"
