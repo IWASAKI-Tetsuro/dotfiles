@@ -25,7 +25,7 @@ alias ta="tmux a -t"
 alias taa="tmux a" 
 alias tn="tmux new -s" 
 alias tls="tmux ls" 
-autoload -U compinit && compinit
+autoload -U compinit
 export PATH=$PATH:$HOME/.cargo/bin
 
 setopt auto_pushd
