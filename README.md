@@ -1,4 +1,7 @@
-molokai
-oh-my-zsh and plugins
-vim-plug
-fzf
+# you should install following tools
+ - molokai
+ - oh-my-zsh
+ - zplug
+ - vim-plug
+ - fzf
+
