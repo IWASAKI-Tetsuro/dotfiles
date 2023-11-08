@@ -14,6 +14,7 @@ set tperiod=1
 set correct=all
 set color
 set path = ($path ~/.fzf/bin)
+
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
@@ -26,6 +27,7 @@ alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf 
 alias fv 'set file=`find . -type f | fzf` && vim "$file"'
 alias fh 'set fzfcmd=`history -h | sort | uniq | tac |  fzf` && eval "$fzfcmd"'
 alias reload 'source ~/.tcshrc'
+
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
 complete set      'p/1/s/'            # complete variables
