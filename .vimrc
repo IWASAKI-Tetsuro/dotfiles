@@ -35,6 +35,11 @@ nnoremap H 10<left>
 nnoremap J 10<down> 
 nnoremap K 10<up> 
 nnoremap L 10<right> 
+vnoremap H 10<left>
+vnoremap J 10<down> 
+vnoremap K 10<up> 
+vnoremap L 10<right> 
+vnoremap v <C-v>
 let mapleader = "\<space>"
 syntax on
 
