@@ -1,3 +1,4 @@
+" vim-plug
 if executable('git')
   call plug#begin()
   Plug 'easymotion/vim-easymotion'
@@ -29,18 +30,6 @@ set smartindent
 set showmatch
 set laststatus=2
 set wildmode=list:longest
-nnoremap j gj
-nnoremap k gk
-nnoremap H 10<left>
-nnoremap J 10<down> 
-nnoremap K 10<up> 
-nnoremap L 10<right> 
-vnoremap H 10<left>
-vnoremap J 10<down> 
-vnoremap K 10<up> 
-vnoremap L 10<right> 
-vnoremap v <C-v>
-let mapleader = "\<space>"
 syntax on
 
 "Tab系
@@ -59,7 +48,6 @@ set wrapscan
 set hlsearch
 nmap <Esc><Esc> :nohlsaerch<CR><Esc>
  
-inoremap jj <Esc>
 :colorscheme molokai
 set t_Co=256
 set wrap
@@ -70,6 +58,33 @@ set undolevels=1000
 command Vter vert terminal
 command Hter bo terminal++rows=10
 
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
+    " ノーマルモード時に非点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[2 q"
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+endif
+
+" normal mode mapping
+nnoremap j gj
+nnoremap k gk
+nnoremap H 10<left>
+nnoremap J 10<down> 
+nnoremap K 10<up> 
+nnoremap L 10<right> 
+" visual mode mapping
+vnoremap H 10<left>
+vnoremap J 10<down> 
+vnoremap K 10<up> 
+vnoremap L 10<right> 
+vnoremap v <C-v>
+" insert mode mapping
+inoremap jj <Esc>
+
+" easy motion mapping
+let mapleader = "\<space>"
 map <Leader> <Plug>(easymotion-prefix)
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap s <Plug>(easymotion-overwin-f2)
@@ -77,6 +92,7 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" lsp settings
 autocmd BufWritePre <buffer> LspDocumentFormatSync
 " JK motions: Line motions
 let g:lsp_diagnostics_echo_cursor = 1
@@ -94,11 +110,3 @@ au User lsp_setup call asyncomplete#register_source({
   \ 'priority': 10,
   \ 'completor':function('asyncomplete#sources#lsp#completor'),
   \ })
-if has('vim_starting')
-    " 挿入モード時に非点滅の縦棒タイプのカーソル
-    let &t_SI .= "\e[6 q"
-    " ノーマルモード時に非点滅のブロックタイプのカーソル
-    let &t_EI .= "\e[2 q"
-    " 置換モード時に非点滅の下線タイプのカーソル
-    let &t_SR .= "\e[4 q"
-endif
