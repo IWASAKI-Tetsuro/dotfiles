@@ -1,5 +1,6 @@
 if executable('git')
   call plug#begin()
+  Plug 'easymotion/vim-easymotion'
   Plug 'rhysd/clever-f.vim'
   Plug 'unblevable/quick-scope'
   Plug 'prabirshrestha/vim-lsp'
@@ -9,7 +10,6 @@ if executable('git')
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   call plug#end()
 endif
-
 
 " setting
 set fenc=urf-8
@@ -31,6 +31,11 @@ set laststatus=2
 set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
+nnoremap H 10<left>
+nnoremap J 10<down> 
+nnoremap K 10<up> 
+nnoremap L 10<right> 
+let mapleader = "\<space>"
 syntax on
 
 "Tab系
@@ -60,7 +65,15 @@ set undolevels=1000
 command Vter vert terminal
 command Hter bo terminal++rows=10
 
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nmap s <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
 autocmd BufWritePre <buffer> LspDocumentFormatSync
+" JK motions: Line motions
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_start = 1
 if v:version >= 800
