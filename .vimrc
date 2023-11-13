@@ -31,6 +31,10 @@ set showmatch
 set laststatus=2
 set wildmode=list:longest
 syntax on
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
 "Tab系
 set list listchars=tab:\▸\-
@@ -48,7 +52,7 @@ set wrapscan
 set hlsearch
 nmap <Esc><Esc> :nohlsaerch<CR><Esc>
  
-:colorscheme molokai
+:colorscheme elflord
 set t_Co=256
 set wrap
 set linebreak
