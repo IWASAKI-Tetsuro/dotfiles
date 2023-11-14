@@ -21,7 +21,7 @@ set wildmenu
 set autoread
 set hidden
 set showcmd
-set virtualedit=onemore
+set virtualedit=onemore,block
 
 " 見た目
 set number
