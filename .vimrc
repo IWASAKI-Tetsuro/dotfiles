@@ -55,8 +55,8 @@ set hlsearch
 nmap <Esc><Esc> :nohlsaerch<CR><Esc>
  
 :colorscheme molokai
-hi VisualNOS ctermbg=238
-hi Visual ctermbg=238
+hi VisualNOS ctermbg=242
+hi Visual ctermbg=242
 set t_Co=256
 set wrap
 set linebreak
@@ -85,18 +85,18 @@ nnoremap K 10<up>
 nnoremap L 10<right> 
 " visual mode mapping
 vnoremap x "_x
-vnoremap X "_X
-vnoremap H 10<left>
-vnoremap J 10<down> 
-vnoremap K 10<up> 
-vnoremap L 10<right> 
-vnoremap v <C-v>
+vnoremap x "_x
+vnoremap h 10<left>
+vnoremap j 10<down> 
+vnoremap k 10<up> 
+vnoremap l 10<right> 
+vnoremap v <c-v>
 " insert mode mapping
-inoremap jj <Esc>
+inoremap jj <esc>
 
 " easy motion mapping
 let mapleader = "\<space>"
-map <Leader> <Plug>(easymotion-prefix)
+map <leader> <plug>(easymotion-prefix)
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
