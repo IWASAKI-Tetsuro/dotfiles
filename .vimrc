@@ -23,6 +23,7 @@ set hidden
 set showcmd
 set virtualedit=onemore,block
 
+
 " 見た目
 set number
 set ruler
@@ -37,6 +38,7 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+set whichwrap=b,s,h,l,<,>,[,]
 
 "Tab系
 set list listchars=tab:\▸\-
