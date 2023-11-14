@@ -21,6 +21,7 @@ set wildmenu
 set autoread
 set hidden
 set showcmd
+set virtualedit=onemore
 
 " 見た目
 set number
@@ -59,8 +60,6 @@ set linebreak
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
-command Vter vert terminal
-command Hter bo terminal++rows=10
 
 if has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
@@ -72,6 +71,9 @@ if has('vim_starting')
 endif
 
 " normal mode mapping
+nnoremap x "_x
+nnoremap X "_X
+nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 nnoremap H 10<left>
@@ -79,6 +81,8 @@ nnoremap J 10<down>
 nnoremap K 10<up> 
 nnoremap L 10<right> 
 " visual mode mapping
+vnoremap x "_x
+vnoremap X "_X
 vnoremap H 10<left>
 vnoremap J 10<down> 
 vnoremap K 10<up> 
