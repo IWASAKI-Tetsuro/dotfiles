@@ -18,6 +18,8 @@ set path = ($path ~/.fzf/bin)
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
+alias ll 'ls -l'
+alias la 'ls -al'
 alias ta 'tmux a -t'
 alias taa 'tmux a'
 alias tls 'tmux ls'

@@ -53,7 +53,7 @@ set wrapscan
 set hlsearch
 nmap <Esc><Esc> :nohlsaerch<CR><Esc>
  
-:colorscheme elflord
+:colorscheme molokai
 set t_Co=256
 set wrap
 set linebreak

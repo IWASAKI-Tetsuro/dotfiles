@@ -1,5 +1,5 @@
 # you should install following tools
- - molokai
+ - molokai(virtual: 242)
  - oh-my-zsh
  - zplug
  - vim-plug
