@@ -86,10 +86,10 @@ nnoremap L 10<right>
 " visual mode mapping
 vnoremap x "_x
 vnoremap x "_x
-vnoremap h 10<left>
-vnoremap j 10<down> 
-vnoremap k 10<up> 
-vnoremap l 10<right> 
+vnoremap H 10<left>
+vnoremap J 10<down> 
+vnoremap K 10<up> 
+vnoremap L 10<right> 
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
