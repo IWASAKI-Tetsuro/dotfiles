@@ -78,6 +78,7 @@ endif
 " normal mode mapping
 nnoremap x "_x
 nnoremap X "_X
+nnoremap <c-u> <c-r>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
