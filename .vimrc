@@ -78,21 +78,21 @@ endif
 " normal mode mapping
 nnoremap x "_x
 nnoremap X "_X
-nnoremap <c-u> <c-r>
+nnoremap U <c-r>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
-nnoremap H 10<left>
-nnoremap J 10<down> 
-nnoremap K 10<up> 
-nnoremap L 10<right> 
+nnoremap H 10<Left>
+nnoremap J 10<Down> 
+nnoremap K 10<Up> 
+nnoremap L 10<Right> 
 " visual mode mapping
 vnoremap x "_x
-vnoremap x "_x
-vnoremap H 10<left>
-vnoremap J 10<down> 
-vnoremap K 10<up> 
-vnoremap L 10<right> 
+vnoremap X "_x
+vnoremap H 10<Left>
+vnoremap J 10<Down> 
+vnoremap K 10<Up> 
+vnoremap L 10<Right> 
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
