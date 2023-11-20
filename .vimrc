@@ -28,7 +28,6 @@ set virtualedit=onemore,block
 set number
 set ruler
 set cursorline
-hi clear CursorLine
 set smartindent
 set showmatch
 set laststatus=2
@@ -59,6 +58,7 @@ nmap <Esc><Esc> :nohlsaerch<CR><Esc>
 :colorscheme molokai
 hi VisualNOS ctermbg=242
 hi Visual ctermbg=242
+hi Normal ctermbg=none
 set t_Co=256
 set wrap
 set linebreak
