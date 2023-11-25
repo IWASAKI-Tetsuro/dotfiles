@@ -82,17 +82,17 @@ nnoremap U <c-r>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
-nnoremap H 10<Left>
-nnoremap J 10<Down> 
-nnoremap K 10<Up> 
-nnoremap L 10<Right> 
+nnoremap H 10h
+nnoremap J 10j 
+nnoremap K 10k 
+nnoremap L 10l 
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_x
-vnoremap H 10<Left>
-vnoremap J 10<Down> 
-vnoremap K 10<Up> 
-vnoremap L 10<Right> 
+vnoremap H 10h
+vnoremap J 10j 
+vnoremap K 10k 
+vnoremap L 10l 
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
