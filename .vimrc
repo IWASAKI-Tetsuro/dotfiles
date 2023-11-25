@@ -22,7 +22,7 @@ set autoread
 set hidden
 set showcmd
 set virtualedit=onemore,block
-
+set backspace=indent,eol,start
 
 " 見た目
 set number
@@ -86,6 +86,7 @@ nnoremap H 10h
 nnoremap J 10j 
 nnoremap K 10k 
 nnoremap L 10l 
+nnoremap <CR> A<Return><Esc>
 nnoremap <CR> A<Return><Esc>
 
 " visual mode mapping
