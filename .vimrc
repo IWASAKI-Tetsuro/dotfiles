@@ -86,6 +86,8 @@ nnoremap H 10h
 nnoremap J 10j 
 nnoremap K 10k 
 nnoremap L 10l 
+nnoremap <CR> A<Return><Esc>
+
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_x
