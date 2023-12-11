@@ -1,17 +1,3 @@
-" vim-plug
-if executable('git')
-  call plug#begin()
-  Plug 'easymotion/vim-easymotion'
-  Plug 'rhysd/clever-f.vim'
-  Plug 'unblevable/quick-scope'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  Plug 'prabirshrestha/async.vim'
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  call plug#end()
-endif
-
 " setting
 set fenc=urf-8
 set nobackup
@@ -23,8 +9,13 @@ set hidden
 set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
+filetype plugin on
 
 " 見た目
+colorscheme molokai
+hi VisualNOS ctermbg=242
+hi Visual ctermbg=242
+hi Normal ctermbg=none
 set number
 set ruler
 set cursorline
@@ -38,6 +29,14 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 set whichwrap=b,s,h,l,<,>,[,]
+set foldmethod=manual
+set statusline=%f%m%r%h%w\ [%L]\ [%{&ff}]\ [%{&fileencoding}]\ [%p%%]\ %y
+let g:netrw_altv=1
+let g:netrw_liststyle=1
+let g:netrw_banner=0
+let g:netrw_sizestyle="H"
+let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
+let g:netrw_preview=1
 
 "Tab系
 set list listchars=tab:\▸\-
@@ -53,12 +52,8 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-nmap <Esc><Esc> :nohlsaerch<CR><Esc>
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
  
-:colorscheme molokai
-hi VisualNOS ctermbg=242
-hi Visual ctermbg=242
-hi Normal ctermbg=none
 set t_Co=256
 set wrap
 set linebreak
@@ -75,6 +70,8 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 
+let mapleader = "\<Space>"
+
 " normal mode mapping
 nnoremap x "_x
 nnoremap X "_X
@@ -87,7 +84,8 @@ nnoremap J 10j
 nnoremap K 10k 
 nnoremap L 10l 
 nnoremap <CR> A<Return><Esc>
-nnoremap <CR> A<Return><Esc>
+nnoremap ee :Ve<CR>
+autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
 
 " visual mode mapping
 vnoremap x "_x
@@ -99,31 +97,4 @@ vnoremap L 10l
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
-
-" easy motion mapping
-let mapleader = "\<space>"
-map <leader> <plug>(easymotion-prefix)
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap s <Plug>(easymotion-overwin-f2)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-" lsp settings
-autocmd BufWritePre <buffer> LspDocumentFormatSync
-" JK motions: Line motions
-let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_auto_start = 1
-if v:version >= 800
-set completeopt=menuone,noinsert,noselect
-endif
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" LSP のソースを asyncomplete に登録
-au User lsp_setup call asyncomplete#register_source({
-  \ 'name': 'lsp',
-  \ 'whitelist': ['*'],
-  \ 'priority': 10,
-  \ 'completor':function('asyncomplete#sources#lsp#completor'),
-  \ })
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
