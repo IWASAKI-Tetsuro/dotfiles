@@ -1,3 +1,6 @@
+call plug#begin()
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
 " setting
 set fenc=urf-8
 set nobackup
