@@ -19,7 +19,7 @@ hi Visual ctermbg=242
 hi Normal ctermbg=none
 augroup HighlightTrailingSpaces
   autocmd!
-  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=#808080 ctermbg=242
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 set number
@@ -67,12 +67,9 @@ set undofile
 set undolevels=1000
 
 if has('vim_starting')
-    " 挿入モード時に非点滅の縦棒タイプのカーソル
-    let &t_SI .= "\e[6 q"
-    " ノーマルモード時に非点滅のブロックタイプのカーソル
-    let &t_EI .= "\e[2 q"
-    " 置換モード時に非点滅の下線タイプのカーソル
-    let &t_SR .= "\e[4 q"
+  let &t_SI .= "\e[6 q"
+  let &t_EI .= "\e[2 q"
+  let &t_SR .= "\e[4 q"
 endif
 
 let mapleader = "\<space>"
@@ -109,3 +106,14 @@ inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
+
+if has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+        set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
+endif
