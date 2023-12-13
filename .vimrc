@@ -91,6 +91,7 @@ colorscheme molokai
 hi VisualNOS ctermbg=242
 hi Visual ctermbg=242
 hi Normal ctermbg=none
+hi Comment ctermfg=242
 augroup HighlightTrailingSpaces
   autocmd!
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=#808080 ctermbg=242
@@ -153,3 +154,10 @@ if has('mouse')
         set ttymouse=xterm2
     endif
 endif
+
+" auto reload .vimrc
+augroup source-vimrc
+  autocmd!
+  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
+  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
+augroup END
