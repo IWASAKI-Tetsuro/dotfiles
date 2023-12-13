@@ -1,8 +1,50 @@
+" normal mode mapping
+nnoremap x "_x
+nnoremap X "_X
+nnoremap U <c-r>
+nnoremap Y y$
+nnoremap j gj
+nnoremap k gk
+nnoremap H 10h
+nnoremap J 10j
+nnoremap K 10k
+nnoremap L 10l
+nnoremap <c-a> 0
+nnoremap <c-i> <c-a>
+nnoremap <c-d> <c-x>
+nnoremap <c-e> $
+nnoremap <c-s> :w<CR>
+nnoremap <CR> A<Return><Esc>
+nnoremap ee :Ve<CR>
+autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
+" visual mode mapping
+vnoremap x "_x
+vnoremap X "_x
+vnoremap H 10h
+vnoremap J 10j
+vnoremap K 10k
+vnoremap L 10l
+vnoremap <c-a> 0
+vnoremap <c-e> $
+vnoremap v <c-v>
+" insert mode mapping
+inoremap jj <esc>
+inoremap Jj <esc>
+inoremap jJ <esc>
+inoremap JJ <esc>
+" command line mode mapping
+cnoremap <c-a> <Home>
+cnoremap <c-e> <End>
+command! Wq wq
+command! WQ wq
+
 " setting
 set fenc=utf-8
 set nobackup
 set noswapfile
 set nocompatible
+set belloff=all
+set scrolloff=2
 set wildmenu
 set autoread
 set hidden
@@ -10,8 +52,29 @@ set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
 filetype plugin on
-
-" 見た目
+let undodir = expand('~/.vim/undodir')
+if !isdirectory(undodir)
+    call mkdir(undodir, 'p')
+endif
+set undodir=undodir
+set undofile
+set undolevels=1000
+if has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+        set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
+endif
+" appearance
+if has('vim_starting')
+  let &t_SI .= "\e[6 q"
+  let &t_EI .= "\e[2 q"
+  let &t_SR .= "\e[4 q"
+endif
 set t_Co=256
 colorscheme molokai
 hi VisualNOS ctermbg=242
@@ -45,7 +108,7 @@ let g:netrw_preview=1
 set wrap
 set linebreak
 
-"tab系
+" tab
 set smartindent
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 set expandtab
@@ -54,66 +117,10 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 
-"検索系
+" search
 set ignorecase
 set smartcase
 set incsearch
 set wrapscan
 set hlsearch
 nmap <esc><esc> :nohlsearch<cr><esc>
-
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=1000
-
-if has('vim_starting')
-  let &t_SI .= "\e[6 q"
-  let &t_EI .= "\e[2 q"
-  let &t_SR .= "\e[4 q"
-endif
-
-let mapleader = "\<space>"
-
-" normal mode mapping
-nnoremap x "_x
-nnoremap X "_X
-nnoremap U <c-r>
-nnoremap Y y$
-nnoremap j gj
-nnoremap k gk
-nnoremap H 10h
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 10l
-nnoremap <c-a> 0
-nnoremap <c-e> $
-nnoremap <c-s> :w<CR>
-nnoremap <CR> A<Return><Esc>
-nnoremap ee :Ve<CR>
-autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
-" visual mode mapping
-vnoremap x "_x
-vnoremap X "_x
-vnoremap H 10h
-vnoremap J 10j
-vnoremap K 10k
-vnoremap L 10l
-vnoremap <c-a> 0
-vnoremap <c-e> $
-vnoremap v <c-v>
-" insert mode mapping
-inoremap jj <esc>
-inoremap Jj <esc>
-inoremap jJ <esc>
-inoremap JJ <esc>
-
-if has('mouse')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-endif
