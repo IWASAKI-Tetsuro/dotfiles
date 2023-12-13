@@ -10,10 +10,10 @@ nnoremap J 10j
 nnoremap K 10k
 nnoremap L 10l
 nnoremap <c-a> 0
-nnoremap <c-i> <c-a>
-nnoremap <c-d> <c-x>
 nnoremap <c-e> $
 nnoremap <c-s> :w<CR>
+nnoremap <c-i> <c-a>
+nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
 nnoremap ee :Ve<CR>
 autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
@@ -32,11 +32,17 @@ inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
+inoremap { {}<left>
+inoremap [ []<left>
+inoremap ( ()<left>
+inoremap " ""<left>
+inoremap ' ''<left>
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
 command! Wq wq
 command! WQ wq
+command! Q q
 
 " setting
 set fenc=utf-8
