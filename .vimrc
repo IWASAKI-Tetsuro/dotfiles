@@ -1,6 +1,3 @@
-call plug#begin()
-Plug 'christoomey/vim-tmux-navigator'
-call plug#end()
 " setting
 set fenc=urf-8
 set nobackup
@@ -86,6 +83,8 @@ nnoremap H 10h
 nnoremap J 10j 
 nnoremap K 10k 
 nnoremap L 10l 
+nnoremap <c-a> 0
+nnoremap <c-e> $ 
 nnoremap <CR> A<Return><Esc>
 nnoremap ee :Ve<CR>
 autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
@@ -94,9 +93,9 @@ autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
 vnoremap x "_x
 vnoremap X "_x
 vnoremap H 10h
-vnoremap J 10j 
-vnoremap K 10k 
-vnoremap L 10l 
+vnoremap J 10j
+vnoremap K 10k
+vnoremap L 10l
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
