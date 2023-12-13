@@ -1,5 +1,5 @@
 " setting
-set fenc=urf-8
+set fenc=utf-8
 set nobackup
 set noswapfile
 set nocompatible
@@ -19,7 +19,6 @@ hi Normal ctermbg=none
 set number
 set ruler
 set cursorline
-set smartindent
 set showmatch
 set laststatus=2
 set wildmode=list:longest
@@ -39,6 +38,8 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_preview=1
 
 "Tab系
+set smartindent
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 set list listchars=tab:\▸\-
 set expandtab
 set tabstop=2
@@ -85,6 +86,7 @@ nnoremap K 10k
 nnoremap L 10l 
 nnoremap <c-a> 0
 nnoremap <c-e> $ 
+nnoremap <c-s> :w<CR> 
 nnoremap <CR> A<Return><Esc>
 nnoremap ee :Ve<CR>
 autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
@@ -96,10 +98,11 @@ vnoremap H 10h
 vnoremap J 10j
 vnoremap K 10k
 vnoremap L 10l
+vnoremap <c-a> 0
+vnoremap <c-e> $ 
 vnoremap v <c-v>
-" insert mode mapping
+" insertkljasdf;lkjasdfl;kjadfl; mode mapping
 inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
