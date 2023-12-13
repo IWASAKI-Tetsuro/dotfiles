@@ -99,4 +99,7 @@ vnoremap L 10l
 vnoremap v <c-v>
 " insert mode mapping
 inoremap jj <esc>
+inoremap Jj <esc>
+inoremap jJ <esc>
+inoremap JJ <esc>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
