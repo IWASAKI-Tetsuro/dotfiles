@@ -25,6 +25,8 @@ nnoremap <c-i> <c-a>
 nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
 nnoremap ee :Ve<CR>
+nnoremap > <c-w>>
+nnoremap < <c-w><
 nnoremap <Tab> %
 autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
 " visual mode mapping
