@@ -1,34 +1,45 @@
-set savehist = 1000
-set history = 10000
-set histfile = ~/.tcsh_history
 set autolist=ambiguous
-set complete=enhance
-bindkey ^I  complete-word-fwd
-bindkey ^[[Z  complete-word-back
+set color
 set filec
 set nobeep
-set listjobs=long
+set complete=enhance
+set savehist = 1500
+set history = 1500
+set histdup = erase
+set histfile = ~/.tcsh_history
+set noclobber
 set rmstar
-set fignore =( .o .log .dvi .aux .tex~ )
+set listjobs=long
+set notify
+bindkey ^I  complete-word-fwd
+bindkey ^[[Z  complete-word-back
+bindkey ^N 	history-search-forward
+bindkey ^P 	history-search-backward
+bindkey ^R i-search-back
+set rmstar
 set tperiod=1
 set correct=all
-set color
 set path = ($path ~/.fzf/bin)
+
+alias reload 'source ~/.tcshrc'
+alias ls 'ls -lF --color=always --time-style=+"%Y/%m/%d %H:%M:%S"'
+alias ll 'ls -th'
+alias la 'ls -al'
+alias cd.. 'cd ..'
 
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
-alias ll 'ls -l'
-alias la 'ls -al'
+
 alias ta 'tmux a -t'
 alias taa 'tmux a'
 alias tls 'tmux ls'
 alias tn 'tmux new -s'
 alias tn 'tmux new -s'
+
 alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
 alias fv 'set file=`find . -type f | fzf` && vim "$file"'
 alias fh 'set fzfcmd=`history -h | sort | uniq | tac |  fzf` && eval "$fzfcmd"'
-alias reload 'source ~/.tcshrc'
 
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
@@ -39,7 +50,6 @@ complete cd      'p/1/d/'
 complete pu      'p/1/d/'
 complete setenv		'p/1/e/'
 complete unsetenv		'p/1/e/'
-bindkey ^N 		history-search-forward
-bindkey ^P 		history-search-backward
+
 source /home/vlsi/.cshrc-common
 set prompt = "%{\e[01;32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}->%{\e[0m%} "
