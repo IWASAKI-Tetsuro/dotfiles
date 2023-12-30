@@ -1,20 +1,25 @@
 set savehist = 1000
 set history = 10000
+if ( ! -e ~/.tcsh_history) then
+  touch ~/.tcsh_history
+endif
 set histfile = ~/.tcsh_history
-set autolist=ambiguous
-set complete=enhance
+set autolist = ambiguous
+set complete = enhance
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
 set filec
 set nobeep
-set listjobs=long
+set listjobs = long
 set rmstar
 set fignore =( .o .log .dvi .aux .tex~ )
-set tperiod=1
-set correct=all
+set tperiod = 1
+set correct = all
 set color
 set path = ($path ~/.fzf/bin)
 
+bindkey ^N 	history-search-forward
+bindkey ^P 	history-search-backward
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
@@ -23,7 +28,6 @@ alias la 'ls -al'
 alias ta 'tmux a -t'
 alias taa 'tmux a'
 alias tls 'tmux ls'
-alias tn 'tmux new -s'
 alias tn 'tmux new -s'
 alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
 alias fv 'set file=`find . -type f | fzf` && vim "$file"'
@@ -39,7 +43,5 @@ complete cd      'p/1/d/'
 complete pu      'p/1/d/'
 complete setenv		'p/1/e/'
 complete unsetenv		'p/1/e/'
-bindkey ^N 		history-search-forward
-bindkey ^P 		history-search-backward
 source /home/vlsi/.cshrc-common
 set prompt = "%{\e[01;32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}->%{\e[0m%} "
