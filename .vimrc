@@ -31,7 +31,7 @@ nnoremap <Tab> %
 autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
 " visual mode mapping
 vnoremap x "_x
-vnoremap X "_x
+vnoremap X "_X
 vnoremap H 10h
 vnoremap J 10j
 vnoremap K 10k
