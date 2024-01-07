@@ -113,7 +113,7 @@ augroup vimrcEx
 augroup end
 set whichwrap=b,s,h,l,<,>,[,]
 set foldmethod=manual
-set statusline=%f%m%r%h%w\ [%l]\ [%{&ff}]\ [%{&fileencoding}]\ [%p%%]\ %y
+set statusline=%f%m%r%h%w\ [%l/%L]\ [%{&ff}]\ [%{&fileencoding}]\ %y
 set wrap
 set linebreak
 
