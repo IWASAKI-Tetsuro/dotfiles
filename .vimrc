@@ -1,4 +1,5 @@
 let mapleader = "\<SPACE>"
+filetype plugin on
 " normal mode mapping
 nnoremap x "_x
 nnoremap X "_X
@@ -24,11 +25,10 @@ nnoremap <c-s> :w<CR>
 nnoremap <c-i> <c-a>
 nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
-nnoremap ee :Ve<CR>
+nnoremap <silent><C-e> :call ToggleNetrw()<CR>
 nnoremap > <c-w>>
 nnoremap < <c-w><
 nnoremap <Tab> %
-autocmd FileType netrw nnoremap <buffer> <C-e> :vert e <cfile><CR>
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
@@ -44,11 +44,6 @@ inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
-inoremap { {}<left>
-inoremap [ []<left>
-inoremap ( ()<left>
-inoremap " ""<left>
-inoremap ' ''<left>
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
@@ -69,7 +64,6 @@ set hidden
 set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
-filetype plugin on
 
 " undo
 let undodir = expand('~/.vim/undodir')
@@ -118,21 +112,39 @@ set wrap
 set linebreak
 
 " netrw
-let g:netrw_altv=1
-let g:netrw_liststyle=1
+set splitright
 let g:netrw_banner=0
-let g:netrw_sizestyle="h"
-let g:netrw_timefmt="%y/%m/%d(%a) %h:%m:%s"
 let g:netrw_preview=1
+let g:netrw_liststyle=3
+let g:netrw_keepdir=0
+let g:netrw_winsize=75
+let g:netrw_browse_split=4
+
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+      let i = bufnr("$")
+      while (i >= 1)
+          if (getbufvar(i, "&filetype") == "netrw")
+              silent exe "bwipeout" . i
+          endif
+          let i-=1
+      endwhile
+      let g:NetrwIsOpen=0
+    else
+      let g:NetrwIsOpen=1
+      silent Vex
+    endif
+endfunction
 
 " tab
-set smartindent
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
+set smartindent
 
 " search
 set ignorecase
