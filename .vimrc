@@ -30,6 +30,7 @@ nnoremap <silent>ee :call ToggleNetrw()<CR>
 nnoremap > <c-w>>
 nnoremap < <c-w><
 nnoremap <Tab> %
+nnoremap <BS> "_X
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
@@ -95,11 +96,12 @@ set cursorline
 set showmatch
 set laststatus=2
 set wildmode=list:longest
-syntax on
+
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup end
+
 set whichwrap=b,s,h,l,<,>,[,]
 set foldmethod=manual
 set statusline=%f%m%r%h%w\ [%l/%L]\ [%{&ff}]\ [%{&fileencoding}]\ %y
@@ -215,11 +217,13 @@ command! SyntaxInfo call s:get_syn_info()
 " " color scheme
 set t_Co=256
 
-hi Normal       ctermfg=White ctermbg=none
-hi Comment      ctermfg=244
-hi Statement    ctermfg=197 cterm=bold
-hi String       ctermfg=229
+hi Normal       ctermfg=255 ctermbg=none
+
+hi Comment      ctermfg=240
 hi Constant     ctermfg=99
+hi Statement    ctermfg=202 cterm=bold
+hi String       ctermfg=229 cterm=bold
+hi Character    ctermfg=99
 hi Identifier   ctermfg=46
 hi Type         ctermfg=44
 hi Preproc      ctermfg=14
@@ -227,11 +231,10 @@ hi Special      ctermfg=14
 hi Directory    ctermfg=14
 hi Question     ctermfg=46
 
-
 hi Cursor       ctermbg=244
 hi CursorLine   cterm=NONE
 hi CursorLine   ctermbg=238
-hi LineNr       ctermfg=White ctermbg=238
+hi LineNr       ctermfg=255 ctermbg=238
 hi CursorLineNr ctermfg=238 ctermbg=250
 hi Visual       cterm=NONE ctermbg=238
 hi Search       ctermbg=244
