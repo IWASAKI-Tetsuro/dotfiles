@@ -83,7 +83,7 @@ if has('vim_starting')
 endif
 " " color scheme
 set t_Co=256
-colorscheme molokai
+colorscheme desert
 hi VisualNOS ctermbg=242
 hi Visual ctermbg=242
 hi Normal ctermbg=none
