@@ -237,7 +237,7 @@ hi Search       ctermbg=244
 hi IncSearch    cterm=NONE ctermbg=244
 hi MatchParen   ctermbg=244
 
-hi StatusLine   ctermfg=240 ctermbg=255
+hi StatusLine   ctermfg=238 ctermbg=255
 hi ModeMsg      ctermfg=11
 hi ErrorMsg     ctermfg=9 ctermbg=NONE
 hi WarningMsg   ctermfg=9 ctermbg=NONE
