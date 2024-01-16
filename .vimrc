@@ -217,24 +217,24 @@ command! SyntaxInfo call s:get_syn_info()
 " " color scheme
 set t_Co=256
 
-hi Normal       ctermfg=255 ctermbg=none
+hi Normal       ctermfg=252 ctermbg=none
 
 hi Comment      ctermfg=240
-hi Constant     ctermfg=99
+hi Constant     ctermfg=98
 hi Statement    ctermfg=208 cterm=bold
 hi String       ctermfg=228 cterm=bold
 hi Character    ctermfg=99
 hi Identifier   ctermfg=40
 hi Type         ctermfg=44
 hi Preproc      ctermfg=14
-hi Special      ctermfg=12
+hi Special      ctermfg=27
 hi Directory    ctermfg=14
 hi Question     ctermfg=46
 
 hi Cursor       ctermbg=244
 hi CursorLine   cterm=NONE
 hi CursorLine   ctermbg=238
-hi LineNr       ctermfg=255 ctermbg=238
+hi LineNr       ctermfg=252 ctermbg=238
 hi CursorLineNr ctermfg=238 ctermbg=250
 hi Visual       cterm=NONE ctermbg=238
 hi Search       ctermbg=244
