@@ -81,13 +81,7 @@ if has('vim_starting')
   let &t_EI .= "\e[2 q"
   let &t_SR .= "\e[4 q"
 endif
-" " color scheme
-set t_Co=256
-colorscheme desert
-hi VisualNOS ctermbg=242
-hi Visual ctermbg=242
-hi Normal ctermbg=none
-hi Comment ctermfg=242
+
 augroup HighlightTrailingSpaces
   autocmd!
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=#808080 ctermbg=242
@@ -176,3 +170,65 @@ augroup source-vimrc
   autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
   autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
 augroup END
+
+function! s:get_syn_id(transparent)
+  let synid = synID(line("."), col("."), 1)
+  if a:transparent
+    return synIDtrans(synid)
+  else
+    return synid
+  endif
+endfunction
+function! s:get_syn_attr(synid)
+  let name = synIDattr(a:synid, "name")
+  let ctermfg = synIDattr(a:synid, "fg", "cterm")
+  let ctermbg = synIDattr(a:synid, "bg", "cterm")
+  let guifg = synIDattr(a:synid, "fg", "gui")
+  let guibg = synIDattr(a:synid, "bg", "gui")
+  return {
+        \ "name": name,
+        \ "ctermfg": ctermfg,
+        \ "ctermbg": ctermbg,
+        \ "guifg": guifg,
+        \ "guibg": guibg}
+endfunction
+function! s:get_syn_info()
+  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo "name: " . baseSyn.name .
+        \ " ctermfg: " . baseSyn.ctermfg .
+        \ " ctermbg: " . baseSyn.ctermbg .
+        \ " guifg: " . baseSyn.guifg .
+        \ " guibg: " . baseSyn.guibg
+  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo "link to"
+  echo "name: " . linkedSyn.name .
+        \ " ctermfg: " . linkedSyn.ctermfg .
+        \ " ctermbg: " . linkedSyn.ctermbg .
+        \ " guifg: " . linkedSyn.guifg .
+        \ " guibg: " . linkedSyn.guibg
+endfunction
+command! SyntaxInfo call s:get_syn_info()
+
+
+" " color scheme
+set t_Co=256
+hi Normal ctermfg=White ctermbg=none guifg=#FFFFFF guibg=#000000
+hi Comment ctermfg=242 guifg=#707070
+hi Statement ctermfg=197 cterm=bold
+hi String ctermfg=229 guifg=#707070
+hi Constant ctermfg=99 guifg=#707070
+hi Identifier ctermfg=46 guifg=#707070
+hi Type ctermfg=44 guifg=#707070
+hi Preproc ctermfg=14 guifg=#707070
+hi Special ctermfg=14 guifg=#707070
+
+hi Cursor ctermbg=244 guibg=#808080
+hi CursorLine cterm=NONE
+hi CursorLine ctermbg=238  guibg=#A9A9A9
+hi LineNr ctermfg=White ctermbg=238 guifg=#FFFFFF guibg=#808080
+hi CursorLineNr ctermfg=238 ctermbg=250 guifg=#FFFFFF guibg=#808080
+hi Visual cterm=NONE
+hi Visual ctermbg=238 guibg=#808080
+hi Search ctermbg=240 guibg=#808080
+hi StatusLine ctermbg=238 guibg=#808080
+
