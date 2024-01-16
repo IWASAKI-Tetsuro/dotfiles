@@ -222,6 +222,9 @@ hi Identifier   ctermfg=46
 hi Type         ctermfg=44
 hi Preproc      ctermfg=14
 hi Special      ctermfg=14
+hi Directory    ctermfg=14
+hi Question     ctermfg=46
+
 
 hi Cursor       ctermbg=244
 hi CursorLine   cterm=NONE
