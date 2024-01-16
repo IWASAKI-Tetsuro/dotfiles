@@ -26,7 +26,7 @@ nnoremap <c-s> :w<CR>
 nnoremap <c-i> <c-a>
 nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
-nnoremap <silent><C-e> :call ToggleNetrw()<CR>
+nnoremap <silent>ee :call ToggleNetrw()<CR>
 nnoremap > <c-w>>
 nnoremap < <c-w><
 nnoremap <Tab> %
@@ -172,6 +172,7 @@ augroup source-vimrc
   autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
 augroup END
 
+" To get the syntax ID
 function! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
   if a:transparent
@@ -215,7 +216,7 @@ command! SyntaxInfo call s:get_syn_info()
 set t_Co=256
 
 hi Normal       ctermfg=White ctermbg=none
-hi Comment      ctermfg=242
+hi Comment      ctermfg=244
 hi Statement    ctermfg=197 cterm=bold
 hi String       ctermfg=229
 hi Constant     ctermfg=99
