@@ -221,13 +221,13 @@ hi Normal       ctermfg=255 ctermbg=none
 
 hi Comment      ctermfg=240
 hi Constant     ctermfg=99
-hi Statement    ctermfg=202 cterm=bold
-hi String       ctermfg=229 cterm=bold
+hi Statement    ctermfg=208 cterm=bold
+hi String       ctermfg=228 cterm=bold
 hi Character    ctermfg=99
-hi Identifier   ctermfg=46
+hi Identifier   ctermfg=40
 hi Type         ctermfg=44
 hi Preproc      ctermfg=14
-hi Special      ctermfg=14
+hi Special      ctermfg=12
 hi Directory    ctermfg=14
 hi Question     ctermfg=46
 
