@@ -18,6 +18,7 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 
+alias sl="ls"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 alias tmuxconf="vim ~/.tmux.conf"
