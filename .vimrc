@@ -1,4 +1,5 @@
 let mapleader = "\<SPACE>"
+set timeoutlen=400
 filetype plugin on
 " normal mode mapping
 nnoremap x "_x
@@ -240,4 +241,3 @@ hi StatusLine   ctermfg=240 ctermbg=255
 hi ModeMsg      ctermfg=11
 hi ErrorMsg     ctermfg=9 ctermbg=NONE
 hi WarningMsg   ctermfg=9 ctermbg=NONE
-
