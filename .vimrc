@@ -212,23 +212,29 @@ command! SyntaxInfo call s:get_syn_info()
 
 " " color scheme
 set t_Co=256
-hi Normal ctermfg=White ctermbg=none guifg=#FFFFFF guibg=#000000
-hi Comment ctermfg=242 guifg=#707070
-hi Statement ctermfg=197 cterm=bold
-hi String ctermfg=229 guifg=#707070
-hi Constant ctermfg=99 guifg=#707070
-hi Identifier ctermfg=46 guifg=#707070
-hi Type ctermfg=44 guifg=#707070
-hi Preproc ctermfg=14 guifg=#707070
-hi Special ctermfg=14 guifg=#707070
 
-hi Cursor ctermbg=244 guibg=#808080
-hi CursorLine cterm=NONE
-hi CursorLine ctermbg=238  guibg=#A9A9A9
-hi LineNr ctermfg=White ctermbg=238 guifg=#FFFFFF guibg=#808080
-hi CursorLineNr ctermfg=238 ctermbg=250 guifg=#FFFFFF guibg=#808080
-hi Visual cterm=NONE
-hi Visual ctermbg=238 guibg=#808080
-hi Search ctermbg=240 guibg=#808080
-hi StatusLine ctermbg=238 guibg=#808080
+hi Normal       ctermfg=White ctermbg=none
+hi Comment      ctermfg=242
+hi Statement    ctermfg=197 cterm=bold
+hi String       ctermfg=229
+hi Constant     ctermfg=99
+hi Identifier   ctermfg=46
+hi Type         ctermfg=44
+hi Preproc      ctermfg=14
+hi Special      ctermfg=14
+
+hi Cursor       ctermbg=244
+hi CursorLine   cterm=NONE
+hi CursorLine   ctermbg=238
+hi LineNr       ctermfg=White ctermbg=238
+hi CursorLineNr ctermfg=238 ctermbg=250
+hi Visual       cterm=NONE ctermbg=238
+hi Search       ctermbg=244
+hi IncSearch    cterm=NONE ctermbg=244
+hi MatchParen   ctermbg=244
+
+hi StatusLine   ctermfg=240 ctermbg=255
+hi ModeMsg      ctermfg=11
+hi ErrorMsg     ctermfg=9 ctermbg=NONE
+hi WarningMsg   ctermfg=9 ctermbg=NONE
 
