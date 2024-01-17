@@ -41,6 +41,7 @@ vnoremap L 10l
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
+vnoremap <BS> "_X
 " insert mode mapping
 inoremap jj <esc>
 inoremap Jj <esc>
