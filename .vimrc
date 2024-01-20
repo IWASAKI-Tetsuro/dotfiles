@@ -16,6 +16,7 @@ nnoremap <Leader>k <c-w>k
 nnoremap <Leader>K <c-w>k
 nnoremap <Leader>l <c-w>l
 nnoremap <Leader>L <c-w>l
+nnoremap <Leader>v <c-w>v
 nnoremap H 10h
 nnoremap J 10j
 nnoremap K 10k
@@ -55,6 +56,7 @@ command! Q q
 
 " setting
 set fenc=utf-8
+set notitle
 set nobackup
 set noswapfile
 set nocompatible
@@ -63,6 +65,8 @@ set scrolloff=2
 set wildmenu
 set autoread
 set hidden
+set modeline
+set showmode
 set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
@@ -95,6 +99,7 @@ set ruler
 set cursorline
 set showmatch
 set laststatus=2
+set listchars=tab:>\ ,extends:<
 set wildmode=list:longest
 
 augroup vimrcEx
@@ -111,6 +116,7 @@ set linebreak
 " netrw
 set splitright
 let g:netrw_banner=0
+let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
@@ -217,17 +223,17 @@ command! SyntaxInfo call s:get_syn_info()
 " " color scheme
 set t_Co=256
 
-hi Normal       ctermfg=252 ctermbg=none
+hi Normal       ctermfg=252  ctermbg=none
 
 hi Comment      ctermfg=240
-hi Constant     ctermfg=98
-hi Statement    ctermfg=208 cterm=bold
-hi String       ctermfg=228 cterm=bold
+hi Constant     ctermfg=99
+hi Statement    ctermfg=209  cterm=bold
+hi String       ctermfg=228  cterm=bold
 hi Character    ctermfg=99
-hi Identifier   ctermfg=40
-hi Type         ctermfg=44
-hi Preproc      ctermfg=14
-hi Special      ctermfg=27
+hi Identifier   ctermfg=156
+hi Type         ctermfg=81
+hi Preproc      ctermfg=81
+hi Special      ctermfg=81
 hi Directory    ctermfg=14
 hi Question     ctermfg=46
 
@@ -235,13 +241,14 @@ hi Cursor       ctermbg=244
 hi CursorLine   cterm=NONE
 hi CursorLine   ctermbg=238
 hi LineNr       ctermfg=252 ctermbg=238
+hi CursorLineNr cterm=NONE
 hi CursorLineNr ctermfg=238 ctermbg=250
-hi Visual       cterm=NONE ctermbg=238
+hi Visual       cterm=NONE  ctermbg=238
 hi Search       ctermbg=244
-hi IncSearch    cterm=NONE ctermbg=244
-hi MatchParen   ctermbg=244
+hi IncSearch    cterm=NONE  ctermbg=244
+hi MatchParen   ctermfg=252 ctermbg=210
 
 hi StatusLine   ctermfg=238 ctermbg=255
 hi ModeMsg      ctermfg=11
-hi ErrorMsg     ctermfg=9 ctermbg=NONE
-hi WarningMsg   ctermfg=9 ctermbg=NONE
+hi ErrorMsg     ctermfg=9   ctermbg=NONE
+hi WarningMsg   ctermfg=9   ctermbg=NONE
