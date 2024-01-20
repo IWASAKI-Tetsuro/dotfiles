@@ -1,3 +1,4 @@
+setenv TERM screen-256color
 set autolist=ambiguous
 set color
 set filec
@@ -76,4 +77,4 @@ complete setenv		'p/1/e/'
 complete unsetenv		'p/1/e/'
 
 source /home/vlsi/.cshrc-common
-set prompt = "%{\e[01;32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}->%{\e[0m%} "
+set prompt = "%{\033[01;38;5;156m%}%n@%m %{\033[01;38;5;81m%}[%P] %{\033[0m%}[%~]\n%{\033[01;38;5;81m%}->%{\033[0m%} "
