@@ -239,6 +239,7 @@ hi Special              ctermfg=81
 hi Directory            ctermfg=14
 hi Question             ctermfg=46
 hi markdownLinkText     ctermfg=228
+hi markdownItalic       cterm=italic
 
 hi Cursor               ctermbg=244
 hi CursorLine           cterm=NONE
