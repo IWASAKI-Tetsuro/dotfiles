@@ -17,10 +17,10 @@ nnoremap <Leader>K <c-w>k
 nnoremap <Leader>l <c-w>l
 nnoremap <Leader>L <c-w>l
 nnoremap <Leader>v <c-w>v
-nnoremap H 10h
+nnoremap H 5h
 nnoremap J 10j
 nnoremap K 10k
-nnoremap L 10l
+nnoremap L 5l
 nnoremap <c-a> 0
 nnoremap <c-e> $
 nnoremap <c-s> :w<CR>
@@ -28,17 +28,17 @@ nnoremap <c-i> <c-a>
 nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap > <c-w>>
-nnoremap < <c-w><
+nnoremap > 5<c-w>>
+nnoremap < 5<c-w><
 nnoremap <Tab> %
 nnoremap <BS> "_X
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
-vnoremap H 10h
+vnoremap H 5h
 vnoremap J 10j
 vnoremap K 10k
-vnoremap L 10l
+vnoremap L 5l
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>

@@ -21,6 +21,7 @@ set rmstar
 set tperiod=1
 set correct=all
 set path = ($path ~/.fzf/bin)
+setenv LESS '-i -M -R'
 
 alias reload 'source ~/.tcshrc'
 alias ls 'ls -F --color=always '
@@ -28,6 +29,7 @@ alias la 'ls -a '
 alias ll 'la -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias sl 'ls -F --color=always '
 alias cd.. 'cd ..'
+alias cd../ 'cd ../'
 alias tree 'tree -C'
 
 set savehist = 1000
