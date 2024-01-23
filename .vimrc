@@ -255,3 +255,8 @@ hi StatusLine           ctermfg=238 ctermbg=255
 hi ModeMsg              ctermfg=11
 hi ErrorMsg             ctermfg=9   ctermbg=NONE
 hi WarningMsg           ctermfg=9   ctermbg=NONE
+
+hi DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+hi DiffDelete cterm=bold ctermfg=10 ctermbg=52
+hi DiffChange cterm=bold ctermfg=10 ctermbg=17
+hi DiffText   cterm=bold ctermfg=10 ctermbg=21
