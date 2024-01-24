@@ -1,4 +1,5 @@
 setenv TERM screen-256color
+set host=`hostname`
 set autolist=ambiguous
 set color
 set filec
