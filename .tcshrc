@@ -1,60 +1,50 @@
-setenv TERM screen-256color
-set host=`hostname`
 set autolist=ambiguous
 set color
-set filec
-set nobeep
 set complete=enhance
-set savehist = 1500
-set history = 1500
+set correct=all
+set fignore =( .o .log .dvi .aux .tex~ )
+set filec
 set histdup = erase
 set histfile = ~/.tcsh_history
-set noclobber
-set rmstar
+set history = 10000
+set host=`hostname`
 set listjobs=long
+set nobeep
+set noclobber
 set notify
+set path = ($path ~/.fzf/bin)
+set rmstar
+set savehist = 1500
+set tperiod=1
+setenv LESS '-i -M -R'
+setenv TERM screen-256color
+
+if ( ! -e ~/.tcsh_history) then
+  touch ~/.tcsh_history
+endif
+
+if ( ! -e ~/.cd_history) then
+  touch ~/.cd_history
+endif
+
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
 bindkey ^N 	history-search-forward
 bindkey ^P 	history-search-backward
 bindkey ^R i-search-back
-set rmstar
-set tperiod=1
-set correct=all
-set path = ($path ~/.fzf/bin)
-setenv LESS '-i -M -R'
 
 alias reload 'source ~/.tcshrc'
-alias ls 'ls -F --color=always '
-alias la 'ls -a '
-alias ll 'la -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
-alias sl 'ls -F --color=always '
+
 alias cd.. 'cd ..'
 alias cd../ 'cd ../'
+
+alias ls 'ls -F --color=auto'
+alias la 'ls -a '
+alias ll 'la -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
+alias sl 'ls'
+
 alias tree 'tree -C'
-
-set savehist = 1000
-set history = 10000
-if ( ! -e ~/.tcsh_history) then
-  touch ~/.tcsh_history
-endif
-set histfile = ~/.tcsh_history
-set autolist = ambiguous
-set complete = enhance
-bindkey ^I  complete-word-fwd
-bindkey ^[[Z  complete-word-back
-set filec
-set nobeep
-set listjobs = long
-set rmstar
-set fignore =( .o .log .dvi .aux .tex~ )
-set tperiod = 1
-set correct = all
-set color
-set path = ($path ~/.fzf/bin)
-
-bindkey ^N 	history-search-forward
-bindkey ^P 	history-search-backward
+alias grep 'grep --color=auto'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
@@ -67,8 +57,10 @@ alias tkill 'tmux kill-session -t'
 alias tkillall 'tmux kill-server'
 
 alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
-alias fv 'set file=`find . -type f | fzf` && vim "$file"'
-alias fh 'set fzfcmd=`history -h | sort | uniq | tac |  fzf` && eval "$fzfcmd"'
+alias pucd 'pwd >> ~/.cd_history && cat ~/.cd_history | sort | uniq >! ~/.cd_temp && cat ~/.cd_temp >! ~/.cd_history'
+alias cdhistory 'vim ~/.cd_history'
+alias pocd 'set dir=`cat ~/.cd_history |& fzf +m`; if("$dir" != "") cd "$dir"'
+alias fh 'set fzfcmd=`history -h | sort | uniq |  fzf` && eval "$fzfcmd"'
 
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
@@ -82,3 +74,4 @@ complete unsetenv		'p/1/e/'
 
 source /home/vlsi/.cshrc-common
 set prompt = "%{\033[01;38;5;156m%}%n@%m %{\033[01;38;5;81m%}[%P] %{\033[0m%}[%~]\n%{\033[01;38;5;81m%}->%{\033[0m%} "
+
