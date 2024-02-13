@@ -101,7 +101,7 @@ set cursorline
 set showmatch
 set laststatus=2
 set listchars=tab:>\ ,extends:<
-set wildmode=list:longest
+set wildmode=full
 
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
