@@ -16,12 +16,9 @@ set path = ($path ~/.fzf/bin)
 set rmstar
 set savehist = 1500
 set tperiod=1
+set autocorrect
 setenv LESS '-i -M -R'
 setenv TERM screen-256color
-
-if ( ! -e ~/.tcsh_history) then
-  touch ~/.tcsh_history
-endif
 
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
@@ -45,6 +42,8 @@ alias sl 'ls'
 
 alias tree 'tree -C'
 alias grep 'grep --color=auto'
+alias fgrep 'fgrep --color=auto'
+alias egrep 'egrep --color=auto'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
@@ -57,9 +56,6 @@ alias tkill 'tmux kill-session -t'
 alias tkillall 'tmux kill-server'
 
 alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
-alias pucd 'pwd >> ~/.cd_history && cat ~/.cd_history | sort | uniq >! ~/.cd_temp && cat ~/.cd_temp >! ~/.cd_history'
-alias cdhistory 'vim ~/.cd_history'
-alias pocd 'set dir=`cat ~/.cd_history |& fzf +m`; if("$dir" != "") cd "$dir"'
 alias fh 'set fzfcmd=`history -h | sort | uniq |  fzf` && eval "$fzfcmd"'
 
 complete xdvi 'n/*/f:*.dvi/'
@@ -73,5 +69,4 @@ complete setenv		'p/1/e/'
 complete unsetenv		'p/1/e/'
 
 source /home/vlsi/.cshrc-common
-set prompt = "%{\033[01;38;5;156m%}%n@%m %{\033[01;38;5;81m%}[%P] %{\033[0m%}[%~]\n%{\033[01;38;5;81m%}->%{\033[0m%} "
-
+set prompt = "%{\e[32m%}%n@%m: %{\e[0m%}[%C]\n%{\e[01;34m%}-> %%%{\e[0m%} "

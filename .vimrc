@@ -28,10 +28,11 @@ nnoremap <c-i> <c-a>
 nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap > 5<c-w>>
-nnoremap < 5<c-w><
+nnoremap > 5<c-w><
+nnoremap < 5<c-w>>
 nnoremap <Tab> %
 nnoremap <BS> "_X
+nnoremap ; :
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
@@ -48,6 +49,8 @@ inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
+inoremap <C-a> <esc>I
+inoremap <C-e> <esc>A
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
@@ -258,7 +261,7 @@ hi ModeMsg              ctermfg=11
 hi ErrorMsg             ctermfg=9   ctermbg=NONE
 hi WarningMsg           ctermfg=9   ctermbg=NONE
 
-hi DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-hi DiffDelete cterm=bold ctermfg=10 ctermbg=52
-hi DiffChange cterm=bold ctermfg=10 ctermbg=17
-hi DiffText   cterm=bold ctermfg=10 ctermbg=21
+hi DiffAdd                          ctermbg=24
+hi DiffChange           ctermfg=181 ctermbg=239
+hi DiffDelete           ctermfg=162 ctermbg=53
+hi DiffText                        ctermbg=102 cterm=bold
