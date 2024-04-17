@@ -33,6 +33,7 @@ nnoremap < 5<c-w>>
 nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap ; :
+
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
@@ -44,6 +45,7 @@ vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
 vnoremap <BS> "_X
+
 " insert mode mapping
 inoremap jj <esc>
 inoremap Jj <esc>
@@ -51,15 +53,19 @@ inoremap jJ <esc>
 inoremap JJ <esc>
 inoremap <C-a> <esc>I
 inoremap <C-e> <esc>A
+
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
 command! Wq wq
+command! Qw wq
 command! WQ wq
 command! Q q
 
 " setting
-set fenc=utf-8
+set encoding=utf-8
+scriptencoding encoding=utf-8
+set fileencodings=utf-8
 set notitle
 set nobackup
 set noswapfile
@@ -124,8 +130,8 @@ let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
-let g:netrw_winsize=25
-let g:netrw_browse_split=4
+let g:netrw_winsize=50
+let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
 
 let g:NetrwIsOpen=0
@@ -246,15 +252,13 @@ hi markdownItalic       cterm=none
 hi markdownItalic       cterm=italic
 
 hi Cursor               ctermbg=244
-hi CursorLine           cterm=NONE
-hi CursorLine           ctermbg=238
+hi CursorLine           ctermbg=238 cterm=NONE
 hi LineNr               ctermfg=248 ctermbg=238
-hi CursorLineNr         cterm=NONE
-hi CursorLineNr         ctermfg=238 ctermbg=250
+hi CursorLineNr         ctermfg=238 ctermbg=250 cterm=NONE
 hi Visual               cterm=NONE  ctermbg=238
 hi Search               ctermfg=238 ctermbg=210
 hi IncSearch            cterm=NONE  ctermfg=238 ctermbg=210
-hi MatchParen           ctermfg=238 ctermbg=210
+hi MatchParen           ctermfg=233 ctermbg=208 cterm=bold
 
 hi StatusLine           ctermfg=238 ctermbg=248
 hi ModeMsg              ctermfg=11
@@ -264,4 +268,4 @@ hi WarningMsg           ctermfg=9   ctermbg=NONE
 hi DiffAdd                          ctermbg=24
 hi DiffChange           ctermfg=181 ctermbg=239
 hi DiffDelete           ctermfg=162 ctermbg=53
-hi DiffText                        ctermbg=102 cterm=bold
+hi DiffText                         ctermbg=102 cterm=bold

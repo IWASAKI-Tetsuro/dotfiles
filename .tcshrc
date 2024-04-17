@@ -1,44 +1,53 @@
+# enviroment value
+setenv LESS '-i -M -R'
+setenv TERM screen-256color
+
+# complete
+set filec
 set autolist=ambiguous
-set color
 set complete=enhance
 set correct=all
-set fignore =( .o .log .dvi .aux .tex~ )
-set filec
-set histdup = erase
+set autocorrect
+set listjobs=long
+bindkey ^I  complete-word-fwd
+bindkey ^[[Z  complete-word-back
+
+
+# history
+if ( ! -e ~/.cd_history) then
+  touch ~/.cd_history
+endif
 set histfile = ~/.tcsh_history
 set history = 10000
+set savehist = (10000 merge)
+set histdup = erase
+bindkey ^N 	history-search-forward
+bindkey ^P 	history-search-backward
+bindkey ^R i-search-back
+
+# other
+set color
+set fignore =( .o .log .dvi .aux .tex~ )
 set host=`hostname`
-set listjobs=long
 set nobeep
 set noclobber
 set notify
 set path = ($path ~/.fzf/bin)
 set rmstar
-set savehist = 1500
 set tperiod=1
-set autocorrect
-setenv LESS '-i -M -R'
-setenv TERM screen-256color
-
-if ( ! -e ~/.cd_history) then
-  touch ~/.cd_history
-endif
-
-bindkey ^I  complete-word-fwd
-bindkey ^[[Z  complete-word-back
-bindkey ^N 	history-search-forward
-bindkey ^P 	history-search-backward
-bindkey ^R i-search-back
 
 alias reload 'source ~/.tcshrc'
 
 alias cd.. 'cd ..'
 alias cd../ 'cd ../'
-
 alias ls 'ls -F --color=auto'
 alias la 'ls -a '
 alias ll 'la -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias sl 'ls'
+alias les 'less'
+alias mv 'mv -i'
+alias cp 'cp -i'
+alias du 'du -k'
 
 alias tree 'tree -C'
 alias grep 'grep --color=auto'
@@ -69,4 +78,4 @@ complete setenv		'p/1/e/'
 complete unsetenv		'p/1/e/'
 
 source /home/vlsi/.cshrc-common
-set prompt = "%{\e[32m%}%n@%m: %{\e[0m%}[%C]\n%{\e[01;34m%}-> %%%{\e[0m%} "
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
