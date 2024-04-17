@@ -2,6 +2,8 @@ let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin on
 " normal mode mapping
+nnoremap <c-p> /
+nnoremap <c-n> /
 nnoremap x "_x
 nnoremap X "_X
 nnoremap U <c-r>
@@ -10,10 +12,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>H <c-w>h
-nnoremap <Leader>j <c-w>j
-nnoremap <Leader>J <c-w>j
-nnoremap <Leader>k <c-w>k
-nnoremap <Leader>K <c-w>k
 nnoremap <Leader>l <c-w>l
 nnoremap <Leader>L <c-w>l
 nnoremap <Leader>v <c-w>v
@@ -35,6 +33,7 @@ nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap ; :
+nnoremap <Leader><space> za
 
 " visual mode mapping
 vnoremap x "_x
@@ -47,6 +46,7 @@ vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
 vnoremap <BS> "_X
+vnoremap <space> zf
 
 " insert mode mapping
 inoremap jj <esc>
@@ -59,6 +59,10 @@ inoremap <C-e> <esc>A
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
+cnoremap jj <C-c>
+cnoremap Jj <C-c>
+cnoremap jJ <C-c>
+cnoremap JJ <C-c>
 command! Wq wq
 command! Qw wq
 command! WQ wq
@@ -92,6 +96,10 @@ set undodir=undodir
 set undofile
 set undolevels=1000
 
+" folding
+set foldmethod=manual
+set foldlevelstart=10
+
 " appearance
 " " cursor shape
 if has('vim_starting')
@@ -120,7 +128,6 @@ augroup vimrcEx
 augroup END
 
 set whichwrap=b,s,h,l,<,>,[,]
-set foldmethod=manual
 set statusline=%f%m%r%h%w\ [%l/%L]\ [%{&ff}]\ [%{&fileencoding}]\ %y
 set wrap
 set linebreak
@@ -271,3 +278,6 @@ hi DiffAdd                          ctermbg=24
 hi DiffChange           ctermfg=181 ctermbg=239
 hi DiffDelete           ctermfg=162 ctermbg=53
 hi DiffText                         ctermbg=102 cterm=bold
+
+hi FoldColumn      ctermfg=67  ctermbg=16
+hi Folded          ctermfg=67  ctermbg=16
