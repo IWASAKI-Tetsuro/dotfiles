@@ -1,24 +1,27 @@
 let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin on
+
 " normal mode mapping
 nnoremap <c-p> /
-nnoremap <c-n> /
+nnoremap <c-n> :<c-n>
 nnoremap x "_x
+nnoremap s "_s
 nnoremap X "_X
+nnoremap S "_S
 nnoremap U <c-r>
 nnoremap Y y$
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>H <c-w>h
 nnoremap <Leader>l <c-w>l
 nnoremap <Leader>L <c-w>l
 nnoremap <Leader>v <c-w>v
-nnoremap H 5h
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 5l
+nnoremap <silent>H 5h
+nnoremap <silent>J 10gj
+nnoremap <silent>K 10gk
+nnoremap <silent>L 5l
 nnoremap <c-a> 0
 nnoremap <c-e> $
 nnoremap <c-s> :w<CR>
@@ -59,6 +62,11 @@ inoremap <C-e> <esc>A
 " command line mode mapping
 cnoremap <c-a> <Home>
 cnoremap <c-e> <End>
+cnoremap <c-p> <Up>
+cnoremap <c-n> <Down>
+cnoremap <c-b> <Left>
+cnoremap <c-f> <Right>
+cnoremap <c-d> <Del>
 cnoremap jj <C-c>
 cnoremap Jj <C-c>
 cnoremap jJ <C-c>
@@ -66,7 +74,6 @@ cnoremap JJ <C-c>
 command! Wq wq
 command! Qw wq
 command! WQ wq
-command! Q q
 
 " setting
 set encoding=utf-8
@@ -88,13 +95,12 @@ set virtualedit=onemore,block
 set backspace=indent,eol,start
 
 " undo
+set undofile
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
-    call mkdir(undodir, 'p')
+  call mkdir(undodir, 'p')
 endif
-set undodir=undodir
-set undofile
-set undolevels=1000
+set undodir+=${undodir}
 
 " folding
 set foldmethod=manual
@@ -175,6 +181,7 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
+set shortmess-=S
 noremap <esc><esc> :nohlsearch<cr><esc>
 
 " command line window
@@ -195,9 +202,58 @@ endif
 " auto reload .vimrc
 augroup source-vimrc
   autocmd!
-  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
+  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=manual
   autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
 augroup END
+
+" " color scheme
+set t_Co=256
+
+hi Normal               ctermfg=252  ctermbg=none
+hi Comment              ctermfg=242
+hi Constant             ctermfg=99
+hi Statement            ctermfg=209  cterm=bold
+hi String               ctermfg=228  cterm=bold
+hi Character            ctermfg=99
+hi Identifier           ctermfg=156
+hi Type                 ctermfg=81
+hi Title                ctermfg=228
+hi Preproc              ctermfg=81
+hi Special              ctermfg=81
+hi Directory            ctermfg=14
+hi Question             ctermfg=46
+hi markdownLinkText     ctermfg=228
+hi markdownItalic       cterm=none
+hi markdownItalic       cterm=italic
+
+hi Cursor               ctermbg=244
+hi CursorLine           ctermbg=238 cterm=NONE
+hi LineNr               ctermfg=252 ctermbg=238
+hi CursorLineNr         ctermfg=238 ctermbg=250 cterm=NONE
+hi Visual               cterm=NONE  ctermbg=238
+hi Search               ctermfg=238 ctermbg=210
+hi IncSearch            cterm=NONE  ctermfg=238 ctermbg=210
+hi MatchParen           ctermfg=233 ctermbg=208 cterm=bold
+
+hi StatusLine           ctermfg=238 ctermbg=252
+hi ModeMsg              ctermfg=11
+hi ErrorMsg             ctermfg=9   ctermbg=NONE
+hi WarningMsg           ctermfg=9   ctermbg=NONE
+
+hi DiffAdd                          ctermbg=24
+hi DiffChange           ctermfg=181 ctermbg=239
+hi DiffDelete           ctermfg=162 ctermbg=53
+hi DiffText                         ctermbg=102 cterm=bold
+
+hi FoldColumn      ctermfg=67  ctermbg=16
+hi Folded          ctermfg=67  ctermbg=16
+
+hi netrwDir          ctermfg=99  ctermbg=16
+hi netrwClassify     ctermfg=250 ctermbg=16
+hi netrwLink         ctermfg=99 ctermbg=16
+hi netrwTreebar      ctermfg=238 ctermbg=16
+hi netrwSymLink      ctermfg=156 ctermbg=16
+hi netrwExe          ctermfg=81 ctermbg=16
 
 " To get the syntax ID
 function! s:get_syn_id(transparent)
@@ -237,47 +293,3 @@ function! s:get_syn_info()
         \ " guibg: " . linkedSyn.guibg
 endfunction
 command! SyntaxInfo call s:get_syn_info()
-
-
-" " color scheme
-set t_Co=256
-
-hi Normal               ctermfg=252  ctermbg=none
-
-hi Comment              ctermfg=242
-hi Constant             ctermfg=99
-hi Statement            ctermfg=209  cterm=bold
-hi String               ctermfg=228  cterm=bold
-hi Character            ctermfg=99
-hi Identifier           ctermfg=156
-hi Type                 ctermfg=81
-hi Title                ctermfg=228
-hi Preproc              ctermfg=81
-hi Special              ctermfg=81
-hi Directory            ctermfg=14
-hi Question             ctermfg=46
-hi markdownLinkText     ctermfg=228
-hi markdownItalic       cterm=none
-hi markdownItalic       cterm=italic
-
-hi Cursor               ctermbg=244
-hi CursorLine           ctermbg=238 cterm=NONE
-hi LineNr               ctermfg=248 ctermbg=238
-hi CursorLineNr         ctermfg=238 ctermbg=250 cterm=NONE
-hi Visual               cterm=NONE  ctermbg=238
-hi Search               ctermfg=238 ctermbg=210
-hi IncSearch            cterm=NONE  ctermfg=238 ctermbg=210
-hi MatchParen           ctermfg=233 ctermbg=208 cterm=bold
-
-hi StatusLine           ctermfg=238 ctermbg=248
-hi ModeMsg              ctermfg=11
-hi ErrorMsg             ctermfg=9   ctermbg=NONE
-hi WarningMsg           ctermfg=9   ctermbg=NONE
-
-hi DiffAdd                          ctermbg=24
-hi DiffChange           ctermfg=181 ctermbg=239
-hi DiffDelete           ctermfg=162 ctermbg=53
-hi DiffText                         ctermbg=102 cterm=bold
-
-hi FoldColumn      ctermfg=67  ctermbg=16
-hi Folded          ctermfg=67  ctermbg=16
