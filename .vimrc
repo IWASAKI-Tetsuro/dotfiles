@@ -72,9 +72,9 @@ cnoremap Jj <C-c>
 cnoremap jJ <C-c>
 cnoremap JJ <C-c>
 cnoremap qw wq
-command Wq wq
-command Qw wq
-command WQ wq
+command! Wq wq
+command! Qw wq
+command! WQ wq
 
 " setting
 set encoding=utf-8
@@ -84,7 +84,6 @@ set notitle
 set nobackup
 set noswapfile
 set nocompatible
-set belloff=all
 set scrolloff=2
 set wildmenu
 set autoread
@@ -112,7 +111,6 @@ set foldlevelstart=10
 if has('vim_starting')
   let &t_SI .= "\e[6 q"
   let &t_EI .= "\e[2 q"
-  let &t_SR .= "\e[4 q"
 endif
 
 augroup HighlightTrailingSpaces
@@ -128,6 +126,7 @@ set showmatch
 set laststatus=2
 set listchars=tab:>\ ,extends:<
 set wildmode=full
+set vb t_vb=
 
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
