@@ -81,3 +81,5 @@ function mopen() {
         fi
     fi
 }
+
+clear

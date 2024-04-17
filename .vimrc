@@ -32,6 +32,8 @@ nnoremap > 5<c-w><
 nnoremap < 5<c-w>>
 nnoremap <Tab> %
 nnoremap <BS> "_X
+nnoremap n nzzzv
+nnoremap N Nzzzv
 nnoremap ; :
 
 " visual mode mapping
