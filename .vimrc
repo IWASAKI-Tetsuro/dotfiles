@@ -4,7 +4,7 @@ filetype plugin on
 
 " normal mode mapping
 nnoremap <c-p> /
-nnoremap <c-n> :<c-n>
+nnoremap <c-n> :
 nnoremap x "_x
 nnoremap s "_s
 nnoremap X "_X
@@ -71,9 +71,10 @@ cnoremap jj <C-c>
 cnoremap Jj <C-c>
 cnoremap jJ <C-c>
 cnoremap JJ <C-c>
-command! Wq wq
-command! Qw wq
-command! WQ wq
+cnoremap qw wq
+command Wq wq
+command Qw wq
+command WQ wq
 
 " setting
 set encoding=utf-8

@@ -12,7 +12,6 @@ set listjobs=long
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
 
-
 # history
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
@@ -40,23 +39,25 @@ alias reload 'source ~/.tcshrc'
 
 alias cd.. 'cd ..'
 alias cd../ 'cd ../'
+alias cd. 'cd ../'
+alias cd./ 'cd ../'
 alias ls 'ls -F --color=auto'
 alias la 'ls -a '
 alias ll 'la -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias sl 'ls'
+alias ks 'ls'
 alias les 'less'
 alias mv 'mv -i'
 alias cp 'cp -i'
-alias du 'du -k'
 
 alias tree 'tree -C'
 alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
 alias egrep 'egrep --color=auto'
+
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias tmuxconf 'vim ~/.tmux.conf'
-
 alias ta 'tmux a -t'
 alias taa 'tmux a'
 alias tls 'tmux ls'
