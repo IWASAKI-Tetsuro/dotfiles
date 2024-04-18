@@ -148,6 +148,9 @@ let g:netrw_winsize=50
 let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
 let g:netrw_dirhistmax=0
+let g:netrw_followsymlink=1
+let g:netrw_mousemaps=1
+let g:netrw_sort_sequence='[\/]$,*'
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
@@ -209,7 +212,7 @@ augroup END
 set t_Co=256
 
 hi Normal               ctermfg=252  ctermbg=none
-hi Comment              ctermfg=242
+hi Comment              ctermfg=244
 hi Constant             ctermfg=99
 hi Statement            ctermfg=209  cterm=bold
 hi String               ctermfg=228  cterm=bold
@@ -247,12 +250,12 @@ hi DiffText                         ctermbg=102 cterm=bold
 hi FoldColumn      ctermfg=81  ctermbg=238
 hi Folded          ctermfg=81  ctermbg=NONE
 
-hi netrwDir          ctermfg=99  ctermbg=16
-hi netrwClassify     ctermfg=250 ctermbg=16
-hi netrwLink         ctermfg=99 ctermbg=16
-hi netrwTreebar      ctermfg=238 ctermbg=16
-hi netrwSymLink      ctermfg=156 ctermbg=16
-hi netrwExe          ctermfg=81 ctermbg=16
+hi netrwDir          ctermfg=81  ctermbg=NONE
+hi netrwClassify     ctermfg=250  ctermbg=NONE
+hi netrwLink         ctermfg=209  ctermbg=NONE
+hi netrwTreebar      ctermfg=242  ctermbg=NONE
+hi netrwSymLink      ctermfg=156  ctermbg=NONE
+hi netrwExe          ctermfg=99   ctermbg=NONE
 
 " To get the syntax ID
 function! s:get_syn_id(transparent)
