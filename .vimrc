@@ -95,12 +95,13 @@ set virtualedit=onemore,block
 set backspace=indent,eol,start
 
 " undo
-set undofile
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
   call mkdir(undodir, 'p')
 endif
-set undodir+=${undodir}
+let &undodir = undodir
+set undofile
+set undolevels=1000
 
 " folding
 set foldmethod=manual
