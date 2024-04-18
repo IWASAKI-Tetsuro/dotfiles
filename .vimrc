@@ -151,6 +151,7 @@ let g:netrw_dirhistmax=0
 let g:netrw_followsymlink=1
 let g:netrw_mousemaps=1
 let g:netrw_sort_sequence='[\/]$,*'
+let g:netrw_fastbrows=0
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
