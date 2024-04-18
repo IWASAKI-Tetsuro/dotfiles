@@ -24,13 +24,10 @@ nnoremap <silent>K 10k
 nnoremap <silent>L 5l
 nnoremap <c-a> 0
 nnoremap <c-e> $
-nnoremap <c-s> :w<CR>
-nnoremap <c-i> <c-a>
-nnoremap <c-d> <c-x>
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap > 5<c-w><
-nnoremap < 5<c-w>>
+nnoremap > 5<c-w>>
+nnoremap < 5<c-w><
 nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap n nzzzv
@@ -148,6 +145,7 @@ let g:netrw_keepdir=0
 let g:netrw_winsize=50
 let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
+let g:netrw_dirhistmax=0
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()

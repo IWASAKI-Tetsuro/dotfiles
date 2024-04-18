@@ -18,8 +18,14 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 
+alias cd..="cd ../"
+alias cd../="cd ../"
+alias cd../="cd ../"
 alias sl="ls"
+alias ks="ls"
 alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
+alias nvim="~/nvim.appimage"
 alias zshrc="vim ~/.zshrc"
 alias tmuxconf="vim ~/.tmux.conf"
 alias ta="tmux a -t" 
