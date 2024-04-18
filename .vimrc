@@ -143,7 +143,7 @@ let g:netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
-let g:netrw_keepdir=0
+let g:netrw_keepdir=1
 let g:netrw_winsize=50
 let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
@@ -151,7 +151,9 @@ let g:netrw_dirhistmax=0
 let g:netrw_followsymlink=1
 let g:netrw_mousemaps=1
 let g:netrw_sort_sequence='[\/]$,*'
+let g:netrw_sort_options='i'
 let g:netrw_fastbrows=0
+let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
@@ -212,11 +214,11 @@ augroup END
 " " color scheme
 set t_Co=256
 
-hi Normal               ctermfg=252  ctermbg=none
+hi Normal               ctermfg=252 ctermbg=NONE
 hi Comment              ctermfg=244
 hi Constant             ctermfg=99
-hi Statement            ctermfg=209  cterm=bold
-hi String               ctermfg=228  cterm=bold
+hi Statement            ctermfg=209               cterm=BOLD
+hi String               ctermfg=228               cterm=BOLD
 hi Character            ctermfg=99
 hi Identifier           ctermfg=156
 hi Type                 ctermfg=81
@@ -226,37 +228,37 @@ hi Special              ctermfg=81
 hi Directory            ctermfg=14
 hi Question             ctermfg=46
 hi markdownLinkText     ctermfg=228
-hi markdownItalic       cterm=none
-hi markdownItalic       cterm=italic
+hi markdownItalic                                 cterm=NONE
+hi markdownItalic                                 cterm=ITALIC
 
-hi Cursor               ctermbg=244
-hi CursorLine           ctermbg=238 cterm=NONE
-hi LineNr               ctermfg=252 ctermbg=238
-hi CursorLineNr         ctermfg=238 ctermbg=250 cterm=NONE
-hi Visual               cterm=NONE  ctermbg=238
-hi Search               ctermfg=238 ctermbg=210
-hi IncSearch            cterm=NONE  ctermfg=238 ctermbg=210
-hi MatchParen           ctermfg=233 ctermbg=208 cterm=bold
+hi Cursor                            ctermbg=244
+hi CursorLine                        ctermbg=238  cterm=NONE
+hi LineNr               ctermfg=252  ctermbg=238
+hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
+hi Visual                            ctermbg=238  cterm=NONE
+hi Search               ctermfg=238  ctermbg=210
+hi IncSearch            ctermfg=238  ctermbg=210  cterm=NONE
+hi MatchParen           ctermfg=233  ctermbg=208  cterm=BOLD
 
-hi StatusLine           ctermfg=238 ctermbg=252
+hi StatusLine           ctermfg=238  ctermbg=252
 hi ModeMsg              ctermfg=11
-hi ErrorMsg             ctermfg=9   ctermbg=NONE
-hi WarningMsg           ctermfg=9   ctermbg=NONE
+hi ErrorMsg             ctermfg=9    ctermbg=NONE
+hi WarningMsg           ctermfg=9    ctermbg=NONE
 
-hi DiffAdd                          ctermbg=24
-hi DiffChange           ctermfg=181 ctermbg=239
-hi DiffDelete           ctermfg=162 ctermbg=53
-hi DiffText                         ctermbg=102 cterm=bold
+hi DiffAdd                           ctermbg=24
+hi DiffChange           ctermfg=181  ctermbg=239
+hi DiffDelete           ctermfg=162  ctermbg=53
+hi DiffText                          ctermbg=102  cterm=BOLD
 
-hi FoldColumn      ctermfg=81  ctermbg=238
-hi Folded          ctermfg=81  ctermbg=NONE
+hi FoldColumn           ctermfg=81   ctermbg=238
+hi Folded               ctermfg=81   ctermbg=NONE
 
-hi netrwDir          ctermfg=81  ctermbg=NONE
-hi netrwClassify     ctermfg=250  ctermbg=NONE
-hi netrwLink         ctermfg=209  ctermbg=NONE
-hi netrwTreebar      ctermfg=242  ctermbg=NONE
-hi netrwSymLink      ctermfg=156  ctermbg=NONE
-hi netrwExe          ctermfg=99   ctermbg=NONE
+hi netrwDir             ctermfg=81   ctermbg=NONE
+hi netrwClassify        ctermfg=250  ctermbg=NONE
+hi netrwLink            ctermfg=156  ctermbg=NONE
+hi netrwTreebar         ctermfg=242  ctermbg=NONE
+hi netrwSymLink         ctermfg=209  ctermbg=NONE
+hi netrwExe             ctermfg=99   ctermbg=NONE
 
 " To get the syntax ID
 function! s:get_syn_id(transparent)
