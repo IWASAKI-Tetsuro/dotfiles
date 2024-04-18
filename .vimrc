@@ -34,6 +34,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap ; :
 nnoremap <Leader><space> za
+nnoremap <Leader>d zd
 
 " visual mode mapping
 vnoremap x "_x
@@ -103,6 +104,7 @@ set undolevels=1000
 " folding
 set foldmethod=manual
 set foldlevelstart=10
+set foldcolumn=1
 
 " appearance
 " " cursor shape
@@ -242,8 +244,8 @@ hi DiffChange           ctermfg=181 ctermbg=239
 hi DiffDelete           ctermfg=162 ctermbg=53
 hi DiffText                         ctermbg=102 cterm=bold
 
-hi FoldColumn      ctermfg=67  ctermbg=16
-hi Folded          ctermfg=67  ctermbg=16
+hi FoldColumn      ctermfg=81  ctermbg=238
+hi Folded          ctermfg=81  ctermbg=NONE
 
 hi netrwDir          ctermfg=99  ctermbg=16
 hi netrwClassify     ctermfg=250 ctermbg=16
