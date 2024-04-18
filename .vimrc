@@ -1,7 +1,7 @@
 let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin on
-
+syntax on
 " normal mode mapping
 nnoremap <c-p> /
 nnoremap <c-n> :
@@ -19,8 +19,8 @@ nnoremap <Leader>l <c-w>l
 nnoremap <Leader>L <c-w>l
 nnoremap <Leader>v <c-w>v
 nnoremap <silent>H 5h
-nnoremap <silent>J 10gj
-nnoremap <silent>K 10gk
+nnoremap <silent>J 10j
+nnoremap <silent>K 10k
 nnoremap <silent>L 5l
 nnoremap <c-a> 0
 nnoremap <c-e> $
@@ -124,7 +124,6 @@ set ruler
 set cursorline
 set showmatch
 set laststatus=2
-set listchars=tab:>\ ,extends:<
 set wildmode=full
 set vb t_vb=
 
@@ -134,7 +133,7 @@ augroup vimrcEx
 augroup END
 
 set whichwrap=b,s,h,l,<,>,[,]
-set statusline=%f%m%r%h%w\ [%l/%L]\ [%{&ff}]\ [%{&fileencoding}]\ %y
+set statusline=%m%r%h%w\ [%l/%L]\ [%{&ff}]\ %y\ %F
 set wrap
 set linebreak
 
@@ -174,19 +173,18 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 set smartindent
-
+set list
+set listchars=tab:>-,trail:·
 " search
 set ignorecase
 set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-set shortmess-=S
 noremap <esc><esc> :nohlsearch<cr><esc>
 
 " command line window
 set cmdwinheight=20
-
 " mouse
 if has('mouse')
     set mouse=a

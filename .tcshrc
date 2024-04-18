@@ -20,8 +20,8 @@ set histfile = ~/.tcsh_history
 set history = 10000
 set savehist = (10000 merge)
 set histdup = erase
-bindkey ^N 	history-search-forward
-bindkey ^P 	history-search-backward
+bindkey ^N  history-search-forward
+bindkey ^P  history-search-backward
 bindkey ^R i-search-back
 
 # other
@@ -71,12 +71,12 @@ alias fh 'set fzfcmd=`history -h | sort | uniq |  fzf` && eval "$fzfcmd"'
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
 complete set      'p/1/s/'            # complete variables
-complete tgif	'n/*/f:*.obj/'
+complete tgif 'n/*/f:*.obj/'
 complete printenv 'p/1/e/'
 complete cd      'p/1/d/'
 complete pu      'p/1/d/'
-complete setenv		'p/1/e/'
-complete unsetenv		'p/1/e/'
+complete setenv 'p/1/e/'
+complete unsetenv 'p/1/e/'
 
 source /home/vlsi/.cshrc-common
 set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
