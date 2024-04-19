@@ -14,3 +14,8 @@
 	ui = auto
 [merge]
 	tool = vimdiff
+[mergetool]
+	prompt = false
+	keepBackup = false
+[alias]
+	vlog = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
