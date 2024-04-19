@@ -2,6 +2,7 @@ let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin on
 syntax on
+
 " normal mode mapping
 nnoremap <c-p> /
 nnoremap <c-n> :
@@ -35,6 +36,8 @@ nnoremap N Nzzzv
 nnoremap ; :
 nnoremap <Leader><space> za
 nnoremap <Leader>d zd
+nnoremap <Leader>D zE
+nnoremap <Leader>a zR
 
 " visual mode mapping
 vnoremap x "_x
@@ -74,7 +77,7 @@ command! Wq wq
 command! Qw wq
 command! WQ wq
 
-" setting
+" Setting
 set encoding=utf-8
 scriptencoding encoding=utf-8
 set fileencodings=utf-8
@@ -92,7 +95,7 @@ set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
 
-" undo
+" Undo
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
   call mkdir(undodir, 'p')
@@ -101,23 +104,22 @@ let &undodir = undodir
 set undofile
 set undolevels=1000
 
-" folding
+" Folding
 set foldmethod=manual
 set foldlevelstart=10
 set foldcolumn=1
-
-" appearance
+" Save fold settings.
+autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
+autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
+" Don't save options.
+set viewoptions-=options
+"
+" Appearance
 " " cursor shape
 if has('vim_starting')
   let &t_SI .= "\e[6 q"
   let &t_EI .= "\e[2 q"
 endif
-
-augroup HighlightTrailingSpaces
-  autocmd!
-  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=#808080 ctermbg=242
-  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
-augroup END
 
 set number
 set ruler
@@ -137,7 +139,7 @@ set statusline=%m%r%h%w\ [%l/%L]\ [%{&ff}]\ %y\ %F
 set wrap
 set linebreak
 
-" netrw
+" Netrw
 set splitright
 let g:netrw_banner=0
 let g:netrw_altv=1
@@ -172,7 +174,7 @@ function! ToggleNetrw()
     endif
 endfunction
 
-" tab
+" Tab
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 set expandtab
 set tabstop=2
@@ -180,9 +182,8 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 set smartindent
-set list
-set listchars=tab:>-,trail:·
-" search
+
+" Search
 set ignorecase
 set smartcase
 set incsearch
@@ -190,7 +191,7 @@ set wrapscan
 set hlsearch
 noremap <esc><esc> :nohlsearch<cr><esc>
 
-" command line window
+" Command line window
 set cmdwinheight=20
 " mouse
 if has('mouse')
@@ -204,14 +205,14 @@ if has('mouse')
     endif
 endif
 
-" auto reload .vimrc
+" Auto reload .vimrc
 augroup source-vimrc
   autocmd!
   autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=manual
   autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
 augroup END
 
-" " color scheme
+" Color scheme
 set t_Co=256
 
 hi Normal               ctermfg=252 ctermbg=NONE
@@ -298,3 +299,11 @@ function! s:get_syn_info()
         \ " guibg: " . linkedSyn.guibg
 endfunction
 command! SyntaxInfo call s:get_syn_info()
+
+" Highlighting trailing and leading spaces
+augroup HighlightSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 ctermbg=234
+  autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
+augroup END
+
