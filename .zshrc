@@ -21,6 +21,7 @@ zplug load --verbose
 alias cd..="cd ../"
 alias cd../="cd ../"
 alias cd../="cd ../"
+alias ls="ls -F --color=auto --group-directories-first"
 alias sl="ls"
 alias ks="ls"
 alias vimrc="vim ~/.vimrc"

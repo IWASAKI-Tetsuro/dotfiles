@@ -106,7 +106,7 @@ set undolevels=1000
 
 " Folding
 set foldmethod=manual
-set foldlevelstart=10
+set foldlevelstart=0
 set foldcolumn=1
 " Save fold settings.
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
