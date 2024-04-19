@@ -218,10 +218,10 @@ set t_Co=256
 hi Normal               ctermfg=252 ctermbg=NONE
 hi Comment              ctermfg=244
 hi Constant             ctermfg=99
-hi Statement            ctermfg=209               cterm=BOLD
+hi Statement            ctermfg=197               cterm=BOLD
 hi String               ctermfg=228               cterm=BOLD
 hi Character            ctermfg=99
-hi Identifier           ctermfg=156
+hi Identifier           ctermfg=208
 hi Type                 ctermfg=81
 hi Title                ctermfg=228
 hi Preproc              ctermfg=81
@@ -258,7 +258,7 @@ hi netrwDir             ctermfg=81   ctermbg=NONE
 hi netrwClassify        ctermfg=250  ctermbg=NONE
 hi netrwLink            ctermfg=156  ctermbg=NONE
 hi netrwTreebar         ctermfg=242  ctermbg=NONE
-hi netrwSymLink         ctermfg=209  ctermbg=NONE
+hi netrwSymLink         ctermfg=208  ctermbg=NONE
 hi netrwExe             ctermfg=99   ctermbg=NONE
 
 " To get the syntax ID
