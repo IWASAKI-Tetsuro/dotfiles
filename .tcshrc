@@ -1,5 +1,5 @@
 # enviroment value
-setenv LESS '-i -M -R -Q'
+setenv LESS '-i -M -R -Q -F -X'
 setenv TERM screen-256color
 
 # complete
