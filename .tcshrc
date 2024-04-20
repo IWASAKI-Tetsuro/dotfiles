@@ -56,6 +56,7 @@ alias la 'll -a'
 alias sl 'ls'
 alias ks 'ls'
 alias les 'less'
+lesskey ~/.lesskey
 alias mv 'mv -i'
 alias cp 'cp -i'
 

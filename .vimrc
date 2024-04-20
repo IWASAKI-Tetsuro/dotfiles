@@ -131,7 +131,7 @@ set ruler
 set cursorline
 set showmatch
 set laststatus=2
-set wildmode=full
+set wildmode=longest:full,full
 set vb t_vb=
 
 augroup vimrcEx
