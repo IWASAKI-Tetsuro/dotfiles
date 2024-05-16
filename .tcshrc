@@ -1,7 +1,7 @@
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
 setenv TERM screen-256color
-setenv LS_COLORS 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30;43:tw=30;42:ow=34;42'
+setenv ls_colors 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30;43:tw=30;42:ow=34;42'
 setenv EDITOR 'vim'
 setenv GIT_EDITOR 'vim'
 
@@ -10,8 +10,9 @@ set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %
 set filec
 set autolist=ambiguous
 set complete=enhance
-set correct=all
+set correct=cmd
 set autocorrect
+set autoexpand
 set listjobs=long
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
@@ -40,7 +41,18 @@ set rmstar
 set tperiod=1
 
 alias reload 'source ~/.tcshrc'
+alias ls 'ls -F --color=auto --group-directories-first'
+alias ll 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
+alias la 'll -a'
+lesskey ~/.lesskey
+alias mv 'mv -i'
+alias cp 'cp -i'
+alias tree 'tree -C'
+alias grep 'grep --color=auto'
+alias fgrep 'fgrep --color=auto'
+alias egrep 'egrep --color=auto'
 
+alias cd- 'cd -'
 alias cd.. 'cd ..'
 alias cd../ 'cd ../'
 alias cd. 'cd ../'
@@ -49,23 +61,14 @@ alias cd,, 'cd ..'
 alias cd,,/ 'cd ../'
 alias cd, 'cd ../'
 alias cd,/ 'cd ../'
-alias cd- 'cd -'
-alias ls 'ls -F --color=auto --group-directories-first'
-alias ll 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
-alias la 'll -a'
 alias sl 'ls'
 alias ks 'ls'
+alias sk 'ls'
 alias les 'less'
-lesskey ~/.lesskey
-alias mv 'mv -i'
-alias cp 'cp -i'
-
-alias tree 'tree -C'
-alias grep 'grep --color=auto'
-alias fgrep 'fgrep --color=auto'
-alias egrep 'egrep --color=auto'
-
 alias vim. 'vim ./'
+alias vim. 'vim ./'
+
+alias nvim '~/nvim.appimage'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias gitconfig 'vim ~/.gitconfig'
@@ -92,4 +95,5 @@ complete unsetenv 'p/1/e/'
 
 source /home/vlsi/.cshrc-common
 set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
-
+set rprompt = "[%P]"
+set prompt2 = "%R?"

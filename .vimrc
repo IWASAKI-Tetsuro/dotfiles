@@ -131,7 +131,7 @@ set ruler
 set cursorline
 set showmatch
 set laststatus=2
-set wildmode=longest:full,full
+set wildmode=full
 set vb t_vb=
 
 augroup vimrcEx
@@ -140,7 +140,7 @@ augroup vimrcEx
 augroup END
 
 set whichwrap=b,s,h,l,<,>,[,]
-set statusline=%m%r%h%w\ [%l/%L]\ [%{&ff}]\ %y\ %F
+set statusline=%m%r%h%w\ [%l/%L]\ %y\ %F
 set wrap
 set linebreak
 
@@ -237,7 +237,7 @@ hi markdownLinkText     ctermfg=228
 hi markdownItalic                                 cterm=NONE
 hi markdownItalic                                 cterm=ITALIC
 
-hi Cursor                            ctermbg=244
+hi Cursor                            ctermbg=240
 hi CursorLine                        ctermbg=238  cterm=NONE
 hi LineNr               ctermfg=252  ctermbg=238
 hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
@@ -308,7 +308,7 @@ command! SyntaxInfo call s:get_syn_info()
 " Highlighting trailing and leading spaces
 augroup HighlightSpaces
   autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 ctermbg=234
+  autocmd VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
