@@ -1,7 +1,11 @@
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
 setenv TERM screen-256color
+setenv LS_COLORS 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30;43:tw=30;42:ow=34;42'
+setenv EDITOR 'vim'
+setenv GIT_EDITOR 'vim'
 
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
 # complete
 set filec
 set autolist=ambiguous
@@ -52,6 +56,7 @@ alias la 'll -a'
 alias sl 'ls'
 alias ks 'ls'
 alias les 'less'
+lesskey ~/.lesskey
 alias mv 'mv -i'
 alias cp 'cp -i'
 
@@ -65,7 +70,6 @@ alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias gitconfig 'vim ~/.gitconfig'
 alias tmuxconf 'vim ~/.tmux.conf'
-alias tmuxconf 'vim ~/.gitconfig'
 alias ta 'tmux a -t'
 alias taa 'tmux a'
 alias tls 'tmux ls'
