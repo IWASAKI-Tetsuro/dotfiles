@@ -1,6 +1,8 @@
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
+setenv TERM xterm-256color
 setenv TERM screen-256color
+setenv COLORTERM truecolor
 setenv ls_colors 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30;43:tw=30;42:ow=34;42'
 setenv EDITOR 'vim'
 setenv GIT_EDITOR 'vim'
