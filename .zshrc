@@ -37,6 +37,8 @@ alias tls="tmux ls"
 alias reload="source ~/.zshrc" 
 autoload -U compinit
 export PATH=$PATH:$HOME/.cargo/bin
+export TERM="xterm-256color"
+export COLORTERM=truecolor
 
 setopt auto_pushd
 setopt correct
