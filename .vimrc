@@ -113,9 +113,9 @@ set foldcolumn=1
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
 autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 
-autocmd VimEnter * if &diff | windo setlocal foldmethod=manual
+"autocmd VimEnter * if &diff | windo setlocal foldmethod=manual
 
-" Don't save options.
+" don't save options.
 set viewoptions-=options
 set foldmethod=manual
 
@@ -219,8 +219,8 @@ augroup END
 
 " Color scheme
 set t_Co=256
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 hi Normal               ctermfg=252 ctermbg=NONE
 hi Comment              ctermfg=244
