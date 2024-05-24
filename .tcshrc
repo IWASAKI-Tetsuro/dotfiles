@@ -45,7 +45,7 @@ set tperiod=1
 alias reload 'source ~/.tcshrc'
 alias ls 'ls -F --color=auto --group-directories-first'
 alias ll 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
-alias la 'll -a'
+alias la 'll -a | egrep -v "\.\/" | egrep -v "\.\.\/"'
 lesskey ~/.lesskey
 alias mv 'mv -i'
 alias cp 'cp -i'
