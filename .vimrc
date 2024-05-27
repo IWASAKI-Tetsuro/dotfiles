@@ -14,6 +14,7 @@ nnoremap U <c-r>
 nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
+nnoremap gb <c-^>
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>H <c-w>h
 nnoremap <Leader>l <c-w>l
