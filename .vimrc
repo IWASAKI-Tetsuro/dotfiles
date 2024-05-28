@@ -14,7 +14,6 @@ nnoremap U <c-r>
 nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap gb <c-^>
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>H <c-w>h
 nnoremap <Leader>l <c-w>l
@@ -30,11 +29,16 @@ nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
 nnoremap > 5<c-w>>
 nnoremap < 5<c-w><
-nnoremap <Tab> %
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap t gt
+nnoremap T gT
 nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap ; :
+nnoremap m ;
+nnoremap M ,
 nnoremap <Leader><space> za
 nnoremap <Leader>d zd
 nnoremap <Leader>D zE
@@ -250,6 +254,9 @@ hi IncSearch            ctermfg=238  ctermbg=210  cterm=NONE
 hi MatchParen           ctermfg=233  ctermbg=208  cterm=BOLD
 
 hi StatusLine           ctermfg=238  ctermbg=252
+hi TabLineSel           ctermfg=238  ctermbg=156
+hi TabLineFill          ctermfg=238  ctermbg=252
+hi TabLine              ctermfg=252  ctermbg=238
 hi ModeMsg              ctermfg=11
 hi ErrorMsg             ctermfg=9    ctermbg=NONE
 hi WarningMsg           ctermfg=9    ctermbg=NONE
