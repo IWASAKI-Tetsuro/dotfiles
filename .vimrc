@@ -15,9 +15,9 @@ nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <Leader>h <c-w>h
-nnoremap <Leader>H <c-w>h
+nnoremap <Leader>j gT
+nnoremap <Leader>k gt
 nnoremap <Leader>l <c-w>l
-nnoremap <Leader>L <c-w>l
 nnoremap <Leader>v <c-w>v
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
@@ -31,8 +31,6 @@ nnoremap > 5<c-w>>
 nnoremap < 5<c-w><
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
-nnoremap t gt
-nnoremap T gT
 nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
