@@ -12,13 +12,14 @@ nnoremap U <c-r>
 nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap s <Nop>
-nnoremap ss :vnew<CR>
-nnoremap sh <c-w>h
-nnoremap sp gT
-nnoremap sn gt
-nnoremap sl <c-w>l
-nnoremap st :tabnew<CR>:E<CR>
+nnoremap e <Nop>
+nnoremap es :vnew<CR>
+nnoremap eh <c-w>h
+nnoremap ep gT
+nnoremap en gt
+nnoremap eo gt
+nnoremap el <c-w>l
+nnoremap et :tabnew<CR>:E<CR>
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
 nnoremap <silent>K 10k
@@ -321,6 +322,6 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
-augroup SmappingInNetrw
-  autocmd FileType netrw nunmap <buffer> s
-augroup end
+"augroup sMappingInNetrw
+"  autocmd FileType netrw nunmap <buffer> s
+"augroup end

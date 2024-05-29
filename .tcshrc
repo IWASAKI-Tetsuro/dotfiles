@@ -68,7 +68,7 @@ alias ks 'ls'
 alias sk 'ls'
 alias les 'less'
 alias vim. 'vim ./'
-alias vim. 'vim ./'
+alias vim./ 'vim ./'
 
 alias nvim '~/nvim.appimage'
 alias vimrc 'vim ~/.vimrc'
