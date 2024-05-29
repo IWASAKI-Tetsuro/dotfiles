@@ -64,8 +64,6 @@ inoremap jj <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
-inoremap <C-a> <esc>I
-inoremap <C-e> <esc>A
 
 " command line mode mapping
 cnoremap <c-a> <Home>
@@ -253,7 +251,8 @@ hi Search               ctermfg=238  ctermbg=210
 hi IncSearch            ctermfg=238  ctermbg=210  cterm=NONE
 hi MatchParen           ctermfg=233  ctermbg=208  cterm=BOLD
 
-hi StatusLine           ctermfg=238  ctermbg=252
+hi StatusLine           ctermfg=156  ctermbg=238
+hi StatusLineNC         ctermfg=238  ctermbg=250
 hi TabLineSel           ctermfg=238  ctermbg=156
 hi TabLineFill          ctermfg=238  ctermbg=252
 hi TabLine              ctermfg=252  ctermbg=238
@@ -322,6 +321,3 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
-"augroup sMappingInNetrw
-"  autocmd FileType netrw nunmap <buffer> s
-"augroup end
