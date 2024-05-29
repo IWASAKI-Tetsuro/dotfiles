@@ -7,18 +7,18 @@ syntax on
 nnoremap <c-p> /
 nnoremap <c-n> :
 nnoremap x "_x
-nnoremap s "_s
 nnoremap X "_X
-nnoremap S "_S
 nnoremap U <c-r>
 nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap <Leader>h <c-w>h
-nnoremap <Leader>j gT
-nnoremap <Leader>k gt
-nnoremap <Leader>l <c-w>l
-nnoremap <Leader>v <c-w>v
+nnoremap s <Nop>
+nnoremap ss :vnew<CR>
+nnoremap sh <c-w>h
+nnoremap sp gT
+nnoremap sn gt
+nnoremap sl <c-w>l
+nnoremap st :tabnew<CR>:E<CR>
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
 nnoremap <silent>K 10k
@@ -321,3 +321,6 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
+augroup SmappingInNetrw
+  autocmd FileType netrw nunmap <buffer> s
+augroup end
