@@ -13,12 +13,17 @@ nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap e <Nop>
-nnoremap es :vnew<CR>
+nnoremap es :new<CR>
+nnoremap ev :vnew<CR>
+nnoremap e- :new<CR>
+nnoremap e\ :vnew<CR>
 nnoremap eh <c-w>h
+nnoremap ej <c-w>j
+nnoremap ek <c-w>k
+nnoremap el <c-w>l
 nnoremap ep gT
 nnoremap en gt
 nnoremap eo gt
-nnoremap el <c-w>l
 nnoremap et :tabnew<CR>:E<CR>
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
@@ -148,6 +153,7 @@ set wrap
 set linebreak
 
 " Netrw
+set splitbelow
 set splitright
 let g:netrw_banner=0
 let g:netrw_altv=1
