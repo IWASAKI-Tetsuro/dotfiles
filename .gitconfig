@@ -20,6 +20,7 @@
 	keepBackup = false
 [alias]
 	vlog = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  st =  status
   a =  add
   aa = add -A
   ap = add -p
@@ -41,6 +42,7 @@
   vd =  vimdiff
   vdiff =  vimdiff
   sta = stash
+  stu = stash -u
+  stum = stash -u -m
   stp = stash pop
   mr = merge
-  rhh = reset --hard head
