@@ -5,6 +5,7 @@
 	helper = cache --timeout=86400
 [core]
 	editor = vim
+	pager = less -i -M -R -Q -F -X
 	fileMode = false
 [diff]
 	tool = vimdiff

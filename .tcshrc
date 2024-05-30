@@ -1,5 +1,6 @@
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
+
 setenv TERM xterm-256color
 setenv TERM screen-256color
 setenv COLORTERM truecolor
