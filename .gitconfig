@@ -42,6 +42,7 @@
   vd =  difftool
   vdiff =  difftool
   sta = stash
+  stals = stash list
   stu = stash -u
   stum = stash -u -m
   stp = stash pop
