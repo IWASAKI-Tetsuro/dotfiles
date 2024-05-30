@@ -112,7 +112,7 @@ alias gvdiff 'git vimdiff'
 alias gsta  'git stash'
 alias gstp  'git stash pop'
 alias gmr 'git merge'
-alias grhh 'git  reset --hard head'
+alias grhh 'git  reset --hard HEAD'
 
 alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
 alias fh 'set fzfcmd=`history -h | sort | uniq |  fzf` && eval "$fzfcmd"'
