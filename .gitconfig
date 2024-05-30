@@ -28,6 +28,8 @@
   bd = branch -d
   c = commit
   cm = commit -m
+  co = checkout
+  cob = checkout -b
   ps = push
   pl = pull
   l = log
