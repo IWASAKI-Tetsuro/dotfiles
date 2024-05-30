@@ -268,9 +268,9 @@ hi ErrorMsg             ctermfg=9    ctermbg=NONE
 hi WarningMsg           ctermfg=9    ctermbg=NONE
 
 hi DiffAdd                           ctermbg=24
-hi DiffChange           ctermfg=181  ctermbg=239
 hi DiffDelete           ctermfg=162  ctermbg=53
-hi DiffText                          ctermbg=102  cterm=BOLD
+hi DiffChange                        ctermbg=237
+hi DiffText             ctermfg=210  ctermbg=237   cterm=BOLD
 
 hi FoldColumn           ctermfg=81   ctermbg=238
 hi Folded               ctermfg=81   ctermbg=NONE
