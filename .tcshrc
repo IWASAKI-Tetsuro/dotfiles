@@ -93,6 +93,8 @@ alias gps 'git push'
 alias gpl 'git pull'
 alias gl 'git log'
 alias gvl 'git vlog'
+alias glp 'git log -p'
+alias gvlp 'git vlog -p'
 alias gd 'git diff'
 alias gdt 'git difftool'
 
