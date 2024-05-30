@@ -43,6 +43,8 @@ set rmstar
 set tperiod=1
 
 alias reload 'source ~/.tcshrc'
+alias reloa 'source ~/.tcshrc'
+alias relo 'source ~/.tcshrc'
 alias ls 'ls -F --color=auto --group-directories-first'
 alias ll 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias la 'll -a | egrep -v "\.\/" | egrep -v "\.\.\/"'
@@ -92,9 +94,13 @@ alias gcm 'git commit -m'
 alias gps 'git push'
 alias gpl 'git pull'
 alias gl 'git log'
+alias glog 'git log'
 alias gvl 'git vlog'
+alias gvlog 'git vlog'
 alias glp 'git log -p'
 alias gvlp 'git vlog -p'
+alias glogp 'git log -p'
+alias gvlogp 'git vlog -p'
 alias gd 'git diff'
 alias gdt 'git difftool'
 
