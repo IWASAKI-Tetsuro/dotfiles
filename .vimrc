@@ -138,6 +138,7 @@ set number
 set ruler
 set cursorline
 set showmatch
+set showtabline=2
 set laststatus=2
 set wildmode=full
 set vb t_vb=
