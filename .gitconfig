@@ -38,9 +38,9 @@
   vlogp = vlog -p
   d =  diff
   dt =  difftool
-  vimdiff = vimdiff
-  vd =  vimdiff
-  vdiff =  vimdiff
+  vimdiff = difftool
+  vd =  difftool
+  vdiff =  difftool
   sta = stash
   stu = stash -u
   stum = stash -u -m
