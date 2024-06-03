@@ -329,3 +329,4 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
+nnoremap q :echo "testtesttest"<esc>
