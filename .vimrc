@@ -329,8 +329,3 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
-"" testtesttest
-"" testtesttest
-"" testtesttest
-
-
