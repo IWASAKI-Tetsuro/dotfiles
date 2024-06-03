@@ -86,6 +86,7 @@ cnoremap qw wq
 command! Wq wq
 command! Qw wq
 command! WQ wq
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
 " Setting
 set encoding=utf-8
@@ -204,7 +205,7 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-noremap <esc><esc> :nohlsearch<cr><esc>
+noremap <esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
 set cmdwinheight=20
