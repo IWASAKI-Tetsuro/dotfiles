@@ -118,9 +118,6 @@ set undolevels=1000
 " Folding
 set foldlevelstart=0
 set foldcolumn=1
-" Save fold settings.
-autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
-autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
 
 "autocmd VimEnter * if &diff | windo setlocal foldmethod=manual
 

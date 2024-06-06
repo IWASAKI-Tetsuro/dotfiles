@@ -19,22 +19,52 @@ fi
 zplug load --verbose
 
 alias cd..="cd ../"
+alias cd.="cd ../"
 alias cd../="cd ../"
 alias cd../="cd ../"
+alias cd-='cd -'
+alias sl='ls'
+alias ks='ls'
+alias sk='ls'
 alias ls="ls -F --color=auto --group-directories-first"
+alias ll='ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias sl="ls"
 alias ks="ls"
+alias lla='la'
+alias les='less'
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 alias gitconfig="vim ~/.gitconfig"
 alias nvim="~/nvim.appimage"
 alias zshrc="vim ~/.zshrc"
 alias tmuxconf="vim ~/.tmux.conf"
+alias gitconfig 'vim ~/.gitconfig'
 alias ta="tmux a -t" 
 alias taa="tmux a" 
 alias tn="tmux new -s" 
 alias tls="tmux ls" 
+alias tkill='tmux kill-session -t'
+alias tkillall='tmux kill-server'
 alias reload="source ~/.zshrc" 
+alias reloa="source ~/.zshrc" 
+alias relo="source ~/.zshrc" 
+alias mv='mv -i'
+alias cp='cp -i'
+alias tree='tree -C'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias vim.='vim ./'
+alias vim./='vim ./'
+alias v.='vim ./'
+alias v./='vim ./'
+alias vi.='vim ./'
+alias vi./='vim ./'
+alias v='vim'
+alias vi='vim'
+alias t='tmux'
+
 autoload -U compinit
 export PATH=$PATH:$HOME/.cargo/bin
 export TERM="xterm-256color"
