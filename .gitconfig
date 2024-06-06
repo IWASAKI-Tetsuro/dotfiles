@@ -33,11 +33,11 @@
   ps = push
   pl = pull
   l = log
-  vl=  vlog
+  vl=  log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit 
   lp = log -p
-  vlp =  vlog -p
+  vlp = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
   logp =  log -p
-  vlogp = vlog -p
+  vlogp = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
   d =  diff
   dt =  difftool
   vimdiff = difftool
