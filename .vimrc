@@ -86,7 +86,7 @@ cnoremap qw wq
 command! Wq wq
 command! Qw wq
 command! WQ wq
-command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
 " Setting
 set encoding=utf-8
@@ -326,3 +326,11 @@ augroup HighlightSpaces
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 augroup END
 
+function! OpenQuickfixWindow()
+  tabnew
+  copen
+  set modifiable
+  resize 15
+endfunction
+autocmd FileType qf wincmd J
+autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
