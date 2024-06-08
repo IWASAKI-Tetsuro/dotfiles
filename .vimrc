@@ -40,6 +40,8 @@ nnoremap <S-Tab> gT
 nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
 nnoremap ; :
 nnoremap m ;
 nnoremap M ,
