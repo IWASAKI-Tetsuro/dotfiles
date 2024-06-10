@@ -171,6 +171,7 @@ let g:netrw_sort_sequence='[\/]$,*'
 let g:netrw_sort_options='i'
 let g:netrw_fastbrows=0
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
+let g:netrw_sizestyle="H"
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
