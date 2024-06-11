@@ -18,6 +18,7 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 
+alias dc="cd"
 alias cd..="cd ../"
 alias cd.="cd ../"
 alias cd../="cd ../"

@@ -1,6 +1,6 @@
 let mapleader = "\<SPACE>"
 set timeoutlen=400
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 " normal mode mapping
