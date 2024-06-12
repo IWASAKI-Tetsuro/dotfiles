@@ -157,6 +157,8 @@ complete setenv 'p/1/e/'
 complete unsetenv 'p/1/e/'
 
 source /home/vlsi/.cshrc-common
-set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
-set rprompt = "[%P]"
-set prompt2 = "%R?"
+
+alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\1/"'
+alias prompt 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~][%{\e[32m%}`gitbranch`%{\e[0m%}]\n%{\e[01;34m%}-> %%%{\e[0m%} "'
+alias cd 'cd \!*; prompt'
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~][%{\e[32m%}`gitbranch`%{\e[0m%}]\n%{\e[01;34m%}-> %%%{\e[0m%} "
