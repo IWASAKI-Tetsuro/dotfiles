@@ -56,7 +56,9 @@ alias tree 'tree -C'
 alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
 alias egrep 'egrep --color=auto'
+alias prompt 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]`gitbranch`\n%{\e[01;34m%}-> %%%{\e[0m%} "'
 
+alias cd 'cd \!*; prompt'
 alias cd- 'cd -'
 alias cd.. 'cd ..'
 alias cd../ 'cd ../'
@@ -87,6 +89,11 @@ alias v. 'vim ./'
 alias v./ 'vim ./'
 alias vi. 'vim ./'
 alias vi./ 'vim ./'
+alias maek 'make'
+alias amek 'make'
+alias amke 'make'
+alias meak 'make'
+alias meka 'make'
 
 alias nvim '~/nvim.appimage'
 alias vimrc 'vim ~/.vimrc'
@@ -157,8 +164,5 @@ complete setenv 'p/1/e/'
 complete unsetenv 'p/1/e/'
 
 source /home/vlsi/.cshrc-common
-
-alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\1/"'
-alias prompt 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~][%{\e[32m%}`gitbranch`%{\e[0m%}]\n%{\e[01;34m%}-> %%%{\e[0m%} "'
-alias cd 'cd \!*; prompt'
-set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~][%{\e[32m%}`gitbranch`%{\e[0m%}]\n%{\e[01;34m%}-> %%%{\e[0m%} "
+alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]`gitbranch`\n%{\e[01;34m%}-> %%%{\e[0m%} "
