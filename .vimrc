@@ -67,10 +67,8 @@ vnoremap <BS> "_X
 vnoremap <space> zf
 
 " insert mode mapping
-inoremap jj <esc>
-inoremap Jj <esc>
-inoremap jJ <esc>
-inoremap JJ <esc>
+inoremap jk <esc>
+inoremap kj <esc>
 
 " command line mode mapping
 cnoremap <c-a> <Home>
@@ -80,10 +78,8 @@ cnoremap <c-n> <Down>
 cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
-cnoremap jj <C-c>
-cnoremap Jj <C-c>
-cnoremap jJ <C-c>
-cnoremap JJ <C-c>
+cnoremap jk <C-c>
+cnoremap kj <C-c>
 cnoremap qw wq
 command! Wq wq
 command! Qw wq
@@ -337,3 +333,4 @@ function! OpenQuickfixWindow()
 endfunction
 autocmd FileType qf wincmd J
 autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
+

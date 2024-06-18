@@ -19,6 +19,7 @@ set autoexpand
 set listjobs=long
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
+bindkey ^W		backward-delete-word
 
 # history
 if ( ! -e ~/.cd_history) then
@@ -47,8 +48,10 @@ alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
 alias relo 'source ~/.tcshrc'
 alias ls 'ls -F --color=auto --group-directories-first'
-alias ll 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
-alias la 'll -a | egrep -v "\.\/" | egrep -v "\.\.\/"'
+alias ll 'ls -vhl --time-style=+"%Y/%m/%d %H:%M:%S"'
+alias la 'll -a'
+alias llt 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
+alias lat 'llt -a'
 lesskey ~/.lesskey
 alias mv 'mv -i'
 alias cp 'cp -i'
