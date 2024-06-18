@@ -65,6 +65,7 @@ vnoremap <BS> "_X
 vnoremap <space> zf
 
 " insert mode mapping
+inoremap jj <esc>
 inoremap jk <esc>
 inoremap kj <esc>
 
@@ -76,6 +77,7 @@ cnoremap <c-n> <Down>
 cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
+cnoremap jj <C-c>
 cnoremap jk <C-c>
 cnoremap kj <C-c>
 cnoremap qw wq
