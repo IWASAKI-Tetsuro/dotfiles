@@ -33,8 +33,6 @@ nnoremap <c-a> 0
 nnoremap <c-e> $
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap > 5<c-w>>
-nnoremap < 5<c-w><
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <BS> "_X
