@@ -20,6 +20,8 @@ set listjobs=long
 bindkey ^I  complete-word-fwd
 bindkey ^[[Z  complete-word-back
 bindkey ^W		backward-delete-word
+bindkey ^G		backward-word
+bindkey ^K		forward-word
 
 # history
 if ( ! -e ~/.cd_history) then

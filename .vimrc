@@ -60,14 +60,15 @@ vnoremap <silent> j gj
 vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
-vnoremap v <c-v>
+noremap v <c-v>
 vnoremap <BS> "_X
 vnoremap <space> zf
 
 " insert mode mapping
 inoremap jj <esc>
-inoremap jk <esc>
-inoremap kj <esc>
+cnoremap Jj <esc>
+cnoremap jJ <esc>
+cnoremap JJ <esc>
 
 " command line mode mapping
 cnoremap <c-a> <Home>
@@ -78,8 +79,9 @@ cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
 cnoremap jj <C-c>
-cnoremap jk <C-c>
-cnoremap kj <C-c>
+cnoremap Jj <C-c>
+cnoremap jJ <C-c>
+cnoremap JJ <C-c>
 cnoremap qw wq
 command! Wq wq
 command! Qw wq
