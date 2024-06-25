@@ -103,6 +103,7 @@ set showmode
 set showcmd
 set virtualedit=onemore,block
 set backspace=indent,eol,start
+set viminfo='20,\"1000
 
 " Undo
 let undodir = expand('~/.vim/undodir')
