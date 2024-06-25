@@ -60,7 +60,7 @@ vnoremap <silent> j gj
 vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
-noremap v <c-v>
+vnoremap v <c-v>
 vnoremap <BS> "_X
 vnoremap <space> zf
 

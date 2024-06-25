@@ -17,11 +17,11 @@ set correct=cmd
 set autocorrect
 set autoexpand
 set listjobs=long
-bindkey ^I  complete-word-fwd
-bindkey ^[[Z  complete-word-back
-bindkey ^W		backward-delete-word
-bindkey ^G		backward-word
-bindkey ^K		forward-word
+bindkey ^I complete-word-fwd
+bindkey ^[[Z complete-word-back
+bindkey ^W backward-delete-word
+bindkey ^B backward-word
+bindkey ^F forward-word
 
 # history
 if ( ! -e ~/.cd_history) then
