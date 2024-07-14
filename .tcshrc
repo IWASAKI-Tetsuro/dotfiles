@@ -44,6 +44,9 @@ set path = ($path ~/.fzf/bin)
 set rmstar
 set tperiod=1
 
+alias precmd 'history -S; history -L'
+alias cwdcmd 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
+
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
 alias relo 'source ~/.tcshrc'
@@ -59,9 +62,7 @@ alias tree 'tree -C'
 alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
 alias egrep 'egrep --color=auto'
-alias prompt 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
 
-alias cd 'cd \!*; prompt'
 alias cd- 'cd -'
 alias cd~ 'cd ~'
 alias cd.. 'cd ..'

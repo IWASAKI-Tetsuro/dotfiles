@@ -61,6 +61,12 @@ vnoremap <c-e> $
 vnoremap v <c-v>
 vnoremap <BS> "_X
 vnoremap <space> zf
+vnoremap <c-a> <Home>
+vnoremap <c-e> <End>
+vnoremap <c-p> <Up>
+vnoremap <c-n> <Down>
+vnoremap <c-b> <Left>
+vnoremap <c-f> <Right>
 
 " insert mode mapping
 inoremap jj <esc>
@@ -210,7 +216,7 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-noremap <esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
+noremap <esc><esc> <silent> :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
 set cmdwinheight=20
