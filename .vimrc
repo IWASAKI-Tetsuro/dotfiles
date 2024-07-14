@@ -216,7 +216,7 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-noremap <esc><esc> <silent> :nohlsearch<cr><esc>:diffoff<cr><esc>
+noremap <silent> <esc><esc>  :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
 set cmdwinheight=20
