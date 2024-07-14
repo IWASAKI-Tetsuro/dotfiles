@@ -29,8 +29,6 @@ nnoremap <silent>H 5h
 nnoremap <silent>J 10j
 nnoremap <silent>K 10k
 nnoremap <silent>L 5l
-nnoremap <c-a> 0
-nnoremap <c-e> $
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
 nnoremap <Tab> gt
@@ -66,9 +64,17 @@ vnoremap <space> zf
 
 " insert mode mapping
 inoremap jj <esc>
-cnoremap Jj <esc>
-cnoremap jJ <esc>
-cnoremap JJ <esc>
+inoremap Jj <esc>
+inoremap jJ <esc>
+inoremap JJ <esc>
+inoremap <c-a> <Home>
+inoremap <c-e> <End>
+inoremap <c-p> <Up>
+inoremap <c-n> <Down>
+inoremap <c-b> <Left>
+inoremap <c-f> <Right>
+inoremap <c-d> <Del>
+inoremap <c-k> <c-o>D
 
 " command line mode mapping
 cnoremap <c-a> <Home>
