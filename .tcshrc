@@ -22,8 +22,8 @@ bindkey ^[[Z complete-word-back
 bindkey ^W backward-delete-word
 
 # history
-if ( ! -e ~/.cd_history) then
-  touch ~/.cd_history
+if ( ! -e ~/.tcsh_history) then
+  touch ~/.tcsh_history
 endif
 set histfile = ~/.tcsh_history
 set history = 10000
@@ -44,8 +44,19 @@ set path = ($path ~/.fzf/bin)
 set rmstar
 set tperiod=1
 
-alias precmd 'history -S; history -L'
-alias cwdcmd 'set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
+if ( ! -e ~/.cd_history) then
+  touch ~/.cd_history
+endif
+alias precmd 'history -S && history -L'
+alias cd 'chdir \!* && pwd >> ~/.cd_history && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
+alias dclean 'cat ~/.cd_history | uniq > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history; dhist'
+alias dsort 'cat ~/.cd_history | sort | uniq > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history; dhist'
+alias dhist 'cat -n ~/.cd_history | tail -n -20'
+alias dhis dhist
+alias dhi dhist
+alias dless 'less -N ~/.cd_history'
+alias dles dless
+alias dcd   'cd `tail -n +\!* ~/.cd_history | head -1` && pwd'
 
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
@@ -56,8 +67,6 @@ alias la 'll -a'
 alias llt 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias lat 'llt -a'
 lesskey ~/.lesskey
-alias mv 'mv -i'
-alias cp 'cp -i'
 alias tree 'tree -C'
 alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
@@ -155,9 +164,6 @@ alias gstu  'git stash -u'
 alias gstum  'git stash -u -m'
 alias gstp  'git stash pop'
 alias gmr 'git merge'
-
-alias fd 'set dir=`find . -type d -name "*.git" -prune -o -type d -print |& fzf +m`; if ("$dir" != "") cd "$dir"'
-alias fh 'set fzfcmd=`history -h | sort | uniq |  fzf` && eval "$fzfcmd"'
 
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
