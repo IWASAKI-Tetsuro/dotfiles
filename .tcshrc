@@ -1,5 +1,6 @@
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
+lesskey ~/.lesskey
 
 setenv TERM xterm-256color
 setenv TERM screen-256color
@@ -49,13 +50,13 @@ if ( ! -e ~/.cd_history) then
 endif
 alias precmd 'history -S && history -L'
 alias cd 'chdir \!* && pwd >> ~/.cd_history && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
-alias dclean 'cat ~/.cd_history | uniq > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history; dhist'
-alias dsort 'cat ~/.cd_history | sort | uniq > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history; dhist'
 alias dhist 'cat -n ~/.cd_history | tail -n -20'
 alias dhis dhist
 alias dhi dhist
 alias dless 'less -N ~/.cd_history'
 alias dles dless
+alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history && dhist'
+alias cdhistory 'vim ~/.cd_history'
 alias dcd   'cd `tail -n +\!* ~/.cd_history | head -1` && pwd'
 
 alias reload 'source ~/.tcshrc'
@@ -66,12 +67,12 @@ alias ll 'ls -vhl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias la 'll -a'
 alias llt 'ls -thl --time-style=+"%Y/%m/%d %H:%M:%S"'
 alias lat 'llt -a'
-lesskey ~/.lesskey
 alias tree 'tree -C'
 alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
 alias egrep 'egrep --color=auto'
 
+# for typo
 alias cd- 'cd -'
 alias cd~ 'cd ~'
 alias cd.. 'cd ..'
