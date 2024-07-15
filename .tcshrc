@@ -46,7 +46,7 @@ set rmstar
 set tperiod=1
 
 alias precmd 'history -S && history -L'
-alias cd 'pwd >> ~/.cd_history && chdir \!* && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
+alias cd 'pwd -L >> ~/.cd_history && chdir \!* && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
 
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
@@ -59,7 +59,7 @@ alias dls dhist
 alias dless 'dclean && less -N ~/.cd_history'
 alias dles dless
 alias cdhistory 'vim ~/.cd_history'
-alias dcd   'cd `tail -n +\!* ~/.cd_history | head -1` && pwd'
+alias dcd   'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
 
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
