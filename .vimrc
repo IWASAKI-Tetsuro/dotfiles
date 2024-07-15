@@ -75,8 +75,6 @@ inoremap jJ <esc>
 inoremap JJ <esc>
 inoremap <c-a> <Home>
 inoremap <c-e> <End>
-inoremap <c-p> <Up>
-inoremap <c-n> <Down>
 inoremap <c-b> <Left>
 inoremap <c-f> <Right>
 inoremap <c-d> <Del>
@@ -216,7 +214,7 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-noremap <silent> <esc><esc>  :nohlsearch<cr><esc>:diffoff<cr><esc>
+noremap <silent> <esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
 set cmdwinheight=20

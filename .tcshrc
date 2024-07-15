@@ -45,17 +45,19 @@ set path = ($path ~/.fzf/bin)
 set rmstar
 set tperiod=1
 
+alias precmd 'history -S && history -L'
+alias cd 'pwd >> ~/.cd_history && chdir \!* && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
+
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
 endif
-alias precmd 'history -S && history -L'
-alias cd 'chdir \!* && pwd >> ~/.cd_history && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
-alias dhist 'cat -n ~/.cd_history | tail -n -20'
+alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history'
+alias dhist 'dclean && cat -n ~/.cd_history | tail -n -10'
 alias dhis dhist
 alias dhi dhist
-alias dless 'less -N ~/.cd_history'
+alias dls dhist
+alias dless 'dclean && less -N ~/.cd_history'
 alias dles dless
-alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history && dhist'
 alias cdhistory 'vim ~/.cd_history'
 alias dcd   'cd `tail -n +\!* ~/.cd_history | head -1` && pwd'
 
