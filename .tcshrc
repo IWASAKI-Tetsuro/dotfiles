@@ -60,7 +60,7 @@ alias dhis dhist
 alias dhi dhist
 alias dls dhist
 alias dles dless
-alias cdhistory 'vim ~/.cd_history'
+alias cdhistory 'dclean && vim ~/.cd_history'
 
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
