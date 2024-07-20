@@ -18,6 +18,23 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 
+if [ ! -f ~/.cd_history ]; then
+  touch ~/.cd_history
+fi
+
+function chpwd(){
+  append_cd_history
+}
+function append_cd_history(){
+  echo "$(pwd -L)" >> ~/.cd_history
+}
+
+function dcd(){
+  cd "$(tail -n +$1 ~/.cd_history | head -1)" && pwd -L
+}
+function drm(){
+  sed -i "$1d" ~/.cd_history
+}
 alias dclean='awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history'
 alias dhist='dclean && cat -n ~/.cd_history | tail -n -10'
 alias dless='dclean && less -N ~/.cd_history'
@@ -26,7 +43,6 @@ alias dhi='dhist'
 alias dls='dhist'
 alias dles='dless'
 alias cdhistory='dclean && vim ~/.cd_history'
-
 
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
@@ -57,7 +73,6 @@ alias tkill='tmux kill-session -t'
 alias tkillall='tmux kill-server'
 
 
-alias cd=""
 alias dc="cd"
 alias dc..="cd ../"
 alias dc.="cd ../"
@@ -142,18 +157,6 @@ eval "$(pyenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fd() {
-  local dir
-  dir=$(find . -type d ! -name .git 2> /dev/null | fzf +m) && cd "$dir"
-}
-function vim-fzf-find() {
-  local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m)
-  if [ -n "$FILE" ]; then
-    ${EDITOR:-vim} $FILE
-  fi
-  }
-alias fv=vim-fzf-find
-
 function buffer-fzf-history() {
   local HISTORY=$(history -n -r 1 | fzf +m)
   BUFFER=$HISTORY
@@ -168,6 +171,7 @@ bindkey '^R' buffer-fzf-history
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
+#for WSL
 function mopen() {
     if [ $# != 1 ]; then
         explorer.exe .
