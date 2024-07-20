@@ -138,7 +138,6 @@ autoload -U compinit
 compinit -u
 export PATH=$PATH:$HOME/.cargo/bin
 export TERM="xterm-256color"
-export TERM="screen-256color"
 export COLORTERM=truecolor
 
 setopt auto_pushd
