@@ -78,6 +78,7 @@ inoremap <c-e> <End>
 inoremap <c-b> <Left>
 inoremap <c-f> <Right>
 inoremap <c-d> <Del>
+inoremap <c-h> <BS>
 inoremap <c-k> <c-o>D
 
 " command line mode mapping
@@ -88,6 +89,7 @@ cnoremap <c-n> <Down>
 cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
+inoremap <c-h> <BS>
 cnoremap jj <C-c>
 cnoremap Jj <C-c>
 cnoremap jJ <C-c>
