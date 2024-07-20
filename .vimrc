@@ -39,8 +39,8 @@ nnoremap N Nzzzv
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 nnoremap ; :
-nnoremap m ;
-nnoremap M ,
+nnoremap t ;
+nnoremap T ,
 nnoremap <Leader><space> za
 nnoremap <Leader>d zd
 nnoremap <Leader>D zE
@@ -66,6 +66,7 @@ vnoremap <c-e> <End>
 vnoremap <c-p> <Up>
 vnoremap <c-n> <Down>
 vnoremap <c-b> <Left>
+vnoremap <c-h> <BS>
 vnoremap <c-f> <Right>
 
 " insert mode mapping
@@ -89,7 +90,7 @@ cnoremap <c-n> <Down>
 cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
-inoremap <c-h> <BS>
+cnoremap <c-h> <BS>
 cnoremap jj <C-c>
 cnoremap Jj <C-c>
 cnoremap jJ <C-c>
