@@ -36,7 +36,7 @@ function drm(){
   sed -i "$1d" ~/.cd_history
 }
 alias dclean='awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history'
-alias dhist='dclean && cat -n ~/.cd_history | tail -n -10'
+alias dhist='dclean && cat -n ~/.cd_history | tail -n -20'
 alias dless='dclean && less -N ~/.cd_history'
 alias dhis='dhist'
 alias dhi='dhist'
