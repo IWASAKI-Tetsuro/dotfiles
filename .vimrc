@@ -62,9 +62,6 @@ vnoremap <c-a> <Home>
 vnoremap <c-e> <End>
 vnoremap <c-p> <Up>
 vnoremap <c-n> <Down>
-vnoremap <c-b> <Left>
-vnoremap <c-h> <BS>
-vnoremap <c-f> <Right>
 
 " insert mode mapping
 inoremap jj <esc>
