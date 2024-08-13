@@ -4,8 +4,8 @@ filetype plugin indent on
 syntax on
 
 " normal mode mapping
-nnoremap <c-p> /
-nnoremap <c-n> :
+nnoremap <c-p> <Up>
+nnoremap <c-n> <Down>
 nnoremap x "_x
 nnoremap X "_X
 nnoremap U <c-r>
@@ -13,17 +13,12 @@ nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap e <Nop>
-nnoremap es :new<CR>
-nnoremap ev :vnew<CR>
-nnoremap e- :new<CR>
-nnoremap e\ :vnew<CR>
 nnoremap eh <c-w>h
 nnoremap ej <c-w>j
 nnoremap ek <c-w>k
 nnoremap el <c-w>l
 nnoremap ep gT
 nnoremap en gt
-nnoremap eo gt
 nnoremap et :tabnew<CR>:E<CR>
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
@@ -41,6 +36,8 @@ nnoremap ]q :cnext<CR>
 nnoremap ; :
 nnoremap t ;
 nnoremap T ,
+nnoremap s ;
+nnoremap S ,
 nnoremap <Leader><space> za
 nnoremap <Leader>d zd
 nnoremap <Leader>D zE
@@ -71,6 +68,7 @@ vnoremap <c-f> <Right>
 
 " insert mode mapping
 inoremap jj <esc>
+inoremap jk <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
@@ -92,6 +90,7 @@ cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
 cnoremap <c-h> <BS>
 cnoremap jj <C-c>
+cnoremap jk <C-c>
 cnoremap Jj <C-c>
 cnoremap jJ <C-c>
 cnoremap JJ <C-c>
@@ -245,6 +244,7 @@ set t_Co=256
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
+set bg=dark
 hi Normal               ctermfg=252 ctermbg=NONE
 hi Comment              ctermfg=244
 hi Constant             ctermfg=99
