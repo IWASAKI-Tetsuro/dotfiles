@@ -60,7 +60,7 @@ alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
 alias dcd 'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
 alias drm 'sed -i '\''\!*d'\'' ~/.cd_history'
-alias dless 'dclean && cat -n ~/.cd_history | grep'
+alias dless 'dclean && cat -n ~/.cd_history | less'
 alias dhis dhist
 alias dhi dhist
 alias dls dhist
