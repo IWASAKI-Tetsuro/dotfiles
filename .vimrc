@@ -264,15 +264,15 @@ hi CursorLine                        ctermbg=238  cterm=NONE
 hi LineNr               ctermfg=252  ctermbg=238
 hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
 hi Visual                            ctermbg=238  cterm=NONE
-hi Search               ctermfg=238  ctermbg=210
-hi IncSearch            ctermfg=238  ctermbg=210  cterm=NONE
-hi MatchParen           ctermfg=233  ctermbg=208  cterm=BOLD
+hi Search               ctermfg=198  ctermbg=240  cterm=UNDERLINE
+hi incsearch            ctermfg=198  ctermbg=240  cterm=UNDERLINE
+hi matchparen           ctermfg=208  ctermbg=NONE cterm=UNDERLINE
 
-hi StatusLine           ctermfg=156  ctermbg=238
-hi StatusLineNC         ctermfg=238  ctermbg=250
-hi TabLineSel           ctermfg=238  ctermbg=156
-hi TabLineFill          ctermfg=238  ctermbg=252
-hi TabLine              ctermfg=252  ctermbg=238
+hi statusline           ctermfg=156  ctermbg=238
+hi statuslinenc         ctermfg=238  ctermbg=250
+hi tablinesel           ctermfg=238  ctermbg=156
+hi tablinefill          ctermfg=238  ctermbg=252
+hi tabline              ctermfg=252  ctermbg=238
 hi ModeMsg              ctermfg=11
 hi ErrorMsg             ctermfg=9    ctermbg=NONE
 hi WarningMsg           ctermfg=9    ctermbg=NONE
