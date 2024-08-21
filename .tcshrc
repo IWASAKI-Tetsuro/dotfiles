@@ -9,18 +9,15 @@ setenv ls_colors 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30
 setenv EDITOR 'vim'
 setenv GIT_EDITOR 'vim'
 
-set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~]\n%{\e[01;34m%}-> %%%{\e[0m%} "
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "
 # complete
 set filec
 set autolist=ambiguous
 set complete=enhance
-set correct=cmd
+set correct=all
 set autocorrect
 set autoexpand
 set listjobs=long
-bindkey ^I complete-word-fwd
-bindkey ^[[Z complete-word-back
-bindkey ^W backward-delete-word
 
 # history
 if ( ! -e ~/.tcsh_history) then
@@ -30,12 +27,6 @@ set histfile = ~/.tcsh_history
 set history = 10000
 set savehist = (10000 merge)
 set histdup = erase
-bindkey -s "^[u" "^Ucd ..\n"
-bindkey -s "^[z" "^Ucd -\n"
-bindkey ^P  history-search-backward
-bindkey ^N  history-search-forward
-bindkey ^P  history-search-backward
-bindkey ^R i-search-back
 
 # other
 set color
@@ -43,7 +34,7 @@ set host=`hostname`
 set nobeep
 set noclobber
 set notify
-set path = ($path ~/.fzf/bin)
+set path = ($path ~/.fzf/bin ~/.local/bin)
 set rmstar
 set tperiod=1
 
@@ -65,6 +56,11 @@ alias dhi dhist
 alias dls dhist
 alias dles dless
 alias cdhistory 'dclean && vim ~/.cd_history'
+alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
+alias vimrc 'vim ~/.vimrc'
+alias tcshrc 'vim ~/.tcshrc'
+alias gitconfig 'vim ~/.gitconfig'
+alias tmuxconf 'vim ~/.tmux.conf'
 
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'
@@ -118,11 +114,6 @@ alias amke 'make'
 alias meak 'make'
 alias meka 'make'
 
-alias nvim '~/nvim.appimage'
-alias vimrc 'vim ~/.vimrc'
-alias tcshrc 'vim ~/.tcshrc'
-alias gitconfig 'vim ~/.gitconfig'
-alias tmuxconf 'vim ~/.tmux.conf'
 alias l 'ls'
 alias v 'vim'
 alias vi 'vim'
@@ -171,6 +162,16 @@ alias gstum 'git stash -u -m'
 alias gstp 'git stash pop'
 alias gmr 'git merge'
 
+bindkey -s "^[u" "^Ucd ..\n"
+bindkey -s "^[z" "^Ucd -\n"
+bindkey ^P  history-search-backward
+bindkey ^N  history-search-forward
+bindkey ^P  history-search-backward
+bindkey ^R i-search-back
+bindkey ^I complete-word-fwd
+bindkey ^[[Z complete-word-back
+bindkey ^W backward-delete-word
+
 complete xdvi 'n/*/f:*.dvi/'
 complete alias    'p/1/a/'            # complete aliases
 complete set      'p/1/s/'            # complete variables
@@ -182,5 +183,3 @@ complete setenv 'p/1/e/'
 complete unsetenv 'p/1/e/'
 
 source ~/.cshrc-common
-alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
-set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "
