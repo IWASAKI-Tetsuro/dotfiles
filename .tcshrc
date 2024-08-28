@@ -9,7 +9,6 @@ setenv ls_colors 'di=36:ln=32:so=35:pi=33:ex=33:bd=34;46:cd=34;43:su=37;41:sg=30
 setenv EDITOR 'vim'
 setenv GIT_EDITOR 'vim'
 
-set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "
 # complete
 set filec
 set autolist=ambiguous
@@ -38,14 +37,16 @@ set path = ($path ~/.fzf/bin ~/.local/bin)
 set rmstar
 set tperiod=1
 
+alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
 alias precmd 'history -S && history -L'
+set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "
 alias cd 'chdir \!* && pwd -L >> ~/.cd_history && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
 
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
 endif
 
-alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.cd_history.temp && mv ~/.cd_history.temp ~/.cd_history'
+alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.tmp/.cd_history.temp && mv ~/.tmp/.cd_history.temp ~/.cd_history'
 alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
 alias dcd 'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
@@ -56,7 +57,6 @@ alias dhi dhist
 alias dls dhist
 alias dles dless
 alias cdhistory 'dclean && vim ~/.cd_history'
-alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias gitconfig 'vim ~/.gitconfig'
