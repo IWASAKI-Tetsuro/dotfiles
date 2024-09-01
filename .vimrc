@@ -4,8 +4,8 @@ filetype plugin indent on
 syntax on
 
 " normal mode mapping
-nnoremap <c-p> <Up>
-nnoremap <c-n> <Down>
+nnoremap <c-p> /
+nnoremap <c-n> :
 nnoremap x "_x
 nnoremap X "_X
 nnoremap U <c-r>
@@ -144,6 +144,7 @@ endif
 
 set number
 set ruler
+set nolist
 set cursorline
 set showmatch
 set showtabline=2
@@ -157,6 +158,7 @@ augroup vimrcEx
 augroup END
 
 set whichwrap=b,s,h,l,<,>,[,]
+" set shortmess+=I
 set statusline=%m%r%h%w\ [%l/%L]\ %y\ %F
 set wrap
 set linebreak
