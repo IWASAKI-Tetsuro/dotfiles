@@ -167,7 +167,8 @@ bindkey -s "^[z" "^Ucd -\n"
 bindkey ^P  history-search-backward
 bindkey ^N  history-search-forward
 bindkey ^P  history-search-backward
-bindkey ^R i-search-back
+# bindkey ^R i-search-back
+bindkey -s ^R "^Ufzf-history\n"
 bindkey ^I complete-word-fwd
 bindkey ^[[Z complete-word-back
 bindkey ^W backward-delete-word
@@ -183,3 +184,9 @@ complete setenv 'p/1/e/'
 complete unsetenv 'p/1/e/'
 
 source ~/.cshrc-common
+
+alias fd 'cd `dclean && cat ~/.cd_history |fzf --tac` && pwd -L'
+alias fzf-history 'eval `history | cut -f3 | fzf --tac`'
+alias ffh 'ssh `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | fzf --tac`'
+alias ffhcd 'sshcd `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | grep -v aladdin | fzf --tac`'
+alias fta 'tmux a -t `tmux ls | cut -d" " -f1 | sed "s/://g" | fzf --tac`'
