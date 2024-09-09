@@ -50,6 +50,7 @@ alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line
 alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
 alias dcd 'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
+alias dcd- 'dclean && cd `tail -n -1 ~/.cd_history ` && pwd -L'
 alias drm 'sed -i '\''\!*d'\'' ~/.cd_history'
 alias dless 'dclean && cat -n ~/.cd_history | less'
 alias dhis dhist
@@ -163,12 +164,10 @@ alias gstp 'git stash pop'
 alias gmr 'git merge'
 
 bindkey -s "^[u" "^Ucd ..\n"
-bindkey -s "^[z" "^Ucd -\n"
+bindkey -s "^[-" "^Ucd -\n"
 bindkey ^P  history-search-backward
 bindkey ^N  history-search-forward
-bindkey ^P  history-search-backward
 # bindkey ^R i-search-back
-bindkey -s ^R "^Ufzf-history\n"
 bindkey ^I complete-word-fwd
 bindkey ^[[Z complete-word-back
 bindkey ^W backward-delete-word
@@ -185,6 +184,7 @@ complete unsetenv 'p/1/e/'
 
 source ~/.cshrc-common
 
+bindkey -s ^R "^Ufzf-history\n"
 alias fd 'cd `dclean && cat ~/.cd_history |fzf --tac` && pwd -L'
 alias fzf-history 'eval `history | cut -f3 | fzf --tac`'
 alias ffh 'ssh `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | fzf --tac`'
