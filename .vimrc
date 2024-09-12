@@ -1,3 +1,6 @@
+mapclear
+colorscheme default
+
 let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin indent on

@@ -1,3 +1,5 @@
+unalias *
+
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
 #lesskey ~/.lesskey
