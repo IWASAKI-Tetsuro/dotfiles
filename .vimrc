@@ -29,8 +29,7 @@ nnoremap <silent>K 10k
 nnoremap <silent>L 5l
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -139,11 +138,11 @@ set foldmethod=manual
 " " cursor shape
 if &term =~ 'screen' || &term =~ 'tmux'
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
-  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+  let &t_EI = "\ePtmux;\e\e[1 q\e\\"
   let &t_SR = "\ePtmux;\e\e[4 q\e\\"
 else
   let &t_SI = "\e[6 q"
-  let &t_EI = "\e[2 q"
+  let &t_EI = "\e[1 q"
   let &t_SR = "\e[4 q"
 endif
 
@@ -273,7 +272,7 @@ hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
 hi Visual                            ctermbg=238  cterm=NONE
 hi Search               ctermfg=212  ctermbg=237  cterm=UNDERLINE
 hi incsearch            ctermfg=212  ctermbg=237  cterm=UNDERLINE
-hi matchparen           ctermfg=208  ctermbg=NONE cterm=UNDERLINE
+hi matchparen           ctermfg=212  ctermbg=NONE cterm=UNDERLINE
 
 hi statusline           ctermfg=156  ctermbg=238
 hi statuslinenc         ctermfg=238  ctermbg=250
