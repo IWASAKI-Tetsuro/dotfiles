@@ -271,8 +271,8 @@ hi CursorLine                        ctermbg=238  cterm=NONE
 hi LineNr               ctermfg=252  ctermbg=238
 hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
 hi Visual                            ctermbg=238  cterm=NONE
-hi Search               ctermfg=198  ctermbg=236  cterm=UNDERLINE
-hi incsearch            ctermfg=198  ctermbg=236  cterm=UNDERLINE
+hi Search               ctermfg=212  ctermbg=237  cterm=UNDERLINE
+hi incsearch            ctermfg=212  ctermbg=237  cterm=UNDERLINE
 hi matchparen           ctermfg=208  ctermbg=NONE cterm=UNDERLINE
 
 hi statusline           ctermfg=156  ctermbg=238
