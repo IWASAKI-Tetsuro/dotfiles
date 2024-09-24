@@ -165,6 +165,7 @@ alias gstu 'git stash -u'
 alias gstum 'git stash -u -m'
 alias gstp 'git stash pop'
 alias gmr 'git merge'
+alias nake 'make `cat ./Makefile | grep '\'':$'\'' | sed '\''s/://g'\'' | tail -n +\!* | head -1`'
 
 bindkey -s "^[u" "^Ucd ..\n"
 bindkey -s "^[-" "^Ucd -\n"
