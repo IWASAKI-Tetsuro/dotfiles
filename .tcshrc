@@ -48,11 +48,10 @@ if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
 endif
 
-alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- > ~/.tmp/.cd_history.temp && mv ~/.tmp/.cd_history.temp ~/.cd_history'
+alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- | tail -n 99 >! ~/.tmp/.cd_history.temp && mv ~/.tmp/.cd_history.temp ~/.cd_history && set dcd_cmp = `cat ~/.cd_history | nl -n rz -w 2 | cut -f1 | tac | xargs` && complete dcd "C/*/($dcd_cmp)/"'
 alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
 alias dcd 'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
-alias dcd- 'dclean && cd `tail -n -1 ~/.cd_history ` && pwd -L'
 alias drm 'sed -i '\''\!*d'\'' ~/.cd_history'
 alias dless 'dclean && cat -n ~/.cd_history | less'
 alias dhis dhist
@@ -111,6 +110,7 @@ alias v. 'vim ./'
 alias v./ 'vim ./'
 alias vi. 'vim ./'
 alias vi./ 'vim ./'
+alias make 'set make_cmp = `cat Makefile | sed -n '\''s/:$//p'\'' | xargs` && complete make "C/*/($make_cmp)/" && \make'
 alias maek 'make'
 alias amek 'make'
 alias amke 'make'
@@ -165,7 +165,6 @@ alias gstu 'git stash -u'
 alias gstum 'git stash -u -m'
 alias gstp 'git stash pop'
 alias gmr 'git merge'
-alias nake 'make `cat ./Makefile | grep '\'':$'\'' | sed '\''s/://g'\'' | tail -n +\!* | head -1`'
 
 bindkey -s "^[u" "^Ucd ..\n"
 bindkey -s "^[-" "^Ucd -\n"
