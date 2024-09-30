@@ -8,6 +8,7 @@ syntax on
 
 " normal mode mapping
 nnoremap <c-p> /
+nnoremap <c-r> /<c-r>"<cr>
 nnoremap <c-n> :
 nnoremap x "_x
 nnoremap X "_X
