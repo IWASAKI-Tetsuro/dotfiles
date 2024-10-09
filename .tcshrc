@@ -39,7 +39,7 @@ set path = ($path ~/.fzf/bin ~/.local/bin)
 set rmstar
 set tperiod=1
 
-alias gitbranch 'git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
+alias gitbranch '\git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
 alias precmd 'history -S && history -L'
 set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "
 alias cd 'chdir \!* && pwd -L >> ~/.cd_history && set prompt = "%{\e[32m%}%n@%m %{\e[01;34m%}[%P] %{\e[0m%}[%~] %{\e[32m%}`gitbranch` \n%{\e[01;34m%}-> %%%{\e[0m%} "'
