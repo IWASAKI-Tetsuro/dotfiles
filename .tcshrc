@@ -2,7 +2,6 @@ unalias *
 
 # enviroment value
 setenv LESS '-i -M -R -Q -F -X'
-#lesskey ~/.lesskey
 
 setenv TERM xterm-256color
 setenv TERM screen-256color
