@@ -59,12 +59,12 @@ vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
-vnoremap ( "adi()<Esc>"aP<Left>%
-vnoremap [ "adi[]<Esc>"aP<Left>%
-vnoremap { "adi{}<Esc>"aP<Left>%
-vnoremap < "adi<><Esc>"aP<Left>%
-vnoremap / "ay/<C-r>a<CR>
-vnoremap ? "ay?<C-r>a<CR>
+vnoremap ( di()<Esc>P<Left>%
+vnoremap [ di[]<Esc>P<Left>%
+vnoremap { di{}<Esc>P<Left>%
+vnoremap < di<><Esc>P<Left>%
+vnoremap / y/<C-r>"<CR>
+vnoremap ? y?<C-r>"<CR>
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>
@@ -360,7 +360,6 @@ endfunction
 autocmd FileType qf wincmd J
 autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
 
-
 let s:path = expand('~/vim/reg/vimreg')
 function Savereg() abort
   call writefile([json_encode(getreginfo())], s:path)
@@ -370,3 +369,4 @@ function Loadreg() abort
   call setreg(v:register, readfile(s:path)->join()->json_decode())
   echo 'Restore register'
 endfunction
+
