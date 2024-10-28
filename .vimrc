@@ -6,8 +6,6 @@ set timeoutlen=400
 filetype plugin indent on
 syntax on
 " normal mode mapping
-nnoremap <c-p> /
-nnoremap <c-n> :
 nnoremap x "_x
 nnoremap X "_X
 nnoremap U <c-r>
@@ -28,8 +26,8 @@ nnoremap <silent>K 10k
 nnoremap <silent>L 5l
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
-nnoremap <Leader>y :call Savereg()<CR>
-nnoremap <Leader>p :call Loadreg()<CR>
+nnoremap <Leader>s :call Savereg()<CR>
+nnoremap <Leader>l :call Loadreg()<CR>
 nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap n nzzzv
@@ -62,6 +60,9 @@ vnoremap v <c-v>
 vnoremap ( di()<Esc>P<Left>%
 vnoremap [ di[]<Esc>P<Left>%
 vnoremap { di{}<Esc>P<Left>%
+vnoremap ) di()<Esc>P<Left>%
+vnoremap ] di[]<Esc>P<Left>%
+vnoremap } di{}<Esc>P<Left>%
 vnoremap < di<><Esc>P<Left>%
 vnoremap / y/<C-r>"<CR>
 vnoremap ? y?<C-r>"<CR>
