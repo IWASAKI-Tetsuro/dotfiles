@@ -5,7 +5,6 @@ let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin indent on
 syntax on
-
 " normal mode mapping
 nnoremap <c-p> /
 nnoremap <c-n> :
@@ -51,18 +50,18 @@ vnoremap H 5h
 vnoremap J 10j
 vnoremap K 10k
 vnoremap L 5l
-nnoremap t ;
-nnoremap T ,
+vnoremap t ;
+vnoremap T ,
 vnoremap <silent> j gj
 vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
-vnoremap ( s()<Esc>P<Left>%
-vnoremap [ s[]<Esc>P<Left>%
-vnoremap { s{}<Esc>P<Left>%
-vnoremap < s<><Esc>P<Left>%
-vnoremap / y/<C-r>"<CR>
+vnoremap ( "as()<Esc>"aP<Left>%
+vnoremap [ "as[]<Esc>"aP<Left>%
+vnoremap { "as{}<Esc>"aP<Left>%
+vnoremap < "as<><Esc>"aP<Left>%
+vnoremap / "ay/<C-r>a<CR>
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>
