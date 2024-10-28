@@ -59,10 +59,10 @@ vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
-vnoremap ( s()<Esc>P<right>
-vnoremap [ s[]<Esc>P<right>
-vnoremap { s{}<Esc>P<right>
-vnoremap < s<><Esc>P<right>
+vnoremap ( s()<Esc>P<left>%
+vnoremap [ s[]<Esc>P<left>%
+vnoremap { s{}<Esc>P<left>%
+vnoremap < s<><Esc>P<left>%
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>
