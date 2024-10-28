@@ -28,6 +28,8 @@ nnoremap <silent>K 10k
 nnoremap <silent>L 5l
 nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
+nnoremap <Leader>y :call Savereg()<CR>
+nnoremap <Leader>p :call Loadreg()<CR>
 nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap n nzzzv
@@ -57,11 +59,12 @@ vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
-vnoremap ( "as()<Esc>"aP<Left>%
-vnoremap [ "as[]<Esc>"aP<Left>%
-vnoremap { "as{}<Esc>"aP<Left>%
-vnoremap < "as<><Esc>"aP<Left>%
+vnoremap ( "adi()<Esc>"aP<Left>%
+vnoremap [ "adi[]<Esc>"aP<Left>%
+vnoremap { "adi{}<Esc>"aP<Left>%
+vnoremap < "adi<><Esc>"aP<Left>%
 vnoremap / "ay/<C-r>a<CR>
+vnoremap ? "ay?<C-r>a<CR>
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>
@@ -274,8 +277,8 @@ hi CursorLine                        ctermbg=238  cterm=NONE
 hi LineNr               ctermfg=252  ctermbg=238
 hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
 hi Visual                            ctermbg=238  cterm=NONE
-hi Search               ctermfg=212  ctermbg=237  cterm=UNDERLINE
-hi incsearch            ctermfg=212  ctermbg=237  cterm=UNDERLINE
+hi Search               ctermfg=212  ctermbg=236  cterm=UNDERLINE
+hi incsearch            ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi matchparen           ctermfg=212  ctermbg=NONE cterm=UNDERLINE
 
 hi statusline           ctermfg=156  ctermbg=238
@@ -357,3 +360,13 @@ endfunction
 autocmd FileType qf wincmd J
 autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
 
+
+let s:path = expand('~/vim/reg/vimreg')
+function Savereg() abort
+  call writefile([json_encode(getreginfo())], s:path)
+  echo 'Save register'
+endfunction
+function Loadreg() abort
+  call setreg(v:register, readfile(s:path)->join()->json_decode())
+  echo 'Restore register'
+endfunction
