@@ -39,8 +39,6 @@ nnoremap ]q :cnext<CR>
 nnoremap ; :
 nnoremap t ;
 nnoremap T ,
-nnoremap s ;
-nnoremap S ,
 nnoremap <Leader><space> za
 nnoremap <Leader>d zd
 nnoremap <Leader>D zE
@@ -54,11 +52,17 @@ vnoremap H 5h
 vnoremap J 10j
 vnoremap K 10k
 vnoremap L 5l
+nnoremap t ;
+nnoremap T ,
 vnoremap <silent> j gj
 vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
+vnoremap ( s()<Esc>P<right>
+vnoremap [ s[]<Esc>P<right>
+vnoremap { s{}<Esc>P<right>
+vnoremap < s<><Esc>P<right>
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>

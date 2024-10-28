@@ -50,6 +50,7 @@ endif
 alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- | tail -n 99 >! ~/.tmp/.cd_history.temp && mv ~/.tmp/.cd_history.temp ~/.cd_history && set dcd_cmp = `cat ~/.cd_history | nl -n rz -w 2 | cut -f1 | tac | xargs` && complete dcd "C/*/($dcd_cmp)/"'
 alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
+alias dcdl 'cd `tail -n 1 ~/.cd_history` && pwd -L'
 alias dcd 'cd `tail -n +\!* ~/.cd_history | head -1` && pwd -L'
 alias drm 'sed -i '\''\!*d'\'' ~/.cd_history'
 alias dless 'dclean && cat -n ~/.cd_history | less'
