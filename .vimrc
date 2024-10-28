@@ -8,7 +8,6 @@ syntax on
 
 " normal mode mapping
 nnoremap <c-p> /
-nnoremap <c-r> /<c-r>"<cr>
 nnoremap <c-n> :
 nnoremap x "_x
 nnoremap X "_X
@@ -59,10 +58,11 @@ vnoremap <silent> k gk
 vnoremap <c-a> 0
 vnoremap <c-e> $
 vnoremap v <c-v>
-vnoremap ( s()<Esc>P<left>%
-vnoremap [ s[]<Esc>P<left>%
-vnoremap { s{}<Esc>P<left>%
-vnoremap < s<><Esc>P<left>%
+vnoremap ( s()<Esc>P<Left>%
+vnoremap [ s[]<Esc>P<Left>%
+vnoremap { s{}<Esc>P<Left>%
+vnoremap < s<><Esc>P<Left>%
+vnoremap / y/<C-r>"<CR>
 vnoremap <BS> "_X
 vnoremap <space> zf
 vnoremap <c-a> <Home>
