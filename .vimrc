@@ -1,6 +1,3 @@
-mapclear
-colorscheme default
-
 let mapleader = "\<SPACE>"
 set timeoutlen=400
 filetype plugin indent on
@@ -75,7 +72,6 @@ vnoremap <c-n> <Down>
 
 " insert mode mapping
 inoremap jj <esc>
-inoremap jk <esc>
 inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
@@ -252,8 +248,8 @@ augroup END
 
 " Color scheme
 set t_Co=256
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set bg=dark
 hi Normal               ctermfg=252 ctermbg=NONE
@@ -361,7 +357,7 @@ endfunction
 autocmd FileType qf wincmd J
 autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
 
-let s:path = expand('~/vim/reg/vimreg')
+let s:path = expand('~/.tmp/vimreg')
 function Savereg() abort
   call writefile([json_encode(getreginfo())], s:path)
   echo 'Save register'
