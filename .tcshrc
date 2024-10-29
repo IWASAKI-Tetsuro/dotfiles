@@ -43,8 +43,8 @@ set tperiod=1
 
 alias gitbranch '\git branch --no-color |& sed -e "/^[^*]/d" -e "s/* \(.*\)/\[\1\]/"'
 alias precmd 'history -S && history -L'
-set prompt = "%{\e[32;1m%}%n@%m %{\e[34;1m%}[%P] %{\e[0m%}[%~] %{\e[32;1m%}`gitbranch` \n%{\e[34;1m%}-> %%%{\e[0m%} "
-alias cd 'chdir \!* && pwd -L >> ~/.cd_history && set prompt = "%{\e[32;1m%}%n@%m %{\e[34;1m%}[%P] %{\e[0m%}[%~] %{\e[32;1m%}`gitbranch` \n%{\e[34;1m%}-> %%%{\e[0m%} "'
+set prompt = "%{\e[32;1m%}%n@%m %{\e[34;1m%}[%P] %{\e[39;1m%}[%~] %{\e[32;1m%}`gitbranch` \n%{\e[34;1m%}-> %%%{\e[0m%} "
+alias cd 'chdir \!* && pwd -L >> ~/.cd_history && set prompt = "%{\e[32;1m%}%n@%m %{\e[34;1m%}[%P] %{\e[39;1m%}[%~] %{\e[32;1m%}`gitbranch` \n%{\e[34;1m%}-> %%%{\e[0m%} "'
 
 if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
