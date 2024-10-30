@@ -39,6 +39,8 @@ nnoremap <Leader>d zd
 nnoremap <Leader>D zE
 nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
+nnoremap <c-a> 0
+nnoremap <c-e> $
 
 " visual mode mapping
 vnoremap x "_x
