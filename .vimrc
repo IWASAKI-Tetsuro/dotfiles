@@ -250,59 +250,61 @@ augroup END
 
 " Color scheme
 set t_Co=256
+set termguicolors
+set notermguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set bg=dark
-hi Normal               ctermfg=252 ctermbg=NONE
-hi Comment              ctermfg=244
-hi Constant             ctermfg=99
-hi Statement            ctermfg=197               cterm=BOLD
-hi String               ctermfg=228               cterm=BOLD
-hi Character            ctermfg=99
-hi Identifier           ctermfg=208
-hi Type                 ctermfg=81
-hi Title                ctermfg=228
-hi Preproc              ctermfg=81
-hi Special              ctermfg=81
-hi Directory            ctermfg=14
-hi Question             ctermfg=46
-hi markdownLinkText     ctermfg=228
-hi markdownItalic                                 cterm=NONE
-hi markdownItalic                                 cterm=ITALIC
-
-hi Cursor                            ctermbg=240
-hi CursorLine                        ctermbg=238  cterm=NONE
-hi LineNr               ctermfg=252  ctermbg=238
-hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE
-hi Visual                            ctermbg=238  cterm=NONE
-hi Search               ctermfg=212  ctermbg=236  cterm=UNDERLINE
-hi incsearch            ctermfg=212  ctermbg=236  cterm=UNDERLINE
-hi matchparen           ctermfg=212  ctermbg=NONE cterm=UNDERLINE
-
-hi statusline           ctermfg=156  ctermbg=238
-hi statuslinenc         ctermfg=238  ctermbg=250
-hi tablinesel           ctermfg=238  ctermbg=156
-hi tablinefill          ctermfg=238  ctermbg=252
-hi tabline              ctermfg=252  ctermbg=238
-hi ModeMsg              ctermfg=11
-hi ErrorMsg             ctermfg=9    ctermbg=NONE
-hi WarningMsg           ctermfg=9    ctermbg=NONE
-
-hi DiffAdd                           ctermbg=24
-hi DiffDelete           ctermfg=162  ctermbg=53
-hi DiffChange                        ctermbg=236
-hi DiffText             ctermfg=210  ctermbg=236   cterm=BOLD
-
-hi FoldColumn           ctermfg=81   ctermbg=238
-hi Folded               ctermfg=81   ctermbg=NONE
-
-hi netrwDir             ctermfg=81   ctermbg=NONE
-hi netrwClassify        ctermfg=250  ctermbg=NONE
-hi netrwLink            ctermfg=156  ctermbg=NONE
-hi netrwTreebar         ctermfg=242  ctermbg=NONE
-hi netrwSymLink         ctermfg=208  ctermbg=NONE
-hi netrwExe             ctermfg=99   ctermbg=NONE
+hi Normal               ctermfg=252 ctermbg=NONE                  " guifg=#        guibg=#                      
+hi Comment              ctermfg=244                               " guifg=#                                     
+hi Constant             ctermfg=99                                " guifg=#                                     
+hi Statement            ctermfg=197               cterm=BOLD      " guifg=#                        gui=BOLD     
+hi String               ctermfg=228               cterm=BOLD      " guifg=#                        gui=BOLD     
+hi Character            ctermfg=99                                " guifg=#                                     
+hi Identifier           ctermfg=208                               " guifg=#                                     
+hi Type                 ctermfg=81                                " guifg=#                                     
+hi Title                ctermfg=228                               " guifg=#                                     
+hi Preproc              ctermfg=81                                " guifg=#                                     
+hi Special              ctermfg=81                                " guifg=#                                     
+hi Directory            ctermfg=14                                " guifg=#                                     
+hi Question             ctermfg=46                                " guifg=#                                     
+hi markdownLinkText     ctermfg=228                               " guifg=#                                     
+hi markdownItalic                                 cterm=NONE      "                                gui=NONE     
+hi markdownItalic                                 cterm=ITALIC    "                                gui=ITALIC   
+                                                                  "                                             
+hi Cursor                            ctermbg=240                  "                guibg=#                      
+hi CursorLine                        ctermbg=238  cterm=NONE      "                guibg=#         gui=NONE     
+hi LineNr               ctermfg=252  ctermbg=238                  " guifg=#        guibg=#                      
+hi CursorLineNr         ctermfg=238  ctermbg=250  cterm=NONE      " guifg=#        guibg=#         gui=NONE     
+hi Visual                            ctermbg=238  cterm=NONE      "                guibg=#         gui=NONE     
+hi Search               ctermfg=212  ctermbg=236  cterm=UNDERLINE " guifg=#        guibg=#         gui=UNDERLINE
+hi incsearch            ctermfg=212  ctermbg=236  cterm=UNDERLINE " guifg=#        guibg=#         gui=UNDERLINE
+hi matchparen           ctermfg=212  ctermbg=NONE cterm=UNDERLINE " guifg=#        guibg=#         gui=UNDERLINE
+                                                                  "                                             
+hi statusline           ctermfg=156  ctermbg=238                  " guifg=#        guibg=#                      
+hi statuslinenc         ctermfg=238  ctermbg=250                  " guifg=#        guibg=#                      
+hi tablinesel           ctermfg=238  ctermbg=156                  " guifg=#        guibg=#                      
+hi tablinefill          ctermfg=238  ctermbg=252                  " guifg=#        guibg=#                      
+hi tabline              ctermfg=252  ctermbg=238                  " guifg=#        guibg=#                      
+hi ModeMsg              ctermfg=11                                " guifg=#                                     
+hi ErrorMsg             ctermfg=9    ctermbg=NONE                 " guifg=#        guibg=#                      
+hi WarningMsg           ctermfg=9    ctermbg=NONE                 " guifg=#        guibg=#                      
+                                                                  "                                             
+hi DiffAdd                           ctermbg=24                   "                guibg=#                      
+hi DiffDelete           ctermfg=162  ctermbg=53                   " guifg=#        guibg=#                      
+hi DiffChange                        ctermbg=236                  "                guibg=#                      
+hi DiffText             ctermfg=210  ctermbg=236   cterm=BOLD     " guifg=#        guibg=#         gui=BOLD     
+                                                                  "                                             
+hi FoldColumn           ctermfg=81   ctermbg=238                  " guifg=#        guibg=#                      
+hi Folded               ctermfg=81   ctermbg=NONE                 " guifg=#        guibg=#                      
+                                                                  "                                             
+hi netrwDir             ctermfg=81   ctermbg=NONE                 " guifg=#        guibg=#                      
+hi netrwClassify        ctermfg=250  ctermbg=NONE                 " guifg=#        guibg=#                      
+hi netrwLink            ctermfg=156  ctermbg=NONE                 " guifg=#        guibg=#                      
+hi netrwTreebar         ctermfg=242  ctermbg=NONE                 " guifg=#        guibg=#                      
+hi netrwSymLink         ctermfg=208  ctermbg=NONE                 " guifg=#        guibg=#                      
+hi netrwExe             ctermfg=99   ctermbg=NONE                 " guifg=#        guibg=#                      
 
 " To get the syntax ID
 function! s:get_syn_id(transparent)
@@ -346,9 +348,9 @@ command! SyntaxInfo call s:get_syn_info()
 " Highlighting trailing and leading spaces
 augroup HighlightSpaces
   autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244
+  autocmd VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 gui=underline guifg=#FFFFFF
   autocmd VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
-augroup END
+augroup END   
 
 function! OpenQuickfixWindow()
   tabnew
