@@ -16,16 +16,16 @@ nnoremap ek <c-w>k
 nnoremap el <c-w>l
 nnoremap ep gT
 nnoremap en gt
-nnoremap et :tabnew<CR>:E<CR>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 nnoremap <silent>H 5h
 nnoremap <silent>J 10j
 nnoremap <silent>K 10k
 nnoremap <silent>L 5l
-nnoremap <CR> A<Return><Esc>
 nnoremap <silent>ee :call ToggleNetrw()<CR>
+nnoremap <silent>et :tabnew<CR>:E<CR>
 nnoremap <Leader>s :call Savereg()<CR>
 nnoremap <Leader>l :call Loadreg()<CR>
-nnoremap <Tab> %
 nnoremap <BS> "_X
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -41,6 +41,7 @@ nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
 nnoremap <c-a> 0
 nnoremap <c-e> $
+nnoremap <leader>p :call ShowMostRecentlyClosedTabs()<CR>
 
 " visual mode mapping
 vnoremap x "_x
@@ -206,7 +207,7 @@ function! ToggleNetrw()
       let g:NetrwIsOpen=0
     else
       let g:NetrwIsOpen=1
-      silent Vex
+      silent Vex 25
     endif
 endfunction
 
@@ -412,12 +413,35 @@ endfunction
 autocmd FileType qf wincmd J
 autocmd QuickfixCmdPost vimgrep call OpenQuickfixWindow()
 
-let s:path = expand('~/.tmp/vimreg')
+let s:vimreg = expand('~/.vim/vimreg')
 function Savereg() abort
-  call writefile([json_encode(getreginfo())], s:path)
+  call writefile([json_encode(getreginfo())], s:vimreg)
   echo 'Save register'
 endfunction
 function Loadreg() abort
   call setreg(v:register, readfile(s:path)->join()->json_decode())
   echo 'Restore register'
 endfunction
+
+let s:vimhis = expand('~/.vim/vimhis')
+let g:most_recently_closed = readfile(s:vimhis)
+
+augroup MostRecentlyClosedTabs
+  autocmd!
+  autocmd BufWinLeave * if (expand('<amatch>') != '' && expand('<amatch>') !~ 'Netrw') | call insert(g:most_recently_closed, expand('<amatch>')) | endif
+augroup END
+
+autocmd VimLeave * call writefile(g:most_recently_closed, s:vimhis)
+
+function! ShowMostRecentlyClosedTabs() abort
+  10new
+  set bufhidden=hide
+  call append(0, g:most_recently_closed)
+  $delete
+  autocmd WinClosed <buffer> bwipeout!
+  nnoremap <buffer> q :bwipeout!<CR>
+  nnoremap <buffer> <ESC> :bwipeout!<CR>
+  nnoremap <buffer> dd :call remove(g:most_recently_closed, line('.') - 1)<CR> :delete<CR>
+  nnoremap <buffer> <CR> :execute 'tabnew ' .. g:most_recently_closed[line('.') - 1]<CR>
+endfunction
+

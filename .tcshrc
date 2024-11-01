@@ -49,7 +49,15 @@ if ( ! -e ~/.cd_history) then
   touch ~/.cd_history
 endif
 
+if ( ! -e ~/.vim/vimreg) then
+  touch ~/.vim/vimreg
+endif
+
+if ( ! -e ~/.vim/vimhis) then
+  touch ~/.vim/vimhis
+endif
 alias dclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.cd_history | sort -k1,1n | cut -d" " -f2- | tail -n 99 >! ~/.tmp/.cd_history.temp && mv ~/.tmp/.cd_history.temp ~/.cd_history && set dcd_cmp = `cat ~/.cd_history | nl -n rz -w 2 | cut -f1 | tac | xargs` && complete dcd "C/*/($dcd_cmp)/"'
+alias vclean 'awk '\''{ seen[$0] = NR } END { for (line in seen) print seen[line], line }'\'' ~/.vim/vimhis | sort -k1,1n | cut -d" " -f2- >! ~/.tmp/.vimhis.temp && mv ~/.tmp/.vimhis.temp ~/.vim/vimhis'
 alias dhist 'dclean && cat -n ~/.cd_history | tail -n -20'
 alias dgrep 'dclean && cat -n ~/.cd_history | grep'
 alias dcdl 'cd `tail -n 1 ~/.cd_history` && pwd -L'
@@ -61,6 +69,7 @@ alias dhi dhist
 alias dls dhist
 alias dles dless
 alias cdhistory 'dclean && vim ~/.cd_history'
+alias vimhis 'vclean && vim ~/.vim/vimhis'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
 alias gitconfig 'vim ~/.gitconfig'
