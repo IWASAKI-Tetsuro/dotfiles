@@ -36,7 +36,7 @@ set host=`hostname`
 set nobeep
 set noclobber
 set notify
-set path = ($path ~/.fzf/bin ~/.local/bin)
+set path = ($path ~/.fzf/bin ~/.local/bin ~/scripts)
 set rmstar
 set tperiod=1
 
@@ -142,7 +142,7 @@ alias vm 'vim'
 alias t 'tmux'
 alias ta 'tmux a -t'
 alias taa 'tmux a'
-alias tls 'tmux ls | nl'
+alias tls 'set tls_cmp = `tmux ls | sed '\''s/:.*$//g'\'' | xargs` && complete ta "C/*/($tls_cmp)/" && tmux ls | nl'
 alias tlsa 'tmux a -t `tmux ls | sed '\''s/:.*$//g'\'' | tail -n +\!* | head -1`'
 alias tn 'tmux new -s'
 alias tkill 'tmux kill-session -t'
@@ -246,7 +246,7 @@ complete find           'n/-name/f/' \
                 'n/*/d/'
 complete chgrp          'p/*/g/'
 complete chown          'p/*/u/'
-complete kill 'p/*/`ps ax | awk ?{print? ?$1?}`/'
+complete kill 'p/*/`ps ax | awk ? {print? ?$1?}`/'
 
 # Remove
 complete rm     'c/--/"(directory force interactive verbose recursive help version)"/' \

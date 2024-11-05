@@ -41,7 +41,7 @@ nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
 nnoremap <c-a> 0
 nnoremap <c-e> $
-nnoremap <leader>p :call ShowMostRecentlyClosedTabs()<CR>
+nnoremap ep :call ShowMostRecentlyClosedTabs()<CR>
 
 " visual mode mapping
 vnoremap x "_x
@@ -419,7 +419,7 @@ function Savereg() abort
   echo 'Save register'
 endfunction
 function Loadreg() abort
-  call setreg(v:register, readfile(s:path)->join()->json_decode())
+  call setreg(v:register, readfile(s:vimreg)->join()->json_decode())
   echo 'Restore register'
 endfunction
 
@@ -441,6 +441,7 @@ function! ShowMostRecentlyClosedTabs() abort
   autocmd WinClosed <buffer> bwipeout!
   nnoremap <buffer> q :bwipeout!<CR>
   nnoremap <buffer> <ESC> :bwipeout!<CR>
+  nnoremap <buffer> ep :bwipeout!<CR>
   nnoremap <buffer> dd :call remove(g:most_recently_closed, line('.') - 1)<CR> :delete<CR>
   nnoremap <buffer> <CR> :execute 'tabnew ' .. g:most_recently_closed[line('.') - 1]<CR>
 endfunction
