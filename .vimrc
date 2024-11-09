@@ -39,7 +39,7 @@ nnoremap <Leader>d zd
 nnoremap <Leader>D zE
 nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
-nnoremap <c-a> 0
+" nnoremap <c-a> 0
 nnoremap <c-e> $
 nnoremap ep :call ShowMostRecentlyClosedTabs()<CR>
 
