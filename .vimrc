@@ -10,12 +10,12 @@ nnoremap Y y$
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap e <Nop>
+nnoremap ev :<c-u>vnew<CR><c-w>l:E<CR>
+nnoremap e <nop>
 nnoremap eh <c-w>h
 nnoremap ej <c-w>j
 nnoremap ek <c-w>k
 nnoremap el <c-w>l
-nnoremap ep gT
-nnoremap en gt
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent>H 5h
@@ -39,6 +39,7 @@ nnoremap <Leader>d zd
 nnoremap <Leader>D zE
 nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
+nnoremap gv :vnew <cfile><CR>
 " nnoremap <c-a> 0
 nnoremap <c-e> $
 nnoremap ep :call ShowMostRecentlyClosedTabs()<CR>
@@ -92,6 +93,7 @@ cnoremap <c-n> <Down>
 cnoremap <c-b> <Left>
 cnoremap <c-f> <Right>
 cnoremap <c-d> <Del>
+cnoremap <c-u> <c-c>:
 cnoremap jj <C-c>
 cnoremap jk <C-c>
 cnoremap Jj <C-c>
