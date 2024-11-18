@@ -266,7 +266,8 @@ alias ffh 'ssh `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | fzf --tac`'
 alias ffhcd 'sshcd `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | grep -v aladdin | fzf --tac`'
 alias fta 'tmux a -t `tmux ls | cut -d" " -f1 | sed "s/://g" | fzf --tac`'
 
-if ( ! $?TMUX && ! $?SSH_TTY) then
+# if ( ! $?TMUX && ! $?SSH_TTY) then
+if ( ! $?TMUX && `hostname` == "ubuntu22.o.vlsi.es.kit.ac.jp") then
   set TMUX_COUNT = `ps -ax | grep '[t]mux' | wc -l` 
   if ($TMUX_COUNT == 0) then
     tmux
