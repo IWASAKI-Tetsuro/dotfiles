@@ -335,8 +335,8 @@ else
   hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE 
   hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE 
   hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE 
-  hi Pmenu                         ctermbg=240
-  hi PmenuSel         ctermfg=252  ctermbg=212
+  hi Pmenu                         ctermbg=238
+  hi PmenuSel         ctermfg=252  ctermbg=197
                                                                 
   hi statusline       ctermfg=156  ctermbg=238                  
   hi statuslinenc     ctermfg=238  ctermbg=250                  
