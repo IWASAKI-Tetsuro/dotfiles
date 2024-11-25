@@ -5,6 +5,8 @@ syntax on
 " normal mode mapping
 nnoremap x "_x
 nnoremap X "_X
+nnoremap s "_s
+nnoremap S "_S
 nnoremap U <c-r>
 nnoremap Y y$
 nnoremap <silent> j gj
@@ -41,12 +43,14 @@ nnoremap <Leader>a zR
 nnoremap gf :tabedit <cfile><CR>
 nnoremap gv :vnew <cfile><CR>
 " nnoremap <c-a> 0
-nnoremap <c-e> $
+" nnoremap <c-e> $
 nnoremap ep :call ShowMostRecentlyClosedTabs()<CR>
 
 " visual mode mapping
 vnoremap x "_x
 vnoremap X "_X
+vnoremap s "_s
+vnoremap S "_S
 vnoremap H 5h
 vnoremap J 10j
 vnoremap K 10k
@@ -84,6 +88,7 @@ inoremap <c-e> <End>
 inoremap <c-b> <Left>
 inoremap <c-f> <Right>
 inoremap <c-d> <Del>
+inoremap <c-]> <Esc><right>
 
 " command line mode mapping
 cnoremap <c-a> <Home>
