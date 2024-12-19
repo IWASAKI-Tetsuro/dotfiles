@@ -13,7 +13,7 @@ nn Y y$
 nn <silent> j gj
 nn <silent> k gk
 nn e <Nop>
-nn ev :<c-u>vnew<CR><c-w>l:E<CR>
+nn ev :<c-u>vne<CR><c-w>l:E<CR>
 nn es :<c-u>new<CR><c-w>:E<CR>
 nn e <nop>
 nn eh <c-w>h
@@ -26,15 +26,17 @@ nn <silent>H 5h
 nn <silent>J 10j
 nn <silent>K 10k
 nn <silent>L 5l
-nn <silent>ee :call ToggleNetrw()<CR>
+nn <silent>ee :cal ToggleNetrw()<CR>
 nn <silent>et :tabnew<CR>:E<CR>
-nn <Leader>s :call Savereg()<CR>
-nn <Leader>l :call Loadreg()<CR>
+nn <Leader>s :cal Savereg()<CR>
+nn <Leader>l :cal Loadreg()<CR>
 nn <BS> "_X
 nn n nzzzv
 nn N Nzzzv
 nn [q :cprevious<CR>
 nn ]q :cnext<CR>
+nn p ]p`]
+nn P ]P`]
 nn ; :
 nn t ;
 nn T ,
@@ -43,8 +45,8 @@ nn <Leader>d zd
 nn <Leader>D zE
 nn <Leader>a zR
 nn gf :tabedit <cfile><CR>
-nn gv :vnew <cfile><CR>
-nn ep :call ShowMostRecentlyClosedTabs()<CR>
+nn gv :vne <cfile><CR>
+nn ep :cal ShowMostRecentlyClosedTabs()<CR>
 
 " visual mode mapping
 vn x "_x
@@ -69,6 +71,7 @@ vn ) di()<Esc>P<Left>%
 vn ] di[]<Esc>P<Left>%
 vn } di{}<Esc>P<Left>%
 vn < di<><Esc>P<Left>%
+vn > >gv
 vn / y/<C-r>"<CR>
 vn ? y?<C-r>"<CR>
 vn <BS> "_X
@@ -108,7 +111,7 @@ cno qw wq
 command! Wq wq
 command! Qw wq
 command! WQ wq
-command! DiffOrig vnew | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+command! DiffOrig vne | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 command! Reload source ~/.vimrc
 
 xn y mzy`z
@@ -139,7 +142,7 @@ se completeopt=menuone,noselect
 " Undo
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
-  call mkdir(undodir, 'p')
+  cal mkdir(undodir, 'p')
 endif
 let &undodir = undodir
 se undofile
@@ -161,7 +164,7 @@ if &term =~ 'screen' || &term =~ 'tmux'
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
   let &t_EI = "\ePtmux;\e\e[1 q\e\\"
   let &t_SR = "\ePtmux;\e\e[4 q\e\\"
-else
+el
   let &t_SI = "\e[6 q"
   let &t_EI = "\e[1 q"
   let &t_SR = "\e[4 q"
@@ -219,7 +222,7 @@ fu! ToggleNetrw()
           let i-=1
       endwhile
       let g:NetrwIsOpen=0
-    else
+    e
       let g:NetrwIsOpen=1
       silent Vex 25
     endif
@@ -251,7 +254,7 @@ if has('mouse')
         se ttymouse=sgr
     elseif v:version > 703 || v:version is 703 && has('patch632')
         se ttymouse=sgr
-    else
+    el
         se ttymouse=xterm2
     endif
 endif
@@ -327,7 +330,7 @@ fu! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
   if a:transparent
     return synIDtrans(synid)
-  else
+  el
     return synid
   endif
 endfu
@@ -359,7 +362,7 @@ fu! s:get_syn_info()
         \ " guifg: " . linkedSyn.guifg .
         \ " guibg: " . linkedSyn.guibg
 endfu
-command! SyntaxInfo call s:get_syn_info()
+command! SyntaxInfo cal s:get_syn_info()
 
 " Highlighting trailing and leading spaces
 aug HighlightSpaces
@@ -375,15 +378,15 @@ fu! OpenQuickfixWindow()
   resize 15
 endfu
 au FileType qf wincmd J
-au QuickfixCmdPost vimgrep call OpenQuickfixWindow()
+au QuickfixCmdPost vimgrep cal OpenQuickfixWindow()
 
 let s:vimreg = expand('~/.vim/vimreg')
 fu Savereg() abort
-  call writefile([json_encode(getreginfo())], s:vimreg)
+  cal writefile([json_encode(getreginfo())], s:vimreg)
   echo 'Save register'
 endfu
 fu Loadreg() abort
-  call setreg(v:register, readfile(s:vimreg)->join()->json_decode())
+  cal setreg(v:register, readfile(s:vimreg)->join()->json_decode())
   echo 'Restore register'
 endfu
 
@@ -392,20 +395,20 @@ let g:most_recently_closed = readfile(s:vimhis)
 
 aug MostRecentlyClosedTabs
   au!
-  au BufWinLeave * if (expand('<amatch>') != '' && expand('<amatch>') !~ 'Netrw') | call insert(g:most_recently_closed, expand('<amatch>')) | endif
+  au BufWinLeave * if (expand('<amatch>') != '' && expand('<amatch>') !~ 'Netrw') | cal insert(g:most_recently_closed, expand('<amatch>')) | endif
 aug END
 
-au VimLeave * call writefile(g:most_recently_closed, s:vimhis)
+au VimLeave * cal writefile(g:most_recently_closed, s:vimhis)
 
 fu! ShowMostRecentlyClosedTabs() abort
   10new
   se bufhidden=hide
-  call append(0, g:most_recently_closed)
+  cal append(0, g:most_recently_closed)
   $delete
   au WinClosed <buffer> bwipeout!
   nn <buffer> q :bwipeout!<CR>o  nn <buffer> <ESC> :bwipeout!<CR>
   nn <buffer> ep :bwipeout!<CR> :let winID = win_vimhis_getid()<CR>
-  nn <buffer> dd :call remove(g:most_recently_closed, line('.') - 1)<CR>:delete<CR>
+  nn <buffer> dd :cal remove(g:most_recently_closed, line('.') - 1)<CR>:delete<CR>
   nn <buffer> <CR> :execute 'tabnew ' .. g:most_recently_closed[line('.')-1]<CR>:let winID = win_getid()<CR>
 endfu
 
