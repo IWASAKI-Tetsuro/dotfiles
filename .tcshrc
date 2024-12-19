@@ -215,8 +215,6 @@ complete {vi,vim,vimdiff,less,cat,head,tail}    'n/*/f:^*.{o,a,so,pdf,png,jpg,cr
 
 #software
 complete hspice            'n/*/f:*.{sp}/'
-complete perl            'n/*/f:*.{pl}/'
-complete python3            'n/*/f:*.{py}/'
 
 # Job
 complete ps         'n/-*u/u/'

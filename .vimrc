@@ -5,6 +5,7 @@ syntax on
 " normal mode mapping
 nn x "_x
 nn X "_X
+nn dh ^_d$
 nn s "_s
 nn S "_S
 nn U <c-r>
@@ -13,6 +14,7 @@ nn <silent> j gj
 nn <silent> k gk
 nn e <Nop>
 nn ev :<c-u>vnew<CR><c-w>l:E<CR>
+nn es :<c-u>new<CR><c-w>:E<CR>
 nn e <nop>
 nn eh <c-w>h
 nn ej <c-w>j
@@ -107,9 +109,12 @@ command! Wq wq
 command! Qw wq
 command! WQ wq
 command! DiffOrig vnew | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+command! Reload source ~/.vimrc
 
 xn y mzy`z
 xn p P
+xn i<space> iW
+onore i<space> iW
 
 " Setting
 se encoding=utf-8
