@@ -179,6 +179,7 @@ se showtabline=2
 se laststatus=2
 se wildmode=full
 se vb t_vb=
+se fillchars+=eob:\\x20
 
 aug vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -300,7 +301,9 @@ hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE 
 hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE 
 hi Pmenu                         ctermbg=238  cterm=NONE      
-hi PmenuSel         ctermfg=252   ctermbg=240  cterm=NONE      
+hi PmenuSel         ctermfg=252   ctermbg=240  cterm=NONE     
+hi WinSeparator     ctermfg=252  ctermbg=238                  
+hi VertSplit        ctermfg=238  ctermbg=252                  
                                                               
 hi statusline       ctermfg=156  ctermbg=238                  
 hi statuslinenc     ctermfg=238  ctermbg=250                  
