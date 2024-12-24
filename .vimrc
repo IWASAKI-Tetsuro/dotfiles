@@ -213,7 +213,7 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_sizestyle="H"
 
 let g:NetrwIsOpen=0
-fu! ToggleNetrw()
+fu ToggleNetrw()
     if g:NetrwIsOpen
       let i = bufnr("$")
       while (i >= 1)
@@ -223,9 +223,9 @@ fu! ToggleNetrw()
           let i-=1
       endwhile
       let g:NetrwIsOpen=0
-    e
+    else
       let g:NetrwIsOpen=1
-      silent Vex 25
+      silent Vex
     endif
 endfu
 
@@ -391,27 +391,5 @@ endfu
 fu Loadreg() abort
   cal setreg(v:register, readfile(s:vimreg)->join()->json_decode())
   echo 'Restore register'
-endfu
-
-let s:vimhis = expand('~/.vim/vimhis')
-let g:most_recently_closed = readfile(s:vimhis)
-
-aug MostRecentlyClosedTabs
-  au!
-  au BufWinLeave * if (expand('<amatch>') != '' && expand('<amatch>') !~ 'Netrw') | cal insert(g:most_recently_closed, expand('<amatch>')) | endif
-aug END
-
-au VimLeave * cal writefile(g:most_recently_closed, s:vimhis)
-
-fu! ShowMostRecentlyClosedTabs() abort
-  10new
-  se bufhidden=hide
-  cal append(0, g:most_recently_closed)
-  $delete
-  au WinClosed <buffer> bwipeout!
-  nn <buffer> q :bwipeout!<CR>o  nn <buffer> <ESC> :bwipeout!<CR>
-  nn <buffer> ep :bwipeout!<CR> :let winID = win_vimhis_getid()<CR>
-  nn <buffer> dd :cal remove(g:most_recently_closed, line('.') - 1)<CR>:delete<CR>
-  nn <buffer> <CR> :execute 'tabnew ' .. g:most_recently_closed[line('.')-1]<CR>:let winID = win_getid()<CR>
 endfu
 
