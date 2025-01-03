@@ -408,7 +408,9 @@ fu! BufferTabLine()
 endfu
 
 fu! s:GetBufferName()
-	let s:buffers = execute('ls')
+  redir => s:buffers
+    silent ls
+  redir END
 	let s:result = []
 	let s:buffer_list = split(s:buffers, "\n")
 	for b in s:buffer_list
