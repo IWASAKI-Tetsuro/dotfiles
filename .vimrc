@@ -3,7 +3,6 @@ se timeoutlen=400
 filetype plugin indent on
 syntax on
 
-" normal mode mapping
 nn x "_x
 nn X "_X
 nn dh ^_d$
@@ -48,7 +47,6 @@ nn <Leader>d zd
 nn <Leader>D zE
 nn <Leader>a zR
 
-" visual mode mapping
 vn x "_x
 vn X "_X
 vn s "_s
@@ -81,7 +79,6 @@ vn <c-e> <End>
 vn <c-p> <Up>
 vn <c-n> <Down>
 
-" insert mode mapping
 ino jj <esc>
 ino Jj <esc>
 ino jJ <esc>
@@ -93,7 +90,6 @@ ino <c-f> <Right>
 ino <c-d> <Del>
 ino <c-]> <Esc><right>
 
-" command line mode mapping
 cno <c-a> <Home>
 cno <c-e> <End>
 cno <c-p> <Up>
@@ -108,18 +104,17 @@ cno Jj <C-c>
 cno jJ <C-c>
 cno JJ <C-c>
 cno qw wq
-command! Wq wq
-command! Qw wq
-command! WQ wq
-command! DiffOrig vne | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
-command! Reload source ~/.vimrc
+com! Wq wq
+com! Qw wq
+com! WQ wq
+com! DiffOrig vne | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+com! Reload source ~/.vimrc
 
 xn y mzy`z
 xn p P
 xn i<space> iW
 onore i<space> iW
 
-" Setting
 se encoding=utf-8
 scriptencoding encoding=utf-8
 se fileencodings=utf-8
@@ -139,27 +134,20 @@ se backspace=indent,eol,start
 se viminfo='40,\"1000
 se completeopt=menuone,noselect
 
-" Undo
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
   cal mkdir(undodir, 'p')
-endif
+en
 let &undodir = undodir
 se undofile
 se undolevels=1000
 
-" Folding
 se foldlevelstart=0
 se foldcolumn=1
 
-"au VimEnter * if &diff | windo setlocal foldmethod=manual
-
-" don't save options.
 se viewoptions-=options
 se foldmethod=manual
 
-" Appearance
-" " cursor shape
 if &term =~ 'screen' || &term =~ 'tmux'
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
   let &t_EI = "\ePtmux;\e\e[1 q\e\\"
@@ -168,7 +156,7 @@ el
   let &t_SI = "\e[6 q"
   let &t_EI = "\e[1 q"
   let &t_SR = "\e[4 q"
-endif
+en
 
 se number
 se ruler
@@ -183,7 +171,7 @@ se vb t_vb=
 
 aug vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" | endif
+  \ exe "normal g`\"" | en
 aug END
 
 se whichwrap=b,s,h,l,<,>,[,]
@@ -216,18 +204,18 @@ let g:NetrwIsOpen=0
 fu ToggleNetrw()
     if g:NetrwIsOpen
       let i = bufnr("$")
-      while (i >= 1)
+      wh(i >= 1)
           if (getbufvar(i, "&filetype") == "netrw")
               silent exe "bw" . i
-          endif
+          en
           let i-=1
-      endwhile
+      endw
       let g:NetrwIsOpen=0
-    else
+    el
       let g:NetrwIsOpen=1
-      silent E
-    endif
-endfu
+      sil E
+    en
+endf
 
 " Tab
 ino <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -253,12 +241,12 @@ if has('mouse')
     se mouse=a
     if has('mouse_sgr')
         se ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
+    elsei v:version > 703 || v:version is 703 && has('patch632')
         se ttymouse=sgr
     el
         se ttymouse=xterm2
-    endif
-endif
+    en
+en
 
 " Auto reload .vimrc
 aug source-vimrc
@@ -332,40 +320,40 @@ hi netrwExe         ctermfg=99   ctermbg=NONE
 fu! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
   if a:transparent
-    return synIDtrans(synid)
+    retu synIDtrans(synid)
   el
-    return synid
-  endif
-endfu
+    retu synid
+  en
+endf
 fu! s:get_syn_attr(synid)
   let name = synIDattr(a:synid, "name")
   let ctermfg = synIDattr(a:synid, "fg", "cterm")
   let ctermbg = synIDattr(a:synid, "bg", "cterm")
   let guifg = synIDattr(a:synid, "fg", "gui")
   let guibg = synIDattr(a:synid, "bg", "gui")
-  return {
+  retu {
         \ "name": name,
         \ "ctermfg": ctermfg,
         \ "ctermbg": ctermbg,
         \ "guifg": guifg,
         \ "guibg": guibg}
-endfu
+endf
 fu! s:get_syn_info()
   let baseSyn = s:get_syn_attr(s:get_syn_id(0))
-  echo "name: " . baseSyn.name .
+  ec "name: " . baseSyn.name .
         \ " ctermfg: " . baseSyn.ctermfg .
         \ " ctermbg: " . baseSyn.ctermbg .
         \ " guifg: " . baseSyn.guifg .
         \ " guibg: " . baseSyn.guibg
   let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
-  echo "link to"
-  echo "name: " . linkedSyn.name .
+  ec "link to"
+  ec "name: " . linkedSyn.name .
         \ " ctermfg: " . linkedSyn.ctermfg .
         \ " ctermbg: " . linkedSyn.ctermbg .
         \ " guifg: " . linkedSyn.guifg .
         \ " guibg: " . linkedSyn.guibg
-endfu
-command! SyntaxInfo cal s:get_syn_info()
+endf
+com! SyntaxInfo cal s:get_syn_info()
 
 " Highlighting trailing and leading spaces
 aug HighlightSpaces
@@ -377,12 +365,12 @@ aug END
 let s:vimreg = expand('~/.vim/vimreg')
 fu Savereg() abort
   cal writefile([json_encode(getreginfo())], s:vimreg)
-  echo 'Save register'
-endfu
+  ec 'Save register'
+endf
 fu Loadreg() abort
   cal setreg(v:register, readfile(s:vimreg)->join()->json_decode())
-  echo 'Restore register'
-endfu
+  ec 'Restore register'
+endf
 
 fu! BufferTabLine()
 	let buffer_tabline = ''
@@ -390,27 +378,27 @@ fu! BufferTabLine()
 	for i in s:buffer_info
 		if i[3] == 1
 			let buffer_tabline = buffer_tabline . '%#TabLineSel#'
-		else
+		el
 			let buffer_tabline = buffer_tabline . '%#TabLine#'
-		endif
+		en
 	
 		let buffer_tabline = buffer_tabline . i[0] . ':' . i[1] . ' '
 	
 		if i[2] == 1
 			let buffer_tabline = buffer_tabline . ' +'
-		endif
+		en
 	
-	endfor
+	endfo
 
 	let buffer_tabline = buffer_tabline . '%#TabLineFill#%T'
 	let buffer_tabline = buffer_tabline . '%='
-	return buffer_tabline
-endfu
+	retu buffer_tabline
+endf
 
 fu! s:GetBufferName()
-  redir => s:buffers
+  redi => s:buffers
     silent ls
-  redir END
+  redi END
 	let s:result = []
 	let s:buffer_list = split(s:buffers, "\n")
 	for b in s:buffer_list
@@ -424,22 +412,22 @@ fu! s:GetBufferName()
 		for i in s:buffer_line
 			if i == '%a'
 				let s:current_buffer = 1
-			elseif i == '+'
+			elsei i == '+'
 				let s:edit_flag = 1
-			elseif i == 'a-' || i == '%a-'
+			elsei i == 'a-' || i == '%a-'
 				let s:unmodifiable = 1
-			elseif i[0] == '"'
+			elsei i[0] == '"'
 				let s:path = substitute(i, '"', '', 'g')
 				let s:name_path = split(s:path, '/')
 				let s:buffer_name = s:name_path[len(s:name_path) - 1]
-			else
-			endif
-		endfor
+			el
+			en
+		endfo
 
 		if s:unmodifiable != 1
 			let s:result = add(s:result, [s:buffer_num, s:buffer_name, s:edit_flag, s:current_buffer])
-		endif
-	endfor
-	return s:result
-endfu
+		en
+	endfo
+	retu s:result
+endf
 
