@@ -32,6 +32,9 @@ function append_cd_history(){
 function dcd(){
   cd "$(tail -n +$1 ~/.cd_history | head -1)" && pwd -L
 }
+function dcdl(){
+  cd "$(tail -n -1 ~/.cd_history)" && pwd -L
+}
 function drm(){
   sed -i "$1d" ~/.cd_history
 }

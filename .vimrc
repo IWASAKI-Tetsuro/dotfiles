@@ -180,7 +180,6 @@ se showtabline=2
 se laststatus=2
 se wildmode=full
 se vb t_vb=
-se fillchars+=eob:\\x20
 
 aug vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
