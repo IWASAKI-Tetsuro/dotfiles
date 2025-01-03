@@ -2,6 +2,7 @@ let mapleader = "\<SPACE>"
 se timeoutlen=400
 filetype plugin indent on
 syntax on
+
 " normal mode mapping
 nn x "_x
 nn X "_X
@@ -10,24 +11,26 @@ nn s "_s
 nn S "_S
 nn U <c-r>
 nn Y y$
-nn <silent> j gj
-nn <silent> k gk
+nn <silent>j gj
+nn <silent>k gk
 nn e <Nop>
 nn ev :<c-u>vne<CR><c-w>l:E<CR>
 nn es :<c-u>new<CR><c-w>:E<CR>
 nn e <nop>
+nn <silent>ed :bd<CR>
 nn eh <c-w>h
 nn ej <c-w>j
 nn ek <c-w>k
 nn el <c-w>l
-nn <Tab> gt
-nn <S-Tab> gT
+nn <silent><Tab> :bn<CR>
+nn <silent><S-Tab> :bp<CR>
 nn <silent>H 5h
-nn <silent>J 10j
-nn <silent>K 10k
+nn <silent>J 10gj
+nn <silent>K 10gk
 nn <silent>L 5l
+nn <silent>ep :bro ol<CR>
 nn <silent>ee :cal ToggleNetrw()<CR>
-nn <silent>et :tabnew<CR>:E<CR>
+nn <silent>et :cal ToggleNetrw()<CR>
 nn <Leader>s :cal Savereg()<CR>
 nn <Leader>l :cal Loadreg()<CR>
 nn <BS> "_X
@@ -44,9 +47,6 @@ nn <Leader><space> za
 nn <Leader>d zd
 nn <Leader>D zE
 nn <Leader>a zR
-nn gf :tabedit <cfile><CR>
-nn gv :vne <cfile><CR>
-nn ep :cal ShowMostRecentlyClosedTabs()<CR>
 
 " visual mode mapping
 vn x "_x
@@ -59,8 +59,8 @@ vn K 10k
 vn L 5l
 vn t ;
 vn T ,
-vn <silent> j gj
-vn <silent> k gk
+vn <silent>j gj
+vn <silent>k gk
 vn <c-a> 0
 vn <c-e> $
 vn v <c-v>
@@ -136,7 +136,7 @@ se showmode
 se showcmd
 se virtualedit=onemore,block
 se backspace=indent,eol,start
-se viminfo='20,\"1000
+se viminfo='40,\"1000
 se completeopt=menuone,noselect
 
 " Undo
@@ -175,6 +175,7 @@ se ruler
 se nolist
 se cursorline
 se showmatch
+se tabline=%!BufferTabLine()
 se showtabline=2
 se laststatus=2
 se wildmode=full
@@ -218,14 +219,14 @@ fu ToggleNetrw()
       let i = bufnr("$")
       while (i >= 1)
           if (getbufvar(i, "&filetype") == "netrw")
-              silent exe "bwipeout" . i
+              silent exe "bw" . i
           endif
           let i-=1
       endwhile
       let g:NetrwIsOpen=0
     else
       let g:NetrwIsOpen=1
-      silent Vex
+      silent E
     endif
 endfu
 
@@ -275,59 +276,59 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 se bg=dark
-hi Normal           ctermfg=252 ctermbg=NONE                  
-hi Comment          ctermfg=244                               
-hi Constant         ctermfg=99                                
-hi Statement        ctermfg=197               cterm=BOLD      
-hi String           ctermfg=228               cterm=BOLD      
-hi Character        ctermfg=99                                
-hi Identifier       ctermfg=208                               
-hi Type             ctermfg=81                                
-hi Title            ctermfg=228                               
-hi Preproc          ctermfg=81                                
-hi Special          ctermfg=81                                
-hi Directory        ctermfg=14                                
-hi Question         ctermfg=46                                
-hi markdownLinkText ctermfg=228                               
-hi markdownItalic                             cterm=NONE      
-hi markdownItalic                             cterm=ITALIC    
-                                                              
-hi Cursor                        ctermbg=240                  
-hi LineNr           ctermfg=252  ctermbg=238                  
-hi CursorLine                    ctermbg=238  cterm=NONE      
-hi CursorLineNr     ctermfg=238  ctermbg=250  cterm=NONE      
-hi Visual                        ctermbg=238  cterm=NONE      
-hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE 
-hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE 
-hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE 
-hi Pmenu                         ctermbg=238  cterm=NONE      
-hi PmenuSel         ctermfg=252   ctermbg=240  cterm=NONE     
-hi WinSeparator     ctermfg=252  ctermbg=238                  
-hi VertSplit        ctermfg=238  ctermbg=252                  
-                                                              
-hi statusline       ctermfg=156  ctermbg=238                  
-hi statuslinenc     ctermfg=238  ctermbg=250                  
-hi tablinesel       ctermfg=238  ctermbg=156                  
-hi tablinefill      ctermfg=238  ctermbg=252                  
-hi tabline          ctermfg=252  ctermbg=238                  
-hi ModeMsg          ctermfg=11                                
-hi ErrorMsg         ctermfg=9    ctermbg=NONE                 
-hi WarningMsg       ctermfg=9    ctermbg=NONE                 
-                                                              
-hi DiffAdd                       ctermbg=24                   
-hi DiffDelete       ctermfg=162  ctermbg=53                   
-hi DiffChange                    ctermbg=236                  
-hi DiffText         ctermfg=210  ctermbg=236   cterm=BOLD     
-                                                              
-hi FoldColumn       ctermfg=81   ctermbg=238                  
-hi Folded           ctermfg=81   ctermbg=NONE                 
-                                                              
-hi netrwDir         ctermfg=81   ctermbg=NONE                 
-hi netrwClassify    ctermfg=250  ctermbg=NONE                 
-hi netrwLink        ctermfg=156  ctermbg=NONE                 
-hi netrwTreebar     ctermfg=242  ctermbg=NONE                 
-hi netrwSymLink     ctermfg=208  ctermbg=NONE                 
-hi netrwExe         ctermfg=99   ctermbg=NONE                 
+hi Normal           ctermfg=252 ctermbg=NONE                 
+hi Comment          ctermfg=244                              
+hi Constant         ctermfg=99                               
+hi Statement        ctermfg=197               cterm=BOLD     
+hi String           ctermfg=228               cterm=BOLD     
+hi Character        ctermfg=99                               
+hi Identifier       ctermfg=208                              
+hi Type             ctermfg=81                               
+hi Title            ctermfg=228                              
+hi Preproc          ctermfg=81                               
+hi Special          ctermfg=81                               
+hi Directory        ctermfg=14                               
+hi Question         ctermfg=46                               
+hi markdownLinkText ctermfg=228                              
+hi markdownItalic                             cterm=NONE     
+hi markdownItalic                             cterm=ITALIC   
+                                                             
+hi Cursor                        ctermbg=240                 
+hi LineNr           ctermfg=252  ctermbg=238                 
+hi CursorLine                    ctermbg=238  cterm=NONE     
+hi CursorLineNr     ctermfg=238  ctermbg=250  cterm=NONE     
+hi Visual                        ctermbg=238  cterm=NONE     
+hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE
+hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE
+hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE
+hi Pmenu                         ctermbg=238  cterm=NONE     
+hi PmenuSel         ctermfg=252   ctermbg=240  cterm=NONE    
+hi WinSeparator     ctermfg=252  ctermbg=238                 
+hi VertSplit        ctermfg=238  ctermbg=252                 
+                                                             
+hi statusline       ctermfg=156  ctermbg=238                 
+hi statuslinenc     ctermfg=238  ctermbg=250                 
+hi tablinesel       ctermfg=238  ctermbg=156                 
+hi tablinefill      ctermfg=238  ctermbg=252                 
+hi tabline          ctermfg=252  ctermbg=238                 
+hi ModeMsg          ctermfg=11                               
+hi ErrorMsg         ctermfg=9    ctermbg=NONE                
+hi WarningMsg       ctermfg=9    ctermbg=NONE                
+                                                             
+hi DiffAdd                       ctermbg=24                  
+hi DiffDelete       ctermfg=162  ctermbg=53                  
+hi DiffChange                    ctermbg=236                 
+hi DiffText         ctermfg=210  ctermbg=236   cterm=BOLD    
+                                                             
+hi FoldColumn       ctermfg=81   ctermbg=238                 
+hi Folded           ctermfg=81   ctermbg=NONE                
+                                                             
+hi netrwDir         ctermfg=81   ctermbg=NONE                
+hi netrwClassify    ctermfg=250  ctermbg=NONE                
+hi netrwLink        ctermfg=156  ctermbg=NONE                
+hi netrwTreebar     ctermfg=242  ctermbg=NONE                
+hi netrwSymLink     ctermfg=208  ctermbg=NONE                
+hi netrwExe         ctermfg=99   ctermbg=NONE                
 " To get the syntax ID
 fu! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
@@ -372,16 +373,7 @@ aug HighlightSpaces
   au!
   au VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 ctermfg=244 gui=underline guifg=#FFFFFF
   au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
-aug END   
-
-fu! OpenQuickfixWindow()
-  tabnew
-  copen
-  se modifiable
-  resize 15
-endfu
-au FileType qf wincmd J
-au QuickfixCmdPost vimgrep cal OpenQuickfixWindow()
+aug END  
 
 let s:vimreg = expand('~/.vim/vimreg')
 fu Savereg() abort
@@ -391,5 +383,62 @@ endfu
 fu Loadreg() abort
   cal setreg(v:register, readfile(s:vimreg)->join()->json_decode())
   echo 'Restore register'
+endfu
+
+fu! BufferTabLine()
+	let buffer_tabline = ''
+	let s:buffer_info = s:GetBufferName()
+	for i in s:buffer_info
+		if i[3] == 1
+			let buffer_tabline = buffer_tabline . '%#TabLineSel#'
+		else
+			let buffer_tabline = buffer_tabline . '%#TabLine#'
+		endif
+	
+		let buffer_tabline = buffer_tabline . i[0] . ':' . i[1] . ' '
+	
+		if i[2] == 1
+			let buffer_tabline = buffer_tabline . ' +'
+		endif
+	
+	endfor
+
+	let buffer_tabline = buffer_tabline . '%#TabLineFill#%T'
+	let buffer_tabline = buffer_tabline . '%='
+	return buffer_tabline
+endfu
+
+fu! s:GetBufferName()
+	let s:buffers = execute('ls')
+	let s:result = []
+	let s:buffer_list = split(s:buffers, "\n")
+	for b in s:buffer_list
+		let s:buffer_line = split(b)
+		let s:buffer_num = s:buffer_line[0]
+		let s:buffer_name = ''
+		let s:current_buffer = 0
+		let s:edit_flag = 0
+		let s:unmodifiable = 0
+		
+		for i in s:buffer_line
+			if i == '%a'
+				let s:current_buffer = 1
+			elseif i == '+'
+				let s:edit_flag = 1
+			elseif i == 'a-' || i == '%a-'
+				let s:unmodifiable = 1
+			elseif i[0] == '"'
+				let s:path = substitute(i, '"', '', 'g')
+				let s:name_path = split(s:path, '/')
+				let s:buffer_name = s:name_path[len(s:name_path) - 1]
+			else
+			endif
+		endfor
+
+		if s:unmodifiable != 1
+			let s:result = add(s:result, [s:buffer_num, s:buffer_name, s:edit_flag, s:current_buffer])
+		endif
+	endfor
+	return s:result
 endfu
 

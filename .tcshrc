@@ -71,7 +71,6 @@ alias dhi dhist
 alias dls dhist
 alias dles dless
 alias cdhistory 'dclean && vim ~/.cd_history'
-alias vimhis 'vclean && vim ~/.vim/vimhis'
 alias vimreg 'vclean && vim ~/.vim/vimreg'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
@@ -103,7 +102,7 @@ alias cd,,/ 'cd ../'
 alias cd, 'cd ../'
 alias cd,/ 'cd ../'
 alias dc 'cd'
-alias dc- 'cd -'
+alias dc- 'cd o'
 alias dc~ 'cd ~'
 alias dc.. 'cd ..'
 alias dc../ 'cd ../'
