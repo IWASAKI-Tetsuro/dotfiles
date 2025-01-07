@@ -133,6 +133,7 @@ se virtualedit=onemore,block
 se backspace=indent,eol,start
 se viminfo='40,\"1000
 se completeopt=menuone,noselect
+se autochdir
 
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
@@ -187,7 +188,7 @@ let g:netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
-let g:netrw_keepdir=1
+let g:netrw_keepdir=0
 let g:netrw_winsize=50
 let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
