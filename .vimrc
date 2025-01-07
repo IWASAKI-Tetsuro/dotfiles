@@ -302,46 +302,7 @@ hi netrwLink        ctermfg=156  ctermbg=NONE
 hi netrwTreebar     ctermfg=242  ctermbg=NONE                
 hi netrwSymLink     ctermfg=208  ctermbg=NONE                
 hi netrwExe         ctermfg=99   ctermbg=NONE                
-" To get the syntax ID
-fu! s:get_syn_id(transparent)
-  let synid = synID(line("."), col("."), 1)
-  if a:transparent
-    retu synIDtrans(synid)
-  el
-    retu synid
-  en
-endf
-fu! s:get_syn_attr(synid)
-  let name = synIDattr(a:synid, "name")
-  let ctermfg = synIDattr(a:synid, "fg", "cterm")
-  let ctermbg = synIDattr(a:synid, "bg", "cterm")
-  let guifg = synIDattr(a:synid, "fg", "gui")
-  let guibg = synIDattr(a:synid, "bg", "gui")
-  retu {
-        \ "name": name,
-        \ "ctermfg": ctermfg,
-        \ "ctermbg": ctermbg,
-        \ "guifg": guifg,
-        \ "guibg": guibg}
-endf
-fu! s:get_syn_info()
-  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
-  ec "name: " . baseSyn.name .
-        \ " ctermfg: " . baseSyn.ctermfg .
-        \ " ctermbg: " . baseSyn.ctermbg .
-        \ " guifg: " . baseSyn.guifg .
-        \ " guibg: " . baseSyn.guibg
-  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
-  ec "link to"
-  ec "name: " . linkedSyn.name .
-        \ " ctermfg: " . linkedSyn.ctermfg .
-        \ " ctermbg: " . linkedSyn.ctermbg .
-        \ " guifg: " . linkedSyn.guifg .
-        \ " guibg: " . linkedSyn.guibg
-endf
-com! SyntaxInfo cal s:get_syn_info()
 
-" Highlighting trailing and leading spaces
 aug HighlightSpaces
   au!
   au VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 ctermfg=244 gui=underline guifg=#FFFFFF
