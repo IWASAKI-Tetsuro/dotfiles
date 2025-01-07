@@ -113,7 +113,9 @@ com! Reload source ~/.vimrc
 xn y mzy`z
 xn p P
 xn i<space> iW
-onore i<space> iW
+xn a<space> aW
+ono i<space> iW
+ono a<space> aW
 
 se encoding=utf-8
 scriptencoding encoding=utf-8
