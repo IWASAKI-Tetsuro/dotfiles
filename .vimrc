@@ -45,7 +45,8 @@ nn T ,
 nn <Leader><space> za
 nn <Leader>d zd
 nn <Leader>D zE
-nn <Leader>a zR
+nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
+nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 
 vn x "_x
 vn X "_X
