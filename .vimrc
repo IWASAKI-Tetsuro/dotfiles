@@ -28,8 +28,7 @@ nn <silent>J 10gj
 nn <silent>K 10gk
 nn <silent>L 5l
 nn <silent>ep :bro ol<CR>
-nn <silent>ee :cal ToggleNetrw()<CR>
-nn <silent>et :cal ToggleNetrw()<CR>
+nn <silent>ee :E<CR>
 nn <Leader>s :cal Savereg()<CR>
 nn <Leader>l :cal Loadreg()<CR>
 nn <BS> "_X
@@ -203,23 +202,6 @@ let g:netrw_sort_options='i'
 let g:netrw_fastbrows=0
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_sizestyle="H"
-
-let g:NetrwIsOpen=0
-fu ToggleNetrw()
-    if g:NetrwIsOpen
-      let i = bufnr("$")
-      wh(i >= 1)
-          if (getbufvar(i, "&filetype") == "netrw")
-              silent exe "bw" . i
-          en
-          let i-=1
-      endw
-      let g:NetrwIsOpen=0
-    el
-      let g:NetrwIsOpen=1
-      sil E
-    en
-endf
 
 " Tab
 ino <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
