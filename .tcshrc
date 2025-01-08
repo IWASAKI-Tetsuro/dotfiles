@@ -71,9 +71,9 @@ alias dhi dhist
 alias dls dhist
 alias dles dless
 alias cdhistory 'dclean && vim ~/.cd_history'
-alias vimreg 'vclean && vim ~/.vim/vimreg'
 alias vimrc 'vim ~/.vimrc'
 alias tcshrc 'vim ~/.tcshrc'
+alias bashrc 'vim ~/.bashrc'
 alias gitconfig 'vim ~/.gitconfig'
 alias tmuxconf 'vim ~/.tmux.conf'
 

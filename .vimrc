@@ -120,7 +120,6 @@ ono a<space> aW
 se encoding=utf-8
 scriptencoding encoding=utf-8
 se fileencodings=utf-8
-se notitle
 se nobackup
 se noswapfile
 se nocompatible
@@ -163,7 +162,6 @@ en
 
 se number
 se ruler
-se nolist
 se cursorline
 se showmatch
 se tabline=%!BufferTabLine()
@@ -243,8 +241,6 @@ aug END
 
 " Color scheme
 se t_Co=256
-se termguicolors
-se notermguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
@@ -320,61 +316,61 @@ fu Loadreg() abort
 endf
 
 fu! BufferTabLine()
-	let buffer_tabline = ''
-	let s:buffer_info = s:GetBufferName()
-	for i in s:buffer_info
-		if i[3] == 1
-			let buffer_tabline = buffer_tabline . '%#TabLineSel#'
-		el
-			let buffer_tabline = buffer_tabline . '%#TabLine#'
-		en
-	
-		let buffer_tabline = buffer_tabline . i[0] . ':' . i[1] . ' '
-	
-		if i[2] == 1
-			let buffer_tabline = buffer_tabline . ' +'
-		en
-	
-	endfo
+  let buffer_tabline = ''
+  let s:buffer_info = s:GetBufferName()
+  for i in s:buffer_info
+    if i[3] == 1
+      let buffer_tabline = buffer_tabline . '%#TabLineSel#'
+    el
+      let buffer_tabline = buffer_tabline . '%#TabLine#'
+    en
+  
+    let buffer_tabline = buffer_tabline . i[0] . ':' . i[1] . ' '
+  
+    if i[2] == 1
+      let buffer_tabline = buffer_tabline . ' +'
+    en
+  
+  endfo
 
-	let buffer_tabline = buffer_tabline . '%#TabLineFill#%T'
-	let buffer_tabline = buffer_tabline . '%='
-	retu buffer_tabline
+  let buffer_tabline = buffer_tabline . '%#TabLineFill#%T'
+  let buffer_tabline = buffer_tabline . '%='
+  retu buffer_tabline
 endf
 
 fu! s:GetBufferName()
   redi => s:buffers
     silent ls
   redi END
-	let s:result = []
-	let s:buffer_list = split(s:buffers, "\n")
-	for b in s:buffer_list
-		let s:buffer_line = split(b)
-		let s:buffer_num = s:buffer_line[0]
-		let s:buffer_name = ''
-		let s:current_buffer = 0
-		let s:edit_flag = 0
-		let s:unmodifiable = 0
-		
-		for i in s:buffer_line
-			if i == '%a'
-				let s:current_buffer = 1
-			elsei i == '+'
-				let s:edit_flag = 1
-			elsei i == 'a-' || i == '%a-'
-				let s:unmodifiable = 1
-			elsei i[0] == '"'
-				let s:path = substitute(i, '"', '', 'g')
-				let s:name_path = split(s:path, '/')
-				let s:buffer_name = s:name_path[len(s:name_path) - 1]
-			el
-			en
-		endfo
+  let s:result = []
+  let s:buffer_list = split(s:buffers, "\n")
+  for b in s:buffer_list
+    let s:buffer_line = split(b)
+    let s:buffer_num = s:buffer_line[0]
+    let s:buffer_name = ''
+    let s:current_buffer = 0
+    let s:edit_flag = 0
+    let s:unmodifiable = 0
+    
+    for i in s:buffer_line
+      if i == '%a'
+        let s:current_buffer = 1
+      elsei i == '+'
+        let s:edit_flag = 1
+      elsei i == 'a-' || i == '%a-'
+        let s:unmodifiable = 1
+      elsei i[0] == '"'
+        let s:path = substitute(i, '"', '', 'g')
+        let s:name_path = split(s:path, '/')
+        let s:buffer_name = s:name_path[len(s:name_path) - 1]
+      el
+      en
+    endfo
 
-		if s:unmodifiable != 1
-			let s:result = add(s:result, [s:buffer_num, s:buffer_name, s:edit_flag, s:current_buffer])
-		en
-	endfo
-	retu s:result
+    if s:unmodifiable != 1
+      let s:result = add(s:result, [s:buffer_num, s:buffer_name, s:edit_flag, s:current_buffer])
+    en
+  endfo
+  retu s:result
 endf
 
