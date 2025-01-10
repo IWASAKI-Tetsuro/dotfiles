@@ -28,14 +28,12 @@ nn <silent>J 10gj
 nn <silent>K 10gk
 nn <silent>L 5l
 nn <silent>ep :bro ol<CR>
-nn <silent>ee :E<CR>
+nn <silent>ee :cal ToggleNetrw()<CR>
 nn <Leader>s :cal Savereg()<CR>
 nn <Leader>l :cal Loadreg()<CR>
 nn <BS> "_X
 nn n nzzzv
 nn N Nzzzv
-nn [q :cprevious<CR>
-nn ]q :cnext<CR>
 nn p ]p`]
 nn P ]P`]
 nn ; :
@@ -117,32 +115,31 @@ xn a<space> aW
 ono i<space> iW
 ono a<space> aW
 
-se encoding=utf-8
-scriptencoding encoding=utf-8
-se fileencodings=utf-8
-se nobackup
+se enc=utf-8
+se fenc=utf-8
+se nobk
 se noswapfile
-se nocompatible
-se scrolloff=2
-se wildmenu
-se autoread
-se hidden
+se nocp
+se so=2
+se wmnu
+se ar
+se hid
 se modeline
-se showmode
-se showcmd
-se virtualedit=onemore,block
+se smd
+se sc
+se ve=onemore,block
 se backspace=indent,eol,start
 se viminfo='40,\"1000
-se completeopt=menuone,noselect
-se autochdir
+se cot=menuone,noselect
+se acd
 
 let undodir = expand('~/.vim/undodir')
 if !isdirectory(undodir)
   cal mkdir(undodir, 'p')
 en
 let &undodir = undodir
-se undofile
-se undolevels=1000
+se udf
+se ul=1000
 
 se foldlevelstart=0
 se foldcolumn=1
@@ -189,7 +186,7 @@ let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
-let g:netrw_winsize=50
+let g:netrw_winsize=20
 let g:netrw_browse_split=0
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
 let g:netrw_dirhistmax=0
@@ -201,6 +198,22 @@ let g:netrw_fastbrows=0
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_sizestyle="H"
 
+let g:NetrwIsOpen=0
+fu ToggleNetrw()
+    if g:NetrwIsOpen
+      let i = bufnr("$")
+      while (i >= 1)
+          if (getbufvar(i, "&filetype") == "netrw")
+              silent exe "bw" . i
+          endif
+          let i-=1
+      endwhile
+      let g:NetrwIsOpen=0
+    else
+      let g:NetrwIsOpen=1
+      silent Vex
+    endif
+endfu
 " Tab
 ino <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 se expandtab
