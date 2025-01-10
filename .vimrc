@@ -129,7 +129,7 @@ se smd
 se sc
 se ve=onemore,block
 se backspace=indent,eol,start
-se viminfo='40,\"1000
+se viminfo='10,\"1000
 se cot=menuone,noselect
 se acd
 
@@ -164,7 +164,8 @@ se showmatch
 se tabline=%!BufferTabLine()
 se showtabline=2
 se laststatus=2
-se wildmode=full
+se wim=full
+se wic
 se vb t_vb=
 
 aug vimrcEx
@@ -187,7 +188,7 @@ let g:netrw_preview=1
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
 let g:netrw_winsize=20
-let g:netrw_browse_split=0
+let g:netrw_browse_split=4
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
 let g:netrw_dirhistmax=0
 let g:netrw_followsymlink=1
