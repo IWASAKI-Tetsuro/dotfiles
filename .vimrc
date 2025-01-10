@@ -106,7 +106,7 @@ com! Wq wq
 com! Qw wq
 com! WQ wq
 com! DiffOrig vne | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
-com! Reload source ~/.vimrc
+com! Reload so ~/.vimrc
 
 xn y mzy`z
 xn p P
@@ -118,18 +118,18 @@ ono a<space> aW
 se enc=utf-8
 se fenc=utf-8
 se nobk
-se noswapfile
+se noswf
 se nocp
 se so=2
 se wmnu
 se ar
 se hid
-se modeline
+se ml
 se smd
 se sc
 se ve=onemore,block
-se backspace=indent,eol,start
-se viminfo='10,\"1000
+se bs=indent,eol,start
+se vi='10,\"1000
 se cot=menuone,noselect
 se acd
 
@@ -141,11 +141,11 @@ let &undodir = undodir
 se udf
 se ul=1000
 
-se foldlevelstart=0
-se foldcolumn=1
+se fdls=0
+se fdc=1
 
-se viewoptions-=options
-se foldmethod=manual
+se vop-=options
+se fdm=manual
 
 if &term =~ 'screen' || &term =~ 'tmux'
   let &t_SI = "\ePtmux;\e\e[6 q\e\\"
@@ -157,13 +157,13 @@ el
   let &t_SR = "\e[4 q"
 en
 
-se number
-se ruler
-se cursorline
-se showmatch
-se tabline=%!BufferTabLine()
-se showtabline=2
-se laststatus=2
+se nu
+se ru
+se cul
+se sm
+se tal=%!BufferTabLine()
+se stal=2
+se ls=2
 se wim=full
 se wic
 se vb t_vb=
@@ -173,84 +173,51 @@ aug vimrcEx
   \ exe "normal g`\"" | en
 aug END
 
-se whichwrap=b,s,h,l,<,>,[,]
+se ww=b,s,h,l,<,>,[,]
 " set shortmess+=I
-se statusline=%m%r%h%w\ [%l/%L]\ %y\ %F
+se stl=%m%r%h%w\ [%l/%L]\ %y\ %F
 se wrap
-se linebreak
+se lbr
 
 " Netrw
-se splitbelow
-se splitright
-let g:netrw_banner=0
-let g:netrw_altv=1
-let g:netrw_preview=1
-let g:netrw_liststyle=3
-let g:netrw_keepdir=0
-let g:netrw_winsize=20
-let g:netrw_browse_split=4
-let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
-let g:netrw_dirhistmax=0
-let g:netrw_followsymlink=1
-let g:netrw_mousemaps=1
-let g:netrw_sort_sequence='[\/]$,*'
-let g:netrw_sort_options='i'
-let g:netrw_fastbrows=0
-let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
-let g:netrw_sizestyle="H"
-
-let g:NetrwIsOpen=0
-fu ToggleNetrw()
-    if g:NetrwIsOpen
-      let i = bufnr("$")
-      while (i >= 1)
-          if (getbufvar(i, "&filetype") == "netrw")
-              silent exe "bw" . i
-          endif
-          let i-=1
-      endwhile
-      let g:NetrwIsOpen=0
-    else
-      let g:NetrwIsOpen=1
-      silent Vex
-    endif
-endfu
+se sb
+se spr
 " Tab
 ino <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-se expandtab
-se tabstop=2
-se shiftwidth=2
-se softtabstop=2
-se autoindent
-se smartindent
+se et
+se ts=2
+se sw=2
+se sts=2
+se ai
+se si
 
 " Search
-se ignorecase
-se smartcase
-se incsearch
-se wrapscan
-se hlsearch
+se ic
+se scs
+se is
+se ws
+se hls
 no <silent> <esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
-se cmdwinheight=20
+se cwh=20
 " mouse
 if has('mouse')
     se mouse=a
     if has('mouse_sgr')
-        se ttymouse=sgr
+        se ttym=sgr
     elsei v:version > 703 || v:version is 703 && has('patch632')
-        se ttymouse=sgr
+        se ttym=sgr
     el
-        se ttymouse=xterm2
+        se ttym=xterm2
     en
 en
 
 " Auto reload .vimrc
 aug source-vimrc
   au!
-  au BufWritePost *vimrc source $MYVIMRC | se foldmethod=manual
-  au BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
+  au BufWritePost *vimrc so $MYVIMRC | se fdm=manual
+  au BufWritePost *gvimrc if has('gui_running') so $MYGVIMRC
 aug END
 
 " Color scheme
@@ -315,7 +282,7 @@ hi netrwExe         ctermfg=99   ctermbg=NONE
 
 aug HighlightSpaces
   au!
-  au VimEnter,WinEnter,BufWinEnter,ColorScheme * highlight Spaces cterm=underline ctermfg=244 ctermfg=244 gui=underline guifg=#FFFFFF
+  au VimEnter,WinEnter,BufWinEnter,ColorScheme * hi Spaces cterm=underline ctermfg=244 ctermfg=244 gui=underline guifg=#FFFFFF
   au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 aug END  
 
@@ -388,3 +355,36 @@ fu! s:GetBufferName()
   retu s:result
 endf
 
+let g:netrw_banner=0
+let g:netrw_altv=1
+let g:netrw_preview=1
+let g:netrw_liststyle=3
+let g:netrw_keepdir=0
+let g:netrw_winsize=20
+let g:netrw_browse_split=4
+let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
+let g:netrw_dirhistmax=0
+let g:netrw_followsymlink=1
+let g:netrw_mousemaps=1
+let g:netrw_sort_sequence='[\/]$,*'
+let g:netrw_sort_options='i'
+let g:netrw_fastbrows=0
+let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
+let g:netrw_sizestyle="H"
+
+let g:NetrwIsOpen=0
+fu ToggleNetrw()
+    if g:NetrwIsOpen
+      let i = bufnr("$")
+      wh (i >= 1)
+          if (getbufvar(i, "&filetype") == "netrw")
+              silent exe "bw" . i
+          en
+          let i-=1
+      endw
+      let g:NetrwIsOpen=0
+    el
+      let g:NetrwIsOpen=1
+      silent Vex
+    en
+endfu
