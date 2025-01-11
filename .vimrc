@@ -164,7 +164,6 @@ se stl=%m%r%h%w\ [%l/%L]\ %y\ %F
 se wrap
 se lbr
 
-" Netrw
 se sb
 se spr
 " Tab
@@ -260,7 +259,6 @@ hi netrwTreebar     ctermfg=242  ctermbg=NONE
 hi netrwSymLink     ctermfg=208  ctermbg=NONE                
 hi netrwExe         ctermfg=99   ctermbg=NONE                
 
-
 let s:vimreg = expand('~/.vim/vimreg')
 fu Savereg() abort
   cal writefile([json_encode(getreginfo())], s:vimreg)
@@ -335,7 +333,6 @@ let g:netrw_altv=1
 let g:netrw_preview=1
 let g:netrw_liststyle=3
 let g:netrw_keepdir=0
-let g:netrw_winsize=20
 let g:netrw_browse_split=4
 let g:netrw_bufsettings='noma nomod number nobl nowrap ro'
 let g:netrw_dirhistmax=0
@@ -364,11 +361,20 @@ fu ToggleNetrw()
     en
 endfu
 
-aug MyNetrwMappings
+aug MyNetrwSettings
     au!
     au FileType netrw nn <buffer> s <Nop>
     au FileType netrw nn <buffer> <Tab> <Nop>
     au FileType netrw nn <buffer> <S-Tab> <Nop>
+    au FileType netrw nn <buffer> <c-a> <HOME>
+    au FileType netrw nn <buffer> <c-e> <END>
+    au FileType netrw nn <c-p> <Up>
+    au FileType netrw nn <c-n> <Down>
+    au FileType netrw nn <c-b> <Left>
+    au FileType netrw nn <c-f> <Right>
+    au FileType netrw nn > <c-w>2>
+    au FileType netrw nn < <c-w>2<
+    au FileType netrw exe "vert res 20"
 aug END
 
 aug HighlightSpaces
