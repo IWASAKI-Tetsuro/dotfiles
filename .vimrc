@@ -6,13 +6,13 @@ syntax on
 
 nn x "_x
 nn X "_X
-vn S "_S
 nn dh ^_d$
 nn U <c-r>
 nn Y y$
 nn <silent>j gj
 nn <silent>k gk
 nn s <Nop>
+nn S <Nop>
 nn <silent>sd :bd<CR>
 nn sh <c-w>h
 nn sj <c-w>j
@@ -43,7 +43,8 @@ nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 
 vn x "_x
-vn S "_S
+vn s <Nop>
+vn S <Nop>
 vn H 5h
 vn J 10j
 vn K 10k
@@ -63,8 +64,9 @@ vn ] di[]<Esc>P<Left>%
 vn } di{}<Esc>P<Left>%
 vn < di<><Esc>P<Left>%
 vn > >gv
-vn / y/<C-r>"<CR>
-vn ? y?<C-r>"<CR>
+vn ; :
+vn n nzzzv
+vn N Nzzzv
 vn <BS> "_X
 vn <space> zf
 vn <c-a> <Home>
@@ -118,7 +120,7 @@ se ve=onemore,block
 se bs=indent,eol,start
 se vi='10,\"1000
 se cot=menuone,noselect
-se pa+=$PWD/**
+se pa=$PWD/**
 se acd
 
 let undodir = expand('~/.vim/undodir')
