@@ -118,6 +118,7 @@ se ve=onemore,block
 se bs=indent,eol,start
 se vi='10,\"1000
 se cot=menuone,noselect
+se pa+=$PWD/**
 se acd
 
 let undodir = expand('~/.vim/undodir')
