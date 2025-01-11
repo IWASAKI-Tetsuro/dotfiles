@@ -364,6 +364,8 @@ endfu
 aug MyNetrwMappings
     au!
     au FileType netrw nn <buffer> s <Nop>
+    au FileType netrw nn <buffer> <Tab> <Nop>
+    au FileType netrw nn <buffer> <S-Tab> <Nop>
 aug END
 
 aug HighlightSpaces
