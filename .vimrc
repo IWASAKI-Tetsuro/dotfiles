@@ -197,8 +197,6 @@ if has('mouse')
     en
 en
 
-" Auto reload .vimrc
-
 " Color scheme
 se t_Co=256
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
