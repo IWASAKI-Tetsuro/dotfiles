@@ -374,7 +374,7 @@ aug MyNetrwSettings
     au FileType netrw nn <c-f> <Right>
     au FileType netrw nn > <c-w>2>
     au FileType netrw nn < <c-w>2<
-    au FileType netrw exe "vert res 20"
+    au FileType netrw exe "vert res 25"
 aug END
 
 aug HighlightSpaces
