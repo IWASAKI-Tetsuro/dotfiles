@@ -1,3 +1,4 @@
+mapc!
 let mapleader = "\<SPACE>"
 se timeoutlen=400
 filetype plugin indent on
@@ -5,32 +6,28 @@ syntax on
 
 nn x "_x
 nn X "_X
+vn S "_S
 nn dh ^_d$
-nn s "_s
-nn S "_S
 nn U <c-r>
 nn Y y$
 nn <silent>j gj
 nn <silent>k gk
-nn e <Nop>
-nn ev :<c-u>vne<CR><c-w>l:E<CR>
-nn es :<c-u>new<CR><c-w>:E<CR>
-nn e <nop>
-nn <silent>ed :bd<CR>
-nn eh <c-w>h
-nn ej <c-w>j
-nn ek <c-w>k
-nn el <c-w>l
-nn <silent><Tab> :bn<CR>
-nn <silent><S-Tab> :bp<CR>
+nn s <Nop>
+nn <silent>sd :bd<CR>
+nn sh <c-w>h
+nn sj <c-w>j
+nn sk <c-w>k
+nn sl <c-w>l
+nn sp :bro ol<CR>
+nn ss :cal ToggleNetrw()<CR>
 nn <silent>H 5h
 nn <silent>J 10gj
 nn <silent>K 10gk
 nn <silent>L 5l
-nn <silent>ep :bro ol<CR>
-nn <silent>ee :cal ToggleNetrw()<CR>
 nn <Leader>s :cal Savereg()<CR>
 nn <Leader>l :cal Loadreg()<CR>
+nn <silent><Tab> :bn<CR>
+nn <silent><S-Tab> :bp<CR>
 nn <BS> "_X
 nn n nzzzv
 nn N Nzzzv
@@ -46,8 +43,6 @@ nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 
 vn x "_x
-vn X "_X
-vn s "_s
 vn S "_S
 vn H 5h
 vn J 10j
@@ -81,12 +76,6 @@ ino jj <esc>
 ino Jj <esc>
 ino jJ <esc>
 ino JJ <esc>
-ino <c-a> <Home>
-ino <c-e> <End>
-ino <c-b> <Left>
-ino <c-f> <Right>
-ino <c-d> <Del>
-ino <c-]> <Esc><right>
 
 cno <c-a> <Home>
 cno <c-e> <End>
@@ -95,9 +84,7 @@ cno <c-n> <Down>
 cno <c-b> <Left>
 cno <c-f> <Right>
 cno <c-d> <Del>
-cno <c-u> <c-c>:
 cno jj <C-c>
-cno jk <C-c>
 cno Jj <C-c>
 cno jJ <C-c>
 cno JJ <C-c>
@@ -168,11 +155,6 @@ se wim=full
 se wic
 se vb t_vb=
 
-aug vimrcEx
-  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" | en
-aug END
-
 se ww=b,s,h,l,<,>,[,]
 " set shortmess+=I
 se stl=%m%r%h%w\ [%l/%L]\ %y\ %F
@@ -214,11 +196,6 @@ if has('mouse')
 en
 
 " Auto reload .vimrc
-aug source-vimrc
-  au!
-  au BufWritePost *vimrc so $MYVIMRC | se fdm=manual
-  au BufWritePost *gvimrc if has('gui_running') so $MYGVIMRC
-aug END
 
 " Color scheme
 se t_Co=256
@@ -252,7 +229,7 @@ hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE
 hi Pmenu                         ctermbg=238  cterm=NONE     
-hi PmenuSel         ctermfg=252   ctermbg=240  cterm=NONE    
+hi PmenuSel         ctermfg=252  ctermbg=240  cterm=NONE    
 hi WinSeparator     ctermfg=252  ctermbg=238                 
 hi VertSplit        ctermfg=238  ctermbg=252                 
                                                              
@@ -280,11 +257,6 @@ hi netrwTreebar     ctermfg=242  ctermbg=NONE
 hi netrwSymLink     ctermfg=208  ctermbg=NONE                
 hi netrwExe         ctermfg=99   ctermbg=NONE                
 
-aug HighlightSpaces
-  au!
-  au VimEnter,WinEnter,BufWinEnter,ColorScheme * hi Spaces cterm=underline ctermfg=244 ctermfg=244 gui=underline guifg=#FFFFFF
-  au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
-aug END  
 
 let s:vimreg = expand('~/.vim/vimreg')
 fu Savereg() abort
@@ -388,3 +360,26 @@ fu ToggleNetrw()
       silent Vex
     en
 endfu
+
+aug MyNetrwMappings
+    au!
+    au FileType netrw nn <buffer> s <Nop>
+aug END
+
+aug HighlightSpaces
+  au!
+  au VimEnter,WinEnter,BufWinEnter,ColorScheme * hi Spaces cterm=underline ctermfg=244 ctermfg=244
+  au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
+aug END  
+
+aug vimrcEx
+  au!
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | en
+aug END
+
+aug source-vimrc
+  au!
+  au BufWritePost *vimrc so $MYVIMRC | se fdm=manual
+aug END
+
