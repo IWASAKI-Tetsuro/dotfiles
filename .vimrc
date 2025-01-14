@@ -355,7 +355,7 @@ fu ToggleNetrw()
       let g:NetrwIsOpen=0
     el
       let g:NetrwIsOpen=1
-      silent Vex
+      silent Le
     en
 endfu
 
