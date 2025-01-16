@@ -29,10 +29,12 @@ nn <Leader>l :cal Loadreg()<CR>
 nn <silent><Tab> :bn<CR>
 nn <silent><S-Tab> :bp<CR>
 nn <BS> "_X
+nn <BS> "_X
+nn <CR> :call append(line("."), "")<CR>j
 nn n nzzzv
 nn N Nzzzv
-nn p ]p`]
-nn P ]P`]
+nn p ]p
+nn P ]P
 nn ; :
 nn t ;
 nn T ,
@@ -41,6 +43,11 @@ nn <Leader>d zd
 nn <Leader>D zE
 nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
+nn c <Nop>
+nn C <Nop>
+nn cn :cn<CR>
+nn cp :cp<CR>
+nn cc :cal ToggleQuickfix()<CR>
 
 vn x "_x
 vn s <Nop>
@@ -366,20 +373,47 @@ aug MyNetrwSettings
     au FileType netrw nn <buffer> <S-Tab> <Nop>
     au FileType netrw nn <buffer> <c-a> <HOME>
     au FileType netrw nn <buffer> <c-e> <END>
-    au FileType netrw nn <c-p> <Up>
-    au FileType netrw nn <c-n> <Down>
-    au FileType netrw nn <c-b> <Left>
-    au FileType netrw nn <c-f> <Right>
-    au FileType netrw nn > <c-w>2>
-    au FileType netrw nn < <c-w>2<
+    au FileType netrw nn <buffer> <c-p> <Up>
+    au FileType netrw nn <buffer> <c-n> <Down>
+    au FileType netrw nn <buffer> <c-b> <Left>
+    au FileType netrw nn <buffer> <c-f> <Right>
+    au FileType netrw nn <buffer> > <c-w>2>
+    au FileType netrw nn <buffer> < <c-w>2<
     au FileType netrw exe "vert res 25"
+aug END
+
+let g:QuickfixIsOpen=0
+fu ToggleQuickfix()
+    if g:QuickfixIsOpen
+      let i = bufnr("$")
+      wh (i >= 1)
+          if (getbufvar(i, "&filetype") == "qf")
+              silent exe "bw" . i
+          en
+          let i-=1
+      endw
+      let g:QuickfixIsOpen=0
+    el
+      let g:QuickfixIsOpen=1
+      silent cope
+      silent res 5
+    en
+endfu
+
+aug MyQuickfixSettings
+    au!
+    au FileType qf nn <buffer> <Tab> <Nop>
+    au FileType qf nn <buffer> <S-Tab> <Nop>
+    au FileType qf nn <buffer> <c-p> :cp<CR>
+    au FileType qf nn <buffer> <c-n> :cn<CR>
+    au FileType qf nn <buffer> <CR> <CR>
 aug END
 
 aug HighlightSpaces
   au!
   au VimEnter,WinEnter,BufWinEnter,ColorScheme * hi Spaces cterm=underline ctermfg=244 ctermfg=244
   au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
-aug END  
+aug END
 
 aug vimrcEx
   au!
