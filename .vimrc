@@ -265,11 +265,11 @@ hi netrwSymLink     ctermfg=208  ctermbg=NONE
 hi netrwExe         ctermfg=99   ctermbg=NONE                
 
 let s:vimreg=expand('~/.vim/vimreg')
-fu Savereg() abort
+fu! Savereg() abort
   cal writefile([json_encode(getreginfo())], s:vimreg)
   ec 'Save register'
 endf
-fu Loadreg() abort
+fu! Loadreg() abort
   cal setreg(v:register, readfile(s:vimreg)->join()->json_decode())
   ec 'Restore register'
 endf
@@ -350,7 +350,7 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_sizestyle="H"
 
 let g:NetrwIsOpen=0
-fu ToggleNetrw()
+fu! ToggleNetrw()
     if g:NetrwIsOpen
       let i = bufnr("$")
       wh (i >= 1)
@@ -383,7 +383,7 @@ aug MyNetrwSettings
 aug END
 
 let g:QuickfixIsOpen=0
-fu ToggleQuickfix()
+fu! ToggleQuickfix()
     if g:QuickfixIsOpen
       let i = bufnr("$")
       wh (i >= 1)
