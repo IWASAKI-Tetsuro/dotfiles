@@ -26,8 +26,8 @@ nn <silent>K 10gk
 nn <silent>L 5l
 nn <Leader>s :cal Savereg()<CR>
 nn <Leader>l :cal Loadreg()<CR>
-nn <silent><Tab> :bn<CR>
-nn <silent><S-Tab> :bp<CR>
+nn <silent><Tab> :cal NextNonQuickfix()<CR>
+nn <silent><S-Tab> :cal PrevNonQuickfix()<CR>
 nn <BS> "_X
 nn <BS> "_X
 nn <CR> :call append(line("."), "")<CR>j
@@ -363,6 +363,7 @@ fu! ToggleNetrw()
     el
       let g:NetrwIsOpen=1
       silent Le
+      silent vert res 25
     en
 endfu
 
@@ -379,7 +380,6 @@ aug MyNetrwSettings
     au FileType netrw nn <buffer> <c-f> <Right>
     au FileType netrw nn <buffer> > <c-w>2>
     au FileType netrw nn <buffer> < <c-w>2<
-    au FileType netrw exe "vert res 25"
 aug END
 
 let g:QuickfixIsOpen=0
@@ -408,6 +408,28 @@ aug MyQuickfixSettings
     au FileType qf nn <buffer> <c-n> :cn<CR>
     au FileType qf nn <buffer> <CR> <CR>
 aug END
+
+fu! NextNonQuickfix()
+  let curbuf = bufnr('%')
+  execute 'bnext'
+  while &buftype == 'quickfix'
+    execute 'bnext'
+    if bufnr('%') == curbuf
+      break
+    endif
+  endwhile
+endf
+
+fu! PrevNonQuickfix()
+  let curbuf = bufnr('%')
+  execute 'bprev'
+  while &buftype == 'quickfix'
+    execute 'bprev'
+    if bufnr('%') == curbuf
+      break
+    endif
+  endwhile
+endf
 
 aug HighlightSpaces
   au!
