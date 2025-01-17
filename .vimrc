@@ -49,8 +49,8 @@ nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 nn <C-c> :cal ToggleQuickfix()<CR>
 nn cc :cal ToggleQuickfix()<CR>
-nn <expr> cp '<Cmd>CCycle -' .. v:count1 .. '<CR>'
-nn <expr> cn '<Cmd>CCycle '  .. v:count1 .. '<CR>'
+nn cp :cp<CR>
+nn cn :cn<CR>
 nn <expr> <C-p> '<Cmd>CCycle -' .. v:count1 .. '<CR>'
 nn <expr> <C-n> '<Cmd>CCycle '  .. v:count1 .. '<CR>'
 
