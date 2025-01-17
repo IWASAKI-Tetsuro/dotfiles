@@ -257,6 +257,7 @@ complete rm     'c/--/"(directory force interactive verbose recursive help versi
 source ~/.cshrc-common
 
 bindkey -s ^R "^Ufzf-history\n"
+bindkey "^S" undefined-key 
 alias fd 'cd `dclean && cat ~/.cd_history |fzf --tac` && pwd -L'
 alias fzf-history 'eval `history | cut -f3 | fzf --tac`'
 alias ffh 'ssh `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | fzf --tac`'

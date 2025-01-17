@@ -20,7 +20,7 @@ nn sj <c-w>j
 nn sk <c-w>k
 nn sl <c-w>l
 nn sp :bro ol<CR>
-nn ss :cal ToggleNetrw()<CR>
+nn <C-s> :cal ToggleNetrw()<CR>
 nn <silent>H 5h
 nn <silent>J 10gj
 nn <silent>K 10gk
