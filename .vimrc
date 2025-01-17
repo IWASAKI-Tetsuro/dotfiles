@@ -15,12 +15,15 @@ nn <silent>j gj
 nn <silent>k gk
 nn s <Nop>
 nn S <Nop>
+nn c <Nop>
+nn C <Nop>
 nn sh <c-w>h
 nn sj <c-w>j
 nn sk <c-w>k
 nn sl <c-w>l
 nn sp :bro ol<CR>
 nn <C-s> :cal ToggleNetrw()<CR>
+nn ss :cal ToggleNetrw()<CR>
 nn <silent>H 5h
 nn <silent>J 10gj
 nn <silent>K 10gk
@@ -45,6 +48,9 @@ nn <Leader>D zE
 nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 nn <C-c> :cal ToggleQuickfix()<CR>
+nn cc :cal ToggleQuickfix()<CR>
+nn <expr> cp '<Cmd>CCycle -' .. v:count1 .. '<CR>'
+nn <expr> cn '<Cmd>CCycle '  .. v:count1 .. '<CR>'
 nn <expr> <C-p> '<Cmd>CCycle -' .. v:count1 .. '<CR>'
 nn <expr> <C-n> '<Cmd>CCycle '  .. v:count1 .. '<CR>'
 
