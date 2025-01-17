@@ -4,6 +4,8 @@ se timeoutlen=400
 filetype plugin indent on
 syntax on
 
+nn <c-a> <Home>
+nn <c-e> <End><Right>
 nn x "_x
 nn X "_X
 nn dh ^_d$
@@ -13,7 +15,6 @@ nn <silent>j gj
 nn <silent>k gk
 nn s <Nop>
 nn S <Nop>
-nn <silent>sd :bd<CR>
 nn sh <c-w>h
 nn sj <c-w>j
 nn sk <c-w>k
@@ -30,7 +31,7 @@ nn <silent><Tab> :cal NextNonQuickfix()<CR>
 nn <silent><S-Tab> :cal PrevNonQuickfix()<CR>
 nn <BS> "_X
 nn <BS> "_X
-nn <CR> :call append(line("."), "")<CR>j
+nn <CR> :call append(line("."), "")<CR><Down>
 nn n nzzzv
 nn N Nzzzv
 nn p ]p
@@ -43,11 +44,9 @@ nn <Leader>d zd
 nn <Leader>D zE
 nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
-nn c <Nop>
-nn C <Nop>
-nn cn :cn<CR>
-nn cp :cp<CR>
-nn cc :cal ToggleQuickfix()<CR>
+nn <C-c> :cal ToggleQuickfix()<CR>
+nn <expr> <C-p> '<Cmd>CCycle -' .. v:count1 .. '<CR>'
+nn <expr> <C-n> '<Cmd>CCycle '  .. v:count1 .. '<CR>'
 
 vn x "_x
 vn s <Nop>
@@ -380,6 +379,8 @@ aug MyNetrwSettings
     au FileType netrw nn <buffer> <c-f> <Right>
     au FileType netrw nn <buffer> > <c-w>2>
     au FileType netrw nn <buffer> < <c-w>2<
+    au FileType netrw let g:NetrwIsOpen=1
+    au FileType netrw vert silent res 5
 aug END
 
 let g:QuickfixIsOpen=0
@@ -404,9 +405,9 @@ aug MyQuickfixSettings
     au!
     au FileType qf nn <buffer> <Tab> <Nop>
     au FileType qf nn <buffer> <S-Tab> <Nop>
-    au FileType qf nn <buffer> <c-p> :cp<CR>
-    au FileType qf nn <buffer> <c-n> :cn<CR>
     au FileType qf nn <buffer> <CR> <CR>
+    au FileType qf let g:QuickfixIsOpen=1
+    au FileType qf silent res 5
 aug END
 
 fu! NextNonQuickfix()
@@ -430,6 +431,30 @@ fu! PrevNonQuickfix()
     endif
   endwhile
 endf
+
+augroup QuickFixCmd
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup END
+
+function! s:c_cycle(count) abort
+  let qf_info = getqflist({ 'idx': 0, 'size': 0 })
+  let size = qf_info->get('size')
+  if size == 0
+    return
+  endif
+
+  let idx = qf_info->get('idx')
+
+  let num = (idx + size + a:count) % size
+
+  if num == 0
+    let num = size
+  endif
+
+  execute num .. 'cc'
+endfunction
+command! -nargs=1 CCycle call s:c_cycle(<q-args>)
 
 aug HighlightSpaces
   au!
