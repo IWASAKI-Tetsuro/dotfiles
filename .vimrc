@@ -417,7 +417,7 @@ aug MyQuickfixSettings
 aug END
 
 fu! NextNonQuickfix()
-  let curbuf=bufnr('%')
+  let curbuf = bufnr('%')
   exe 'bn'
   wh &buftype == 'quickfix'
     exe 'bn'
@@ -428,7 +428,7 @@ fu! NextNonQuickfix()
 endf
 
 fu! PrevNonQuickfix()
-  let curbuf=bufnr('%')
+  let curbuf = bufnr('%')
   exe 'bp'
   wh &buftype == 'quickfix'
     exe 'bp'
@@ -444,15 +444,15 @@ aug QuickFixCmd
 aug END
 
 fu! s:c_cycle(count) abort
-  let qf_info=getqflist({ 'idx': 0, 'size': 0 })
-  let size=qf_info->get('size')
+  let qf_info = getqflist({ 'idx': 0, 'size': 0 })
+  let size = qf_info->get('size')
   if size == 0
-    re
+    retu
   end
-  let idx=qf_info->get('idx')
-  let num=(idx + size + a:count) % size
+  let idx = qf_info->get('idx')
+  let num = (idx + size + a:count) % size
   if num == 0
-    let num=size
+    let num = size
   end
   exe num .. 'cc'
 endf
@@ -475,4 +475,3 @@ aug source-vimrc
   au BufWritePost *vimrc so $MYVIMRC | se fdm=manual
 aug END
 
-com! -bang SearchToQf exe (<bang>0 ? 'vimgrepadd' : 'vimgrep') '//gj %' | cw
