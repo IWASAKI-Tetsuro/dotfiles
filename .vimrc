@@ -193,7 +193,7 @@ se scs
 se is
 se ws
 se hls
-no <silent> <esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
+no <silent><esc><esc> :nohlsearch<cr><esc>:diffoff<cr><esc>
 
 " Command line window
 se cwh=20
@@ -417,50 +417,46 @@ aug MyQuickfixSettings
 aug END
 
 fu! NextNonQuickfix()
-  let curbuf = bufnr('%')
-  execute 'bnext'
-  while &buftype == 'quickfix'
-    execute 'bnext'
+  let curbuf=bufnr('%')
+  exe 'bn'
+  wh &buftype == 'quickfix'
+    exe 'bn'
     if bufnr('%') == curbuf
-      break
-    endif
-  endwhile
+      brea
+    end
+  endw
 endf
 
 fu! PrevNonQuickfix()
-  let curbuf = bufnr('%')
-  execute 'bprev'
-  while &buftype == 'quickfix'
-    execute 'bprev'
+  let curbuf=bufnr('%')
+  exe 'bp'
+  wh &buftype == 'quickfix'
+    exe 'bp'
     if bufnr('%') == curbuf
-      break
-    endif
-  endwhile
+      brea
+    end
+  endw
 endf
 
-augroup QuickFixCmd
-  autocmd!
-  autocmd QuickFixCmdPost *grep* cwindow
-augroup END
+aug QuickFixCmd
+  au!
+  au QuickFixCmdPost *grep* cwindow
+aug END
 
-function! s:c_cycle(count) abort
-  let qf_info = getqflist({ 'idx': 0, 'size': 0 })
-  let size = qf_info->get('size')
+fu! s:c_cycle(count) abort
+  let qf_info=getqflist({ 'idx': 0, 'size': 0 })
+  let size=qf_info->get('size')
   if size == 0
-    return
-  endif
-
-  let idx = qf_info->get('idx')
-
-  let num = (idx + size + a:count) % size
-
+    re
+  end
+  let idx=qf_info->get('idx')
+  let num=(idx + size + a:count) % size
   if num == 0
-    let num = size
-  endif
-
-  execute num .. 'cc'
-endfunction
-command! -nargs=1 CCycle call s:c_cycle(<q-args>)
+    let num=size
+  end
+  exe num .. 'cc'
+endf
+com! -nargs=1 CCycle call s:c_cycle(<q-args>)
 
 aug HighlightSpaces
   au!
@@ -479,3 +475,4 @@ aug source-vimrc
   au BufWritePost *vimrc so $MYVIMRC | se fdm=manual
 aug END
 
+com! -bang SearchToQf exe (<bang>0 ? 'vimgrepadd' : 'vimgrep') '//gj %' | cw

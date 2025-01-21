@@ -184,6 +184,7 @@ alias gstu 'git stash -u'
 alias gstum 'git stash -u -m'
 alias gstp 'git stash pop'
 alias gmr 'git merge'
+alias gls 'git log --name-status -n1 $1 | awk -F'\'' '\'' '\''{print $2}'\'';'
 
 bindkey -s "^[u" "^Ucd ..\n"
 bindkey -s "^[-" "^Ucd -\n"
@@ -263,6 +264,8 @@ alias fzf-history 'eval `history | cut -f3 | fzf --tac`'
 alias ffh 'ssh `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | fzf --tac`'
 alias ffhcd 'sshcd `cat ~/.ssh/config | grep ^Host | cut -d" " -f2 | grep -v aladdin | fzf --tac`'
 alias fta 'tmux a -t `tmux ls | cut -d" " -f1 | sed "s/://g" | fzf --tac`'
+
+
 
 # if ( ! $?TMUX && ! $?SSH_TTY) then
 #if ( ! $?TMUX && `hostname` == "ubuntu22.o.vlsi.es.kit.ac.jp") then
