@@ -4,7 +4,6 @@ se timeoutlen=400
 filetype plugin indent on
 syntax on
 
-nn <c-a> <Home>
 nn <c-e> <End><Right>
 nn x "_x
 nn X "_X
@@ -65,7 +64,6 @@ vn t ;
 vn T ,
 vn <silent>j gj
 vn <silent>k gk
-vn <c-a> 0
 vn <c-e> $
 vn v <c-v>
 vn ( di()<Esc>P<Left>%
@@ -81,7 +79,6 @@ vn n nzzzv
 vn N Nzzzv
 vn <BS> "_X
 vn <space> zf
-vn <c-a> <Home>
 vn <c-e> <End>
 vn <c-p> <Up>
 vn <c-n> <Down>
@@ -456,6 +453,7 @@ fu! s:c_cycle(count) abort
   end
   exe num .. 'cc'
 endf
+
 com! -nargs=1 CCycle call s:c_cycle(<q-args>)
 
 aug HighlightSpaces
