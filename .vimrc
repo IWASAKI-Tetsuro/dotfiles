@@ -400,7 +400,7 @@ fu! ToggleQuickfix()
     el
       let g:QuickfixIsOpen=1
       silent cope
-      silent res 5
+      silent res 10
     en
 endfu
 
@@ -410,7 +410,7 @@ aug MyQuickfixSettings
     au FileType qf nn <buffer> <S-Tab> <Nop>
     au FileType qf nn <buffer> <CR> <CR>
     au FileType qf let g:QuickfixIsOpen=1
-    au FileType qf silent res 5
+    au FileType qf silent res 10
 aug END
 
 fu! NextNonQuickfix()
