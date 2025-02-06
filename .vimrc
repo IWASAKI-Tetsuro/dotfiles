@@ -47,9 +47,6 @@ nn <Leader>D zE
 nn <expr> i empty(getline('.')) ? '"_cc' : 'i'
 nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 nn <C-c> :cal ToggleQuickfix()<CR>
-nn cc :cal ToggleQuickfix()<CR>
-nn cp :cp<CR>
-nn cn :cn<CR>
 nn <expr> <C-p> '<Cmd>CCycle -' .. v:count1 .. '<CR>'
 nn <expr> <C-n> '<Cmd>CCycle '  .. v:count1 .. '<CR>'
 
@@ -383,7 +380,7 @@ aug MyNetrwSettings
     au FileType netrw nn <buffer> > <c-w>2>
     au FileType netrw nn <buffer> < <c-w>2<
     au FileType netrw let g:NetrwIsOpen=1
-    au FileType netrw vert silent res 5
+    au FileType netrw vert silent res 25
 aug END
 
 let g:QuickfixIsOpen=0
