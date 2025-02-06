@@ -14,8 +14,6 @@ nn <silent>j gj
 nn <silent>k gk
 nn s <Nop>
 nn S <Nop>
-nn c <Nop>
-nn C <Nop>
 nn sh <c-w>h
 nn sj <c-w>j
 nn sk <c-w>k
@@ -210,6 +208,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 se bg=dark
 hi Normal           ctermfg=252 ctermbg=NONE                 
+hi NonText          ctermbg=NONE                             
 hi Comment          ctermfg=244                              
 hi Constant         ctermfg=99                               
 hi Statement        ctermfg=197               cterm=BOLD     
@@ -410,6 +409,7 @@ aug MyQuickfixSettings
     au FileType qf silent res 10
 aug END
 
+hi NonText ctermbg=NONE guibg=NONE
 fu! NextNonQuickfix()
   let curbuf = bufnr('%')
   exe 'bn'
