@@ -331,6 +331,23 @@ fu! s:GetBufferName()
   retu s:result
 endf
 
+if !exists('g:loaded_matchit')
+  pa! matchit
+en
+aug MatchParenSettings
+au FileType verilog let b:match_words = '\<begin\>:\<end\>'
+au FileType systemverilog let b:match_words = '\<begin\>:\<end\>'
+au FileType verilogams let b:match_words = '\<begin\>:\<end\>'
+au FileType verilog syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType verilog syntax match verilogBlock /\<end\>/ containedin=ALL
+au FileType systemverilog syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType systemverilog syntax match verilogBlock /\<end\>/ containedin=ALL
+au FileType verilogams syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType verilogams syntax match verilogBlock /\<end\>/ containedin=ALL
+aug END
+hi link verilogBlock MatchParen
+
+
 let g:netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_preview=1
