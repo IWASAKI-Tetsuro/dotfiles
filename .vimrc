@@ -14,8 +14,6 @@ nn <silent>j gj
 nn <silent>k gk
 nn s <Nop>
 nn S <Nop>
-nn c <Nop>
-nn C <Nop>
 nn sh <c-w>h
 nn sj <c-w>j
 nn sk <c-w>k
@@ -220,6 +218,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 se bg=dark
 hi Normal           ctermfg=252 ctermbg=NONE                 
+hi NonText          ctermbg=NONE                             
 hi Comment          ctermfg=244                              
 hi Constant         ctermfg=99                               
 hi Statement        ctermfg=197               cterm=BOLD     
@@ -342,6 +341,23 @@ fu! s:GetBufferName()
   retu s:result
 endf
 
+if !exists('g:loaded_matchit')
+  pa! matchit
+en
+aug MatchParenSettings
+au FileType verilog let b:match_words = '\<begin\>:\<end\>'
+au FileType systemverilog let b:match_words = '\<begin\>:\<end\>'
+au FileType verilogams let b:match_words = '\<begin\>:\<end\>'
+au FileType verilog syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType verilog syntax match verilogBlock /\<end\>/ containedin=ALL
+au FileType systemverilog syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType systemverilog syntax match verilogBlock /\<end\>/ containedin=ALL
+au FileType verilogams syntax match verilogBlock /\<begin\>/ containedin=ALL
+au FileType verilogams syntax match verilogBlock /\<end\>/ containedin=ALL
+aug END
+hi link verilogBlock MatchParen
+
+
 let g:netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_preview=1
@@ -420,6 +436,7 @@ aug MyQuickfixSettings
     au FileType qf silent res 10
 aug END
 
+hi NonText ctermbg=NONE guibg=NONE
 fu! NextNonQuickfix()
   let curbuf = bufnr('%')
   exe 'bn'
