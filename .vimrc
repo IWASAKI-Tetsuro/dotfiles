@@ -1,6 +1,6 @@
 mapc!
 let mapleader="\<SPACE>"
-se timeoutlen=400
+se tm=400
 filetype plugin indent on
 syntax on
 
@@ -19,6 +19,7 @@ nn sj <c-w>j
 nn sk <c-w>k
 nn sl <c-w>l
 nn sp :bro ol<CR>
+nn gp :bro ol<CR>
 nn <C-s> :cal ToggleNetrw()<CR>
 nn ss :cal ToggleNetrw()<CR>
 nn <silent>H 5h
