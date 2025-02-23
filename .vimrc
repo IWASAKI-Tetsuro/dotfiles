@@ -41,6 +41,8 @@ nn P ]P
 nn ; :
 nn t ;
 nn T ,
+nn <C-t> >>
+nn <C-d> <<
 nn <Leader><space> za
 nn <Leader>d zd
 nn <Leader>D zE
@@ -71,6 +73,8 @@ vn ] di[]<Esc>P<Left>%
 vn } di{}<Esc>P<Left>%
 vn < di<><Esc>P<Left>%
 vn > >gv
+vn <C-t> >gv
+vn <C-d> <gv
 vn ; :
 vn n nzzzv
 vn N Nzzzv
@@ -106,9 +110,15 @@ com! Reload so ~/.vimrc
 xn y mzy`z
 xn p P
 xn i<space> iW
-xn a<space> aW
+xn a<space> 2iW
 ono i<space> iW
-ono a<space> aW
+ono a<space> 2iW
+xn a" 2i"
+xn a' 2i'
+xn a` 2i`
+ono a" 2i"
+ono a' 2i'
+ono a` 2i`
 
 se enc=utf-8
 se fenc=utf-8
