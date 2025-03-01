@@ -22,6 +22,7 @@ nn sp :bro ol<CR>
 nn gp :bro ol<CR>
 nn <C-s> :cal ToggleNetrw()<CR>
 nn ss :cal ToggleNetrw()<CR>
+nn sc :cal ToggleQuickfix()<CR>
 nn <silent>H 5h
 nn <silent>J 10gj
 nn <silent>K 10gk
@@ -219,7 +220,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 se bg=dark
 hi Normal           ctermfg=252 ctermbg=NONE                 
-hi NonText          ctermbg=NONE                             
+hi NonText                      ctermbg=NONE                 
 hi Comment          ctermfg=244                              
 hi Constant         ctermfg=99                               
 hi Statement        ctermfg=197               cterm=BOLD     
@@ -240,7 +241,7 @@ hi Cursor                        ctermbg=240
 hi LineNr           ctermfg=252  ctermbg=238                 
 hi CursorLine                    ctermbg=238  cterm=NONE     
 hi CursorLineNr     ctermfg=238  ctermbg=250  cterm=NONE     
-hi Visual                        ctermbg=238  cterm=NONE     
+hi Visual           ctermfg=NONE ctermbg=238  cterm=NONE     
 hi Search           ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi incsearch        ctermfg=212  ctermbg=236  cterm=UNDERLINE
 hi matchparen       ctermfg=212  ctermbg=NONE cterm=UNDERLINE
