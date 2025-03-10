@@ -5,7 +5,6 @@ let mapleader="\<SPACE>"
 filetype plugin indent on
 syntax on
 
-nn <c-e> <End><Right>
 nn x "_x
 nn X "_X
 nn ds< di<"_X"_xP
@@ -449,7 +448,7 @@ fu! NextNonQuickfix()
   let curbuf = bufnr('%')
   exe 'bn'
   wh &buftype == 'quickfix'
-    exe 'bn'
+  exe 'bn'
     if bufnr('%') == curbuf
       brea
     end
@@ -460,7 +459,7 @@ fu! PrevNonQuickfix()
   let curbuf = bufnr('%')
   exe 'bp'
   wh &buftype == 'quickfix'
-    exe 'bp'
+  exe 'bp'
     if bufnr('%') == curbuf
       brea
     end
@@ -499,6 +498,7 @@ aug FileTypeComments
     au FileType python,sh,csh,tcsh,ruby,lua,perl,tmux,make let b:comment_string = "# "
     au FileType vim let b:comment_string = '" '
     au FileType spice let b:comment_string = '* '
+    au FileType verilog,verilogams,systemverilog let b:comment_string = '\/\/ '
 aug END
 
 fu! ToggleComment()
