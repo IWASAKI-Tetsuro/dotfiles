@@ -1,16 +1,22 @@
 mapc!
+au InsertLeave * set timeoutlen=1000
+au InsertEnter * set timeoutlen=200
 let mapleader="\<SPACE>"
-se tm=400
 filetype plugin indent on
 syntax on
 
 nn <c-e> <End><Right>
 nn x "_x
 nn X "_X
-nn dh ^_d$
+nn ds< di<"_X"_xP
+nn ds( di("_X"_xP
+nn ds[ di["_X"_xP
+nn ds> di<"_X"_xP
+nn ds) di("_X"_xP
+nn ds] di["_X"_xP
 nn U <c-r>
 nn Y y$
-nn <silent>j gj
+nn >j gj
 nn <silent>k gk
 nn s <Nop>
 nn S <Nop>
@@ -51,6 +57,7 @@ nn <expr> A empty(getline('.')) ? '"_cc' : 'A'nn <Leader>a zR
 nn <C-c> :cal ToggleQuickfix()<CR>
 nn <expr> <C-p> '<Cmd>CCycle -' .. v:count1 .. '<CR>'
 nn <expr> <C-n> '<Cmd>CCycle '  .. v:count1 .. '<CR>'
+nn <leader>cc :call ToggleLineComment()<CR>
 
 vn x "_x
 vn s <Nop>
@@ -65,14 +72,10 @@ vn <silent>j gj
 vn <silent>k gk
 vn <c-e> $
 vn v <c-v>
-vn ( di()<Esc>P<Left>%
-vn [ di[]<Esc>P<Left>%
-vn { di{}<Esc>P<Left>%
-vn ) di()<Esc>P<Left>%
-vn ] di[]<Esc>P<Left>%
-vn } di{}<Esc>P<Left>%
-vn < di<><Esc>P<Left>%
-vn > >gv
+vn ( s(<c-r>")<Esc>
+vn [ s[<c-r>"]<Esc>
+vn { s{<c-r>"}<Esc>
+vn < s<<c-r>"><Esc>
 vn <C-t> >gv
 vn <C-d> <gv
 vn ; :
@@ -83,6 +86,8 @@ vn <space> zf
 vn <c-e> <End>
 vn <c-p> <Up>
 vn <c-n> <Down>
+vn <leader>cc :<C-U>call ToggleComment()<CR>
+
 
 ino jj <esc>
 ino Jj <esc>
@@ -113,6 +118,7 @@ xn i<space> iW
 xn a<space> 2iW
 ono i<space> iW
 ono a<space> 2iW
+xn s<space> iW
 xn a" 2i"
 xn a' 2i'
 xn a` 2i`
@@ -487,6 +493,43 @@ aug HighlightSpaces
   au VimEnter,WinEnter,BufWinEnter,ColorScheme * hi Spaces cterm=underline ctermfg=244 ctermfg=244
   au VimEnter,WinEnter,BufWinEnter * match Spaces /^\s\+\|\s\+$/
 aug END
+
+aug FileTypeComments
+    au!
+    au FileType python,sh,csh,tcsh,ruby,lua,perl,tmux,make let b:comment_string = "# "
+    au FileType vim let b:comment_string = '" '
+    au FileType spice let b:comment_string = '* '
+aug END
+
+fu! ToggleComment()
+    if !exists("b:comment_string")
+        let b:comment_string = "# "
+    end
+
+    let l:comment = b:comment_string
+    let l:uncomment_pattern = '^\s*' . escape(l:comment, '/*')
+
+    if getline("'<") =~ l:uncomment_pattern
+        exe "'<,'>s/" . l:uncomment_pattern . "//"
+    el
+        exe "'<,'>s/^/" . l:comment . "/"
+    end
+endf
+
+fu! ToggleLineComment()
+    if !exists("b:comment_string")
+        let b:comment_string = "# "
+    end
+
+    let l:comment = b:comment_string
+    let l:uncomment_pattern = '^\s*' . escape(l:comment, '/*')
+
+    if getline('.') =~ l:uncomment_pattern
+        execute "silent! s/" . l:uncomment_pattern . "//"
+    el
+        execute "silent! s/^/" . l:comment . "/"
+    end
+endf
 
 aug vimrcEx
   au!
