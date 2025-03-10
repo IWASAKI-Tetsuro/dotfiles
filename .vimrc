@@ -13,6 +13,8 @@ nn ds[ di["_X"_xP
 nn ds> di<"_X"_xP
 nn ds) di("_X"_xP
 nn ds] di["_X"_xP
+nn ds" di""_X"_xP
+nn ds' di'"_X"_xP
 nn U <c-r>
 nn Y y$
 nn >j gj
@@ -75,6 +77,8 @@ vn ( s(<c-r>")<Esc>
 vn [ s[<c-r>"]<Esc>
 vn { s{<c-r>"}<Esc>
 vn < s<<c-r>"><Esc>
+vn " s"<c-r>""<Esc>
+vn ' s'<c-r>"'<Esc>
 vn <C-t> >gv
 vn <C-d> <gv
 vn ; :
