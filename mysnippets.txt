@@ -1,18 +1,63 @@
-init_bash
-#!  /usr/bin//bash
-set -euo pipefail
-{
-  
-}
+init_bash:
+  #!/bin/env bash
+  set -euo pipefail
+  {
+    
+  }
 
-init_perl
-#!  /usr/bin//perl
-use strict;
-use warnings;
+for_bash:
+  for item in "${items[@]}" ; do
+    echo "[ ${item} ]"
+  done
 
-pulse_spice
-vname n+ n- PULSE (HIGH LOW Tdelay Trise Tfall pulseWidth period)
+if_bash:
+  if [[ "$var" -eq 0 ]]; then
+    echo "zero"
+  fi
 
-sin_spice
-vin n+ n- SIN (offset amplitude freq Tdelay damp phase)
+whileread_bash:
+  while read line; do
+    echo "${line}"
+  done
+
+init_pl:
+  #!/bin/env perl
+  use strict;
+  use warnings;
+
+while_perl:
+  while (<>) {
+    chomp;
+    print "$_\n";
+  }
+
+arg_perl:
+  while (my $arg = shift @ARGV) {
+    print "$arg\n";
+  }
+
+init_py:
+  #!/usr/bin/env python3
+  import sys
+
+  def main():
+    pass
+
+  if __name__ == "__main__":
+    filename = sys.argv[0]
+    first_arg = float(sys.argv[1])
+    second_arg = int(sys.argv[2])
+    main()
+
+csv_awk:
+  awk 'BEGIN{FS=",", OFS=","}{print}'
+
+pulse_spice:
+  vname n+ n- PULSE (HIGH LOW Tdelay Trise Tfall pulseWidth period)
+
+sin_spice:
+  vin n+ n- SIN (offset amplitude freq Tdelay damp phase)
+
+pwl_spice:
+  vin n+ n- PWL (T1 V1, T2 V2, T3 V3, T4 V4)
 

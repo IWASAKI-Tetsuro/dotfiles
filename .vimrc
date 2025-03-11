@@ -535,7 +535,7 @@ function! ToggleLineComment()
     endif
 endfunction
 
-function! LoadMySnippets() abort
+function! LoadIndentedSnippets() abort
     let snippetfile = expand('~/.vim/snippets/mysnippets.txt')
     if !filereadable(snippetfile)
         echo "Snippet file not found!"
@@ -546,14 +546,16 @@ function! LoadMySnippets() abort
     let key = ''
     let content = []
     for line in lines
-        if line =~ '^\S\+$'
+        if line =~ '^\S.*:\s*$' " キーワード行（Makefile風）
             if key != ''
                 let snippets[key] = join(content, "\n")
             endif
-            let key = line
+            let key = substitute(line, ':\s*$', '', '')
             let content = []
-        else
-            call add(content, line)
+        elseif line =~ '^\s\+' " 本文（インデントあり）
+            call add(content, substitute(line, '^\s\+', '', ''))
+        elseif line =~ '^\s*$' " 空行を含める
+            call add(content, '')
         endif
     endfor
     if key != ''
@@ -562,7 +564,7 @@ function! LoadMySnippets() abort
     return snippets
 endfunction
 
-let g:mysnippets = LoadMySnippets()
+let g:mysnippets = LoadIndentedSnippets()
 
 function! MySnippetComplete(findstart, base) abort
     if a:findstart
@@ -573,8 +575,7 @@ function! MySnippetComplete(findstart, base) abort
         endwhile
         return col
     else
-        let matches = filter(keys(g:mysnippets), 'v:val =~ "^".a:base')
-        return matches
+        return filter(keys(g:mysnippets), 'v:val =~ "^".a:base')
     endif
 endfunction
 
@@ -582,18 +583,18 @@ function! CompleteDoneSnippet() abort
     let completed_word = v:completed_item.word
     if has_key(g:mysnippets, completed_word)
         execute "normal! bcw"
-        let snippet = g:mysnippets[completed_word]
-        let snippet = substitute(snippet, '\${\d\+:\(.\{-}\)}', '\1', 'g')
-        let snippet = substitute(snippet, '\$\d\+', '', 'g')
-        call feedkeys(snippet, 'n')
+        call feedkeys(g:mysnippets[completed_word], 'n')
     endif
 endfunction
 
+
 set completefunc=MySnippetComplete
+
 augroup snippet_auto_expand
     autocmd!
     autocmd CompleteDone * call CompleteDoneSnippet()
 augroup END
+
 
 aug vimrcEx
   au!
