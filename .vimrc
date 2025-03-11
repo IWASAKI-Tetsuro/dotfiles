@@ -498,9 +498,8 @@ aug FileTypeComments
     au FileType python,sh,csh,tcsh,ruby,lua,perl,tmux,make let b:comment_string = "# "
     au FileType vim let b:comment_string = '" '
     au FileType spice let b:comment_string = '* '
-    au FileType verilog,verilogams,systemverilog let b:comment_string = '\/\/ '
 aug END
-
+" 
 fu! ToggleComment()
     if !exists("b:comment_string")
         let b:comment_string = "# "
@@ -516,20 +515,81 @@ fu! ToggleComment()
     end
 endf
 
-fu! ToggleLineComment()
+function! ToggleLineComment()
     if !exists("b:comment_string")
         let b:comment_string = "# "
-    end
+    endif
 
     let l:comment = b:comment_string
-    let l:uncomment_pattern = '^\s*' . escape(l:comment, '/*')
+    let l:line = getline('.')
+    let l:pattern = '^\s*' . escape(l:comment, '/')
 
-    if getline('.') =~ l:uncomment_pattern
-        execute "silent! s/" . l:uncomment_pattern . "//"
-    el
-        execute "silent! s/^/" . l:comment . "/"
-    end
-endf
+    if l:line =~ l:pattern
+        execute "silent! s/" . l:pattern . "//"
+    else
+        execute "silent! s/^/".l:comment."/"
+    endif
+endfunction
+
+function! LoadMySnippets() abort
+    let snippetfile = expand('~/.vim/snippets/mysnippets.txt')
+    if !filereadable(snippetfile)
+        echo "Snippet file not found!"
+        return {}
+    endif
+    let lines = readfile(snippetfile)
+    let snippets = {}
+    let key = ''
+    let content = []
+    for line in lines
+        if line =~ '^\S\+$'
+            if key != ''
+                let snippets[key] = join(content, "\n")
+            endif
+            let key = line
+            let content = []
+        else
+            call add(content, line)
+        endif
+    endfor
+    if key != ''
+        let snippets[key] = join(content, "\n")
+    endif
+    return snippets
+endfunction
+
+let g:mysnippets = LoadMySnippets()
+
+function! MySnippetComplete(findstart, base) abort
+    if a:findstart
+        let line = getline('.')
+        let col = col('.') - 1
+        while col > 0 && line[col - 1] =~ '\k'
+            let col -= 1
+        endwhile
+        return col
+    else
+        let matches = filter(keys(g:mysnippets), 'v:val =~ "^".a:base')
+        return matches
+    endif
+endfunction
+
+function! CompleteDoneSnippet() abort
+    let completed_word = v:completed_item.word
+    if has_key(g:mysnippets, completed_word)
+        execute "normal! bcw"
+        let snippet = g:mysnippets[completed_word]
+        let snippet = substitute(snippet, '\${\d\+:\(.\{-}\)}', '\1', 'g')
+        let snippet = substitute(snippet, '\$\d\+', '', 'g')
+        call feedkeys(snippet, 'n')
+    endif
+endfunction
+
+set completefunc=MySnippetComplete
+augroup snippet_auto_expand
+    autocmd!
+    autocmd CompleteDone * call CompleteDoneSnippet()
+augroup END
 
 aug vimrcEx
   au!

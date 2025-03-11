@@ -11,3 +11,5 @@ echo "${LIST}" | while read line; do
     ln -s ~/dotfiles/${line} ~/
   fi
 done
+cp mysnippets.txt ~/.vim/snippets/mysnippets.txt
+

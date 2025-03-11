@@ -76,6 +76,7 @@ alias tcshrc 'vim ~/.tcshrc'
 alias bashrc 'vim ~/.bashrc'
 alias gitconfig 'vim ~/.gitconfig'
 alias tmuxconf 'vim ~/.tmux.conf'
+alias snippets 'vim ~/.vim/snippets/mysnippets.txt'
 
 alias reload 'source ~/.tcshrc'
 alias reloa 'source ~/.tcshrc'

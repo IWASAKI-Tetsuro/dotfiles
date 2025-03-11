@@ -1,0 +1,18 @@
+init_bash
+#!  /usr/bin//bash
+set -euo pipefail
+{
+  
+}
+
+init_perl
+#!  /usr/bin//perl
+use strict;
+use warnings;
+
+pulse_spice
+vname n+ n- PULSE (HIGH LOW Tdelay Trise Tfall pulseWidth period)
+
+sin_spice
+vin n+ n- SIN (offset amplitude freq Tdelay damp phase)
+
