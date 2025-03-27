@@ -5,20 +5,12 @@ let mapleader="\<SPACE>"
 filetype plugin indent on
 syntax on
 
-nn x "_x
-nn X "_X
-nn ds< di<"_X"_xP
-nn ds( di("_X"_xP
-nn ds[ di["_X"_xP
-nn ds> di<"_X"_xP
-nn ds) di("_X"_xP
-nn ds] di["_X"_xP
-nn ds" di""_X"_xP
-nn ds' di'"_X"_xP
+nn x "_d
+nn X "_D
 nn U <c-r>
 nn Y y$
-nn >j gj
-nn <silent>k gk
+nn <silent> j gj
+nn <silent> k gk
 nn s <Nop>
 nn S <Nop>
 nn sh <c-w>h
@@ -30,15 +22,14 @@ nn gp :bro ol<CR>
 nn <C-s> :cal ToggleNetrw()<CR>
 nn ss :cal ToggleNetrw()<CR>
 nn sc :cal ToggleQuickfix()<CR>
-nn <silent>H 5h
-nn <silent>J 10gj
-nn <silent>K 10gk
-nn <silent>L 5l
-nn <Leader>s :cal Savereg()<CR>
-nn <Leader>l :cal Loadreg()<CR>
+nn <silent> H 5h
+nn <silent> J 10gj
+nn <silent> K 10gk
+nn <silent> L 5l
+nn <Leader> s :cal Savereg()<CR>
+nn <Leader> l :cal Loadreg()<CR>
 nn <silent><Tab> :cal NextNonQuickfix()<CR>
 nn <silent><S-Tab> :cal PrevNonQuickfix()<CR>
-nn <BS> "_X
 nn <BS> "_X
 nn <CR> :call append(line("."), "")<CR><Down>
 nn n nzzzv
@@ -91,7 +82,6 @@ vn <c-p> <Up>
 vn <c-n> <Down>
 vn <leader>cc :<C-U>call ToggleComment()<CR>
 
-
 ino jj <esc>
 ino Jj <esc>
 ino jJ <esc>
@@ -115,16 +105,18 @@ com! WQ wq
 com! DiffOrig vne | se bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 com! Reload so ~/.vimrc
 
+xn x "_x
 xn y mzy`z
 xn p P
 xn i<space> iW
 xn a<space> 2iW
-ono i<space> iW
-ono a<space> 2iW
 xn s<space> iW
 xn a" 2i"
 xn a' 2i'
 xn a` 2i`
+ono x d
+ono i<space> iW
+ono a<space> 2iW
 ono a" 2i"
 ono a' 2i'
 ono a` 2i`
